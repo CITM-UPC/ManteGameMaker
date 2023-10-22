@@ -9,11 +9,10 @@ class MantelGameEngine
 {
 public:
 
-	enum class RenderModes {RELEASE, DEBUG};
-
 	Camera camera;
 
+	MantelGameEngine();
 	void step(std::chrono::duration<double> dt);
-	void render(RenderModes renderMode);
+	void render();
 };
 

@@ -102,23 +102,23 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)vcpkg\installed\x64-windows\include\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)vcpkg\installed\x64-windows\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>NotSet</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>OpenGL32.lib;GLU32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>OpenGL32.lib;GLU32.lib;DevIL.lib;assimp-vc143-mt.lib;</AdditionalDependencies>
     </Lib>
     <Lib>
-      <AdditionalLibraryDirectories>$(SolutionDir)vcpck\installed\x64-windows\lib\</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)vcpkg\installed\x64-windows\lib\</AdditionalLibraryDirectories>
     </Lib>
     <PreBuildEvent>
       <Command>call $(SolutionDir)\vcpkg\bootstrap-vcpkg.bat
-$(SolutionDir)\vcpkg\vcpkg.exe install opengl glew glm --recurse --triplet x64-windows</Command>
+$(SolutionDir)\vcpkg\vcpkg.exe install opengl glew glm devil[libjpeg,libpng] assimp --recurse --triplet x64-windows</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -145,7 +145,11 @@ $(SolutionDir)\vcpkg\vcpkg.exe install opengl glew glm --recurse --triplet x64-w
     <ClCompile Include="CubeVertexArray.cpp" />
     <ClCompile Include="CubeVertexBuffer.cpp" />
     <ClCompile Include="CubeWireframeIVBO.cpp" />
+    <ClCompile Include="GraphicObject.cpp" />
     <ClCompile Include="MantelGameEngine.cpp" />
+    <ClCompile Include="Mesh.cpp" />
+    <ClCompile Include="Texture2D.cpp" />
+    <ClCompile Include="Texture2D.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h" />
@@ -155,7 +159,10 @@ $(SolutionDir)\vcpkg\vcpkg.exe install opengl glew glm --recurse --triplet x64-w
     <ClInclude Include="CubeVertexArray.h" />
     <ClInclude Include="CubeVertexBuffer.h" />
     <ClInclude Include="CubeWireframeIVBO.h" />
+    <ClInclude Include="Graphic.h" />
+    <ClInclude Include="GraphicObject.h" />
     <ClInclude Include="MantelGameEngine.h" />
+    <ClInclude Include="Mesh.h" />
     <ClInclude Include="types.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -42,11 +42,15 @@ void CubeInterleavedVBO::draw() {
     glEnableClientState(GL_VERTEX_ARRAY);
     glEnableClientState(GL_COLOR_ARRAY);
     glBindBuffer(GL_ARRAY_BUFFER, _buffer_id);
-    glVertexPointer(3, GL_DOUBLE, sizeof(vec3)*2, nullptr);
-    glColorPointer(3, GL_DOUBLE, sizeof(vec3)*2, (void*)sizeof(vec3));
+    glVertexPointer(3, GL_DOUBLE, sizeof(vec3) * 2, nullptr);
+    glColorPointer(3, GL_DOUBLE, sizeof(vec3) * 2, (void*)sizeof(vec3));
     glDrawArrays(GL_TRIANGLES, 0, NUM_VERTEXS);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glDisableClientState(GL_COLOR_ARRAY);
     glDisableClientState(GL_VERTEX_ARRAY);
+}
+
+CubeInterleavedVBO::~CubeInterleavedVBO() {
+    glDeleteBuffers(1, &_buffer_id);
 }
 

@@ -2,6 +2,7 @@
 #include <GL\glew.h>
 #include <glm/ext/matrix_transform.hpp>
 #include <vector>
+#include <IL/il.h>
 
 #include "CubeImmediateMode.h"
 #include "CubeVertexArray.h"
@@ -9,13 +10,23 @@
 #include "CubeInterleavedVBO.h"
 #include "CubeWireframeIVBO.h"
 
+#include "Mesh.h"
+
+#include "GraphicObject.h"
+
 using namespace std;
 
 static double angle = 0.0;
 
+MantelGameEngine::MantelGameEngine() {
+
+    ilInit();
+
+}
+
 void MantelGameEngine::step(std::chrono::duration<double> dt) {
     const double angle_vel = 90.0; // degrees per second
-	angle += angle_vel * dt.count();
+    angle += angle_vel * dt.count();
 }
 
 static void drawAxis() {
@@ -41,52 +52,38 @@ static void drawGrid(int grid_size, int grid_step) {
     for (int i = -grid_size; i <= grid_size; i += grid_step) {
         //XY plane
         glVertex2i(i, -grid_size);
-        glVertex2i(i,  grid_size);
+        glVertex2i(i, grid_size);
         glVertex2i(-grid_size, i);
-        glVertex2i( grid_size, i);
+        glVertex2i(grid_size, i);
 
         //XZ plane
         glVertex3i(i, 0, -grid_size);
         glVertex3i(i, 0, grid_size);
         glVertex3i(-grid_size, 0, i);
-        glVertex3i( grid_size, 0, i);
+        glVertex3i(grid_size, 0, i);
     }
     glEnd();
 }
 
-void MantelGameEngine::render(RenderModes renderMode) {
+void MantelGameEngine::render() {
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     gluPerspective(camera.fov, camera.aspect, camera.zNear, camera.zFar);
 
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
-    gluLookAt( camera.eye.x, camera.eye.y, camera.eye.z,
+    gluLookAt(camera.eye.x, camera.eye.y, camera.eye.z,
         camera.center.x, camera.center.y, camera.center.z,
         camera.up.x, camera.up.y, camera.up.z);
 
-    if (renderMode == RenderModes::DEBUG) {
-        drawGrid(100, 1);
-        drawAxis();
-    }
-    
+    drawGrid(100, 1);
+    drawAxis();
+
 #pragma region Draw Sandbox
-    glPushMatrix();
-    glRotated(angle, 0, 1, 0);
-    glRotated(angle, 1, 0, 0);
-    static CubeImmediateMode cubeImmediateMode;
-    static CubeVertexArray cubeVertexArray;
-    static CubeVertexBuffer cubeVertexBuffer;
-    static CubeInterleavedVBO cubeInterleavedVBO;
-    static Cube* cubes[] = {&cubeImmediateMode, &cubeVertexArray, &cubeVertexBuffer, &cubeInterleavedVBO };
-    static int cubeIndx;
-    cubes[(cubeIndx++)%4]->draw();
-
-    static CubeWireframeIVBO cubeWireframeIVBO;
-    cubeWireframeIVBO.draw();
-
-
-    glPopMatrix();
+    static auto mesh_ptrs = Mesh::loadFromFile("BakerHouse.fbx");
+    for (auto& mesh_ptr : mesh_ptrs) mesh_ptr->draw();
 #pragma endregion
 
+
+    assert(glGetError() == GL_NONE);
 }
