@@ -400,7 +400,7 @@ FodyWeavers.xsd
 
 
 /.vs/MyGameMaker
-/MyGameEditor/x64/Debug
+/MantelGameEditor/x64/Debug
 /x64/Debug
 /.vs
-/MyGameEngine/x64/Debug
+/MantelGameEngine/x64/Debug
