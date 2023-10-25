@@ -7,14 +7,17 @@
 #include "GL/glew.h"
 #include "SDL2/SDL.h"
 #include "SDL2/SDL_opengl.h"
+#include "imgui.h"
 
 #include "../MantelGameEngine/MantelGameEngine.h"
 
 using namespace std;
 using namespace chrono;
 
-static const unsigned int WINDOW_WIDTH = 576 * 4 / 3;
-static const unsigned int WINDOW_HEIGHT = 576;
+static const unsigned int ORIGINAL_WINDOW_WIDTH = 1680;
+static const unsigned int ORIGINAL_WINDOW_HEIGHT = 978;
+int WINDOW_WIDTH = 1680;
+int WINDOW_HEIGHT = 978;
 static const unsigned int FPS = 60;
 static const auto FDT = 1.0s / FPS;
 
@@ -40,7 +43,7 @@ static SDL_Window* initSDLWindowWithOpenGL() {
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
 
-    auto window = SDL_CreateWindow("SDL+OpenGL Window", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WINDOW_WIDTH, WINDOW_HEIGHT, SDL_WINDOW_OPENGL);
+    auto window = SDL_CreateWindow("MantelGameEngine", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2, SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE | SDL_WINDOW_MAXIMIZED);
     if (!window) throw exception(SDL_GetError());
 
     return window;
@@ -64,6 +67,28 @@ static void initOpenGL() {
     glDepthFunc(GL_LEQUAL);
 }
 
+void adjustOpenGLViewport(int windowWidth, int windowHeight, int contentWidth, int contentHeight) {
+    // Calcula el aspect ratio original de tu contenido OpenGL
+    float contentAspectRatio = (float)contentWidth / (float)contentHeight;
+
+    // Calcula el aspect ratio del nuevo tamaño de la ventana
+    float windowAspectRatio = (float)windowWidth / (float)windowHeight;
+
+    if (windowAspectRatio > contentAspectRatio) {
+        // La ventana es más ancha que tu contenido
+        int newWidth = (int)(windowHeight * contentAspectRatio);
+        glViewport((windowWidth - newWidth) / 2, 0, newWidth, windowHeight);
+    }
+    else {
+        // La ventana es más alta que tu contenido
+        int newHeight = (int)(windowWidth / contentAspectRatio);
+        glViewport(0, (windowHeight - newHeight) / 2, windowWidth, newHeight);
+    }
+
+    // Ajusta la matriz de proyección si es necesario
+    // Usar glOrtho, glFrustum, o cualquier otro método según tu aplicación
+}
+
 static bool processSDLEvents() {
     SDL_Event event;
     while (SDL_PollEvent(&event))
@@ -79,6 +104,7 @@ static bool processSDLEvents() {
     }
     return true;
 }
+
 
 int main(int argc, char* argv[])
 {
@@ -102,6 +128,8 @@ int main(int argc, char* argv[])
                 const auto frame_start = steady_clock::now();
                 engine.step(FDT);
                 glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
+                SDL_GetWindowSize(window, &WINDOW_WIDTH, &WINDOW_HEIGHT);
+                adjustOpenGLViewport(WINDOW_WIDTH, WINDOW_HEIGHT, ORIGINAL_WINDOW_WIDTH, ORIGINAL_WINDOW_HEIGHT);
                 engine.render();
                 SDL_GL_SwapWindow(window);
                 const auto frame_end = steady_clock::now();

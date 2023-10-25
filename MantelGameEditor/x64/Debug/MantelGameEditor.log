@@ -1,4 +1,4 @@
-﻿  Downloading https://github.com/microsoft/vcpkg-tool/releases/download/2023-09-15/vcpkg.exe -> D:\repos\Github\MotorsEngine\vcpkg\vcpkg.exe... done.
+﻿  Downloading https://github.com/microsoft/vcpkg-tool/releases/download/2023-09-15/vcpkg.exe -> C:\Users\luisgr3\Source\Repos\MantelGameMaker\vcpkg\vcpkg.exe... done.
   Validating signature... done.
   
   vcpkg package management program version 2023-09-15-ac02a9f660977426b8ec6392919fbb1d51b10998
@@ -16,24 +16,23 @@
   Computing installation plan...
   The following packages are already installed:
       glew:x64-windows -> 2.2.0#3
-      imgui[core,docking-experimental,sdl2-binding,opengl3-binding]:x64-windows -> 1.89.9
       opengl:x64-windows -> 2022-12-04#3
-      sdl2[core,base]:x64-windows -> 2.28.3
+  The following packages will be built and installed:
+      imgui[core,docking-experimental,opengl3-binding,sdl2-binding]:x64-windows -> 1.89.9
+      sdl2[base,core]:x64-windows -> 2.28.3#1
+  Detecting compiler hash for triplet x64-windows...
+  Restored 2 package(s) from C:\Users\luisgr3\AppData\Local\vcpkg\archives in 327 ms. Use --debug to see more details.
   glew:x64-windows is already installed
-  imgui:x64-windows is already installed
   opengl:x64-windows is already installed
-  sdl2:x64-windows is already installed
-  Total install time: 52.9 us
+  Installing 1/2 sdl2:x64-windows...
+  Elapsed time to handle sdl2:x64-windows: 45.7 ms
+  Installing 2/2 imgui:x64-windows...
+  Elapsed time to handle imgui:x64-windows: 24.6 ms
+  Total install time: 70.4 ms
   The package glew is compatible with built-in CMake targets:
   
       find_package(GLEW REQUIRED)
       target_link_libraries(main PRIVATE GLEW::GLEW)
-  
-  imgui provides CMake targets:
-  
-    # this is heuristically generated, and may not be correct
-    find_package(imgui CONFIG REQUIRED)
-    target_link_libraries(main PRIVATE imgui::imgui)
   
   The package opengl is compatible with built-in CMake targets via CMake v3.7 and prior syntax
   
@@ -69,8 +68,16 @@
           $<IF:$<TARGET_EXISTS:SDL2::SDL2>,SDL2::SDL2,SDL2::SDL2-static>
       )
   
-  MantelGameEditor.vcxproj -> D:\repos\Github\MotorsEngine\x64\Debug\MantelGameEditor.exe
-  Downloading https://github.com/microsoft/vcpkg-tool/releases/download/2023-09-15/vcpkg.exe -> D:\repos\Github\MotorsEngine\vcpkg\vcpkg.exe... done.
+  imgui provides CMake targets:
+  
+    # this is heuristically generated, and may not be correct
+    find_package(imgui CONFIG REQUIRED)
+    target_link_libraries(main PRIVATE imgui::imgui)
+  
+  MantelGameEditor.cpp
+  LINK : C:\Users\luisgr3\Source\Repos\MantelGameMaker\x64\Debug\MantelGameEditor.exe not found or not built by the last incremental link; performing full link
+  MantelGameEditor.vcxproj -> C:\Users\luisgr3\Source\Repos\MantelGameMaker\x64\Debug\MantelGameEditor.exe
+  Downloading https://github.com/microsoft/vcpkg-tool/releases/download/2023-09-15/vcpkg.exe -> C:\Users\luisgr3\Source\Repos\MantelGameMaker\vcpkg\vcpkg.exe... done.
   Validating signature... done.
   
   vcpkg package management program version 2023-09-15-ac02a9f660977426b8ec6392919fbb1d51b10998
@@ -88,14 +95,14 @@
   Computing installation plan...
   The following packages are already installed:
       glew:x64-windows -> 2.2.0#3
-      imgui[core,docking-experimental,sdl2-binding,opengl3-binding]:x64-windows -> 1.89.9
+      imgui[core,sdl2-binding,opengl3-binding,docking-experimental]:x64-windows -> 1.89.9
       opengl:x64-windows -> 2022-12-04#3
-      sdl2[core,base]:x64-windows -> 2.28.3
+      sdl2[core,base]:x64-windows -> 2.28.3#1
   glew:x64-windows is already installed
   imgui:x64-windows is already installed
   opengl:x64-windows is already installed
   sdl2:x64-windows is already installed
-  Total install time: 84.4 us
+  Total install time: 62.4 us
   The package glew is compatible with built-in CMake targets:
   
       find_package(GLEW REQUIRED)
