@@ -1,7 +1,6 @@
 #pragma once
-#pragma once
 
-#include "types.h"
+#include "EGlobals.h"
 #include "Graphic.h"
 #include <glm/ext/matrix_transform.hpp>
 #include <set>

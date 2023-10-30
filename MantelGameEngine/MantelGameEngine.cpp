@@ -1,89 +1,107 @@
 #include "MantelGameEngine.h"
-#include <GL\glew.h>
-#include <glm/ext/matrix_transform.hpp>
-#include <vector>
-#include <IL/il.h>
 
-#include "CubeImmediateMode.h"
-#include "CubeVertexArray.h"
-#include "CubeVertexBuffer.h"
-#include "CubeInterleavedVBO.h"
-#include "CubeWireframeIVBO.h"
+MantelGameEngine::MantelGameEngine()
+{
+	//input = new ModuleInput(this);
+	renderer3D = new EModuleRenderer3D(this);
 
-#include "Mesh.h"
-
-#include "GraphicObject.h"
-
-using namespace std;
-
-static double angle = 0.0;
-
-MantelGameEngine::MantelGameEngine() {
-
-    ilInit();
-
+	//AddModule(input);
+	AddModule(renderer3D);
 }
 
-void MantelGameEngine::step(std::chrono::duration<double> dt) {
-    const double angle_vel = 90.0; // degrees per second
-    angle += angle_vel * dt.count();
+MantelGameEngine::~MantelGameEngine()
+{
+	list_modules.clear();
 }
 
-static void drawAxis() {
-    glLineWidth(4.0);
-    glBegin(GL_LINES);
-    glColor3ub(255, 0, 0);
-    glVertex3d(0, 0, 0);
-    glVertex3d(0.8, 0, 0);
-    glColor3ub(0, 255, 0);
-    glVertex3d(0, 0, 0);
-    glVertex3d(0, 0.8, 0);
-    glColor3ub(0, 0, 1);
-    glVertex3d(0, 0, 0);
-    glVertex3d(0, 0, 0.8);
-    glEnd();
+bool MantelGameEngine::Init()
+{
+	bool ret = true;
+
+	for (auto const& item : list_modules)
+	{
+		ret = item->Init();
+	}
+
+	return ret;
 }
 
-static void drawGrid(int grid_size, int grid_step) {
-    glLineWidth(1.0);
-    glColor3ub(128, 128, 128);
+bool MantelGameEngine::Start()
+{
+	bool ret = true;
 
-    glBegin(GL_LINES);
-    for (int i = -grid_size; i <= grid_size; i += grid_step) {
-        //XY plane
-        glVertex2i(i, -grid_size);
-        glVertex2i(i, grid_size);
-        glVertex2i(-grid_size, i);
-        glVertex2i(grid_size, i);
+	ELOG("Game Engine Start --------------");
+	for (auto const& item : list_modules)
+	{
+		ret = item->Start();
+	}
 
-        //XZ plane
-        glVertex3i(i, 0, -grid_size);
-        glVertex3i(i, 0, grid_size);
-        glVertex3i(-grid_size, 0, i);
-        glVertex3i(grid_size, 0, i);
-    }
-    glEnd();
+	return ret;
 }
 
-void MantelGameEngine::render() {
-    glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();
-    gluPerspective(camera.fov, camera.aspect, camera.zNear, camera.zFar);
+void MantelGameEngine::PrepareUpdate()
+{
+}
 
-    glMatrixMode(GL_MODELVIEW);
-    glLoadIdentity();
-    gluLookAt(camera.eye.x, camera.eye.y, camera.eye.z,
-        camera.center.x, camera.center.y, camera.center.z,
-        camera.up.x, camera.up.y, camera.up.z);
+void MantelGameEngine::FinishUpdate()
+{
+}
 
-    drawGrid(100, 1);
-    drawAxis();
+engine_status MantelGameEngine::PreUpdate()
+{
+	engine_status ret = ENGINE_UPDATE_CONTINUE;
 
-#pragma region Draw Sandbox
-    static auto mesh_ptrs = Mesh::loadFromFile("BakerHouse.fbx");
-    for (auto& mesh_ptr : mesh_ptrs) mesh_ptr->draw();
-#pragma endregion
+	for (auto const& item : list_modules)
+	{
+		ret = item->PreUpdate();
+		if (ret != ENGINE_UPDATE_CONTINUE) return ret;
+	}
 
+	return ret;
+}
 
-    assert(glGetError() == GL_NONE);
+engine_status MantelGameEngine::Update()
+{
+	engine_status ret = ENGINE_UPDATE_CONTINUE;
+	PrepareUpdate();
+
+	for (auto const& item : list_modules)
+	{
+		ret = item->Update();
+		if (ret != ENGINE_UPDATE_CONTINUE) return ret;
+	}
+
+	FinishUpdate();
+	return ret;
+}
+
+engine_status MantelGameEngine::PostUpdate()
+{
+	engine_status ret = ENGINE_UPDATE_CONTINUE;
+
+	for (auto const& item : list_modules)
+	{
+		ret = item->PostUpdate();
+		if (ret != ENGINE_UPDATE_CONTINUE) return ret;
+	}
+
+	return ret;
+}
+
+bool MantelGameEngine::CleanUp()
+{
+	bool ret = true;
+
+	for (auto const& item : list_modules)
+	{
+		ret = item->CleanUp();
+		if (ret != true) return ret;
+	}
+
+	return ret;
+}
+
+void MantelGameEngine::AddModule(EModule* mod)
+{
+	list_modules.push_back(mod);
 }
