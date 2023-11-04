@@ -1,22 +1,20 @@
 #pragma once
 
-#include "EGlobals.h"
-#include "MatrixLogic.h"
+#include "types.h"
 
 struct Camera
 {
-public:
-	Camera();
-	void UpdateLookAt();
-
-public:
 	double fov;
-	double aspectRatio;
-	double clippingPlaneViewNear;
-	double clippingPlaneViewFar;
+	double aspect;
+	double zNear;
+	double zFar;
 
-	MatrixLogic transform;
-	vec3 lookAtPos;
-	double camOffset;
+	vec3 eye;
+	vec3 center;
+	vec3 up;
+
+	mat4 computeLookAt() const;
+
+	Camera();
 };
 

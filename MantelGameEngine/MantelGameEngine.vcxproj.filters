@@ -13,117 +13,81 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="App">
-      <UniqueIdentifier>{b3126147-e266-4e2d-9195-327ebabae158}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\EModules">
-      <UniqueIdentifier>{f2f9f436-032c-4dcd-876e-de24ff538d61}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Utils">
-      <UniqueIdentifier>{45f2b7b6-380d-433d-9c61-1ee76d9372ce}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Cube">
-      <UniqueIdentifier>{c18d0bc7-f863-4772-a019-66867af53204}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="MeshRelated">
-      <UniqueIdentifier>{bf5c618e-42e5-4a78-a5e7-aaf8c2980738}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Camera">
-      <UniqueIdentifier>{40cc48b7-675b-459d-85f8-b7c3efd1f88e}</UniqueIdentifier>
-    </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="MantelGameEngine.cpp">
-      <Filter>App</Filter>
-    </ClCompile>
-    <ClCompile Include="EModuleRenderer3D.cpp">
-      <Filter>Source Files\EModules</Filter>
-    </ClCompile>
-    <ClCompile Include="Elog.cpp">
-      <Filter>Utils</Filter>
-    </ClCompile>
-    <ClCompile Include="MatrixLogic.cpp">
-      <Filter>Utils</Filter>
-    </ClCompile>
-    <ClCompile Include="Cube.cpp">
-      <Filter>Cube</Filter>
-    </ClCompile>
-    <ClCompile Include="CubeImmediateMode.cpp">
-      <Filter>Cube</Filter>
-    </ClCompile>
-    <ClCompile Include="CubeInterleavedVBO.cpp">
-      <Filter>Cube</Filter>
-    </ClCompile>
-    <ClCompile Include="CubeVertexArray.cpp">
-      <Filter>Cube</Filter>
-    </ClCompile>
-    <ClCompile Include="CubeVertexBuffer.cpp">
-      <Filter>Cube</Filter>
-    </ClCompile>
-    <ClCompile Include="CubeWireframeIVBO.cpp">
-      <Filter>Cube</Filter>
-    </ClCompile>
-    <ClCompile Include="Camera.cpp">
-      <Filter>Camera</Filter>
-    </ClCompile>
-    <ClCompile Include="Texture2D.cpp">
-      <Filter>MeshRelated</Filter>
-    </ClCompile>
-    <ClCompile Include="Mesh.cpp">
-      <Filter>MeshRelated</Filter>
-    </ClCompile>
-    <ClCompile Include="GraphicObject.cpp">
-      <Filter>MeshRelated</Filter>
-    </ClCompile>
-    <ClCompile Include="Texture2D.h">
-      <Filter>MeshRelated</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MantelGameEngine.h">
-      <Filter>App</Filter>
-    </ClInclude>
-    <ClInclude Include="EModuleRenderer3D.h">
-      <Filter>Source Files\EModules</Filter>
-    </ClInclude>
-    <ClInclude Include="EModule.h">
-      <Filter>Source Files\EModules</Filter>
-    </ClInclude>
-    <ClInclude Include="EGlobals.h">
-      <Filter>Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="MatrixLogic.h">
-      <Filter>Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="Cube.h">
-      <Filter>Cube</Filter>
-    </ClInclude>
-    <ClInclude Include="CubeImmediateMode.h">
-      <Filter>Cube</Filter>
-    </ClInclude>
-    <ClInclude Include="CubeInterleavedVBO.h">
-      <Filter>Cube</Filter>
-    </ClInclude>
-    <ClInclude Include="CubeVertexArray.h">
-      <Filter>Cube</Filter>
-    </ClInclude>
-    <ClInclude Include="CubeVertexBuffer.h">
-      <Filter>Cube</Filter>
-    </ClInclude>
-    <ClInclude Include="CubeWireframeIVBO.h">
-      <Filter>Cube</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Camera.h">
-      <Filter>Camera</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Mesh.h">
-      <Filter>MeshRelated</Filter>
+    <ClInclude Include="types.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Cube.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CubeImmediateMode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CubeVertexArray.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CubeVertexBuffer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CubeInterleavedVBO.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CubeWireframeIVBO.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="GraphicObject.h">
-      <Filter>MeshRelated</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Graphic.h">
-      <Filter>MeshRelated</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Texture2D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="MantelGameEngine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Cube.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CubeImmediateMode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CubeVertexArray.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CubeVertexBuffer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CubeInterleavedVBO.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CubeWireframeIVBO.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphicObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture2D.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

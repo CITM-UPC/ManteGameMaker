@@ -2,15 +2,15 @@
 #include <GL/glew.h>
 
 CubeVertexArray::CubeVertexArray() :
-    Cube(),
-    _vertex_data({
+	Cube(),
+	_vertex_data({ 
         a,b,c,c,d,a,
         h,g,f,f,e,h,
         e,a,d,d,h,e,
         b,f,g,g,c,b,
         d,c,g,g,h,d,
         b,a,e,e,f,b
-        }),
+    }),
     _color_data({
         red,red,red,red,red,red,
         green,green,green,green,green,green,
@@ -18,7 +18,7 @@ CubeVertexArray::CubeVertexArray() :
         yellow,yellow,yellow,yellow,yellow,yellow,
         white,white,white,white,white,white,
         black,black,black,black,black,black
-        })
+    })
 {
 }
 

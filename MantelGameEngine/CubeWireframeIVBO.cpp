@@ -5,7 +5,7 @@
 using namespace std;
 
 CubeWireframeIVBO::CubeWireframeIVBO() :
-    Cube() {
+	Cube() {
 
     glGenBuffers(1, &_buffer_id);
     glBindBuffer(GL_ARRAY_BUFFER, _buffer_id);
@@ -13,7 +13,7 @@ CubeWireframeIVBO::CubeWireframeIVBO() :
     glBindBuffer(GL_ARRAY_BUFFER, 0);
 
     const int NUM_EDGES = 12;
-    enum { A = 0, B, C, D, E, F, G, H };
+    enum {A=0, B,C,D,E,F,G,H};
     array<unsigned int, NUM_EDGES * 2> lines_indexs = {
        A,B,B,C,C,D,D,A,
        E,F,F,G,G,H,H,E,

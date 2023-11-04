@@ -5,7 +5,7 @@
 using namespace std;
 
 CubeVertexBuffer::CubeVertexBuffer() :
-    Cube() {
+	Cube() {
 
     array<vec3, NUM_VERTEXS> vertex_data = {
         a,b,c,c,d,a,
@@ -21,7 +21,7 @@ CubeVertexBuffer::CubeVertexBuffer() :
     glBufferData(GL_ARRAY_BUFFER, sizeof(vec3) * vertex_data.size(), vertex_data.data(), GL_STATIC_DRAW);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
 
-    array<vec3, NUM_VERTEXS> color_data = {
+    array<vec3,NUM_VERTEXS> color_data = {
         red,red,red,red,red,red,
         green,green,green,green,green,green,
         blue,blue,blue,blue,blue,blue,

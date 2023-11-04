@@ -2,7 +2,7 @@
 #include <GL/glew.h>
 
 static void drawQuadFaceTriangles(vec3 a, vec3 b, vec3 c, vec3 d) {
-    glTexCoord2d(0, 1);
+    glTexCoord2d( 0, 1);
     glVertex3dv(&a.x);
     glTexCoord2d(1, 1);
     glVertex3dv(&b.x);

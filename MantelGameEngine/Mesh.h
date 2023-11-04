@@ -4,10 +4,9 @@
 #include <memory>
 #include <string>
 
-#include "EGlobals.h"
+#include "types.h"
 #include "Graphic.h"
 #include "Texture2D.h"
-
 
 class Mesh : public Graphic
 {
@@ -20,26 +19,26 @@ public:
 private:
 	const enum Formats _format;
 
-	unsigned int _vertex_buffer_id = 0;
+	unsigned int _vertex_buffer_id;
 	const unsigned int _numVerts;
 
-	unsigned int _indexs_buffer_id = 0;
+	unsigned int _indexs_buffer_id;
 	const unsigned int _numIndexs;
-
+	
 public:
 	using Ptr = std::shared_ptr<Mesh>;
 
 	static std::vector<Ptr> loadFromFile(const std::string& path);
-
+	
 	Texture2D::Ptr texture;
 
-	Mesh(Formats format, const void* vertex_data, unsigned int numVerts, const unsigned int* indexs_data = nullptr, unsigned int numIndexs = 0);
+	Mesh(Formats format, const void* vertex_data, unsigned int numVerts, const unsigned int* indexs_data=nullptr, unsigned int numIndexs=0);
 	Mesh(Mesh&& b) noexcept;
 	void draw();
 	~Mesh();
 
 private:
-	Mesh(const Mesh& cpy);
-	Mesh& operator=(const Mesh&);
+	Mesh(const Mesh& cpy) = delete;
+	Mesh& operator=(const Mesh&) = delete;
 };
 

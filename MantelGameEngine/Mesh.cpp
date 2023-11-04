@@ -5,57 +5,73 @@
 #include <assimp/cimport.h>
 #include <assimp/scene.h>
 
+#include <span>
+
 #include <vector>
 #include <array>
 
+#include <filesystem>
+namespace fs = std::filesystem;
+
 using namespace std;
+
+struct aiMeshExt : aiMesh {
+    auto verts() const { return span((vec3f*)mVertices, mNumVertices); }
+    auto texCoords() const { return span((vec3f*)mTextureCoords[0], mNumVertices); }
+    auto faces() const { return span(mFaces, mNumFaces); }
+};
+
+struct aiSceneExt : aiScene {
+    auto materials() const { return span(mMaterials, mNumMaterials); }
+    auto meshes() const { return span((aiMeshExt**)mMeshes, mNumMeshes); }
+};
+
 
 std::vector<Mesh::Ptr> Mesh::loadFromFile(const std::string& path) {
 
+    const auto scene_ptr = aiImportFile(path.c_str(), aiProcess_Triangulate | aiProcess_FlipUVs);
+    const aiSceneExt& scene = *(aiSceneExt*)scene_ptr;
+
+    //load textures
+    vector<Texture2D::Ptr> texture_ptrs;
+    for (const auto& material : scene.materials()){
+        aiString aiPath;
+        material->GetTexture(aiTextureType_DIFFUSE, 0, &aiPath);
+        fs::path texPath = fs::path(path).parent_path() / fs::path(aiPath.C_Str()).filename();
+        auto texture_ptr = make_shared<Texture2D>(texPath.string());
+        texture_ptrs.push_back(texture_ptr);
+    }
+    
+    //load meshes
     vector<Mesh::Ptr> mesh_ptrs;
+    for (const auto& mesh_ptr : scene.meshes()) {
 
-    auto scene = aiImportFile(path.c_str(), aiProcess_Triangulate | aiProcess_FlipUVs);
-    for (size_t m = 0; m < scene->mNumMeshes; ++m) {
-        auto mesh = scene->mMeshes[m];
-        auto faces = mesh->mFaces;
-        vec3f* verts = (vec3f*)mesh->mVertices;
-        vec3f* texCoords = (vec3f*)mesh->mTextureCoords[0];
-
+        const auto& mesh = *mesh_ptr;
+        
         vector<V3T2> vertex_data;
-        vector<unsigned int> index_data;
-
-        for (size_t i = 0; i < mesh->mNumVertices; ++i) {
-            V3T2 v = { verts[i], vec2f(texCoords[i].x, texCoords[i].y) };
+        for (size_t i = 0; i < mesh.verts().size(); ++i) {
+            V3T2 v = { mesh.verts()[i], vec2f(mesh.texCoords()[i].x, mesh.texCoords()[i].y) };
             vertex_data.push_back(v);
         }
 
-        for (size_t f = 0; f < mesh->mNumFaces; ++f) {
-            index_data.push_back(faces[f].mIndices[0]);
-            index_data.push_back(faces[f].mIndices[1]);
-            index_data.push_back(faces[f].mIndices[2]);
+        vector<unsigned int> index_data;
+        for (const auto& face : mesh.faces()) {
+            index_data.push_back(face.mIndices[0]);
+            index_data.push_back(face.mIndices[1]);
+            index_data.push_back(face.mIndices[2]);
         }
 
-        auto material = scene->mMaterials[mesh->mMaterialIndex];
-        aiString aiPath;
-        material->GetTexture(aiTextureType_DIFFUSE, 0, &aiPath);
-
-        size_t slash_pos = path.rfind('/');
-        if (slash_pos == string::npos) slash_pos = path.rfind('\\');
-        string folder_path = (slash_pos != string::npos) ? path.substr(0, slash_pos + 1) : "./";
-        string texPath = folder_path + aiScene::GetShortFilename(aiPath.C_Str());
-
-        auto mesh_ptr = make_shared<Mesh>(Formats::F_V3T2, vertex_data.data(), vertex_data.size(), index_data.data(), index_data.size());
-        mesh_ptr->texture = make_shared<Texture2D>(texPath);
-
-        mesh_ptrs.push_back(mesh_ptr);
+        auto mesh_sptr = make_shared<Mesh>(Formats::F_V3T2, vertex_data.data(), vertex_data.size(), index_data.data(), index_data.size());
+        mesh_sptr->texture = texture_ptrs[mesh.mMaterialIndex];
+        mesh_ptrs.push_back(mesh_sptr);
     }
 
-    aiReleaseImport(scene);
-
+    aiReleaseImport(scene_ptr);
+    
     return mesh_ptrs;
 }
 
-Mesh::Mesh(Formats format, const void* vertex_data, unsigned int numVerts, const unsigned int* index_data, unsigned int numIndexs) :
+Mesh::Mesh(Formats format, const void* vertex_data, unsigned int numVerts, const unsigned int* index_data, unsigned int numIndexs) : 
     _format(format),
     _numVerts(numVerts),
     _numIndexs(numIndexs)
@@ -144,6 +160,6 @@ void Mesh::draw() {
 }
 
 Mesh::~Mesh() {
-    if (_vertex_buffer_id) glDeleteBuffers(1, &_vertex_buffer_id);
-    if (_indexs_buffer_id) glDeleteBuffers(1, &_indexs_buffer_id);
+    if(_vertex_buffer_id) glDeleteBuffers(1, &_vertex_buffer_id);
+    if(_indexs_buffer_id) glDeleteBuffers(1, &_indexs_buffer_id);
 }
