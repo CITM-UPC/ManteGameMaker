@@ -22,7 +22,7 @@
   imgui:x64-windows is already installed
   opengl:x64-windows is already installed
   sdl2:x64-windows is already installed
-  Total install time: 91.3 us
+  Total install time: 67.5 us
   imgui provides CMake targets:
   
     # this is heuristically generated, and may not be correct
@@ -63,8 +63,16 @@
           $<IF:$<TARGET_EXISTS:SDL2::SDL2>,SDL2::SDL2,SDL2::SDL2-static>
       )
   
-D:\AppsRandom\Microsoft\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(531,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (MyGameEngine.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  MantelGameEditor.cpp
+  App.cpp
+  log.cpp
+  Main.cpp
+  ModuleEngineManager.cpp
+  ModuleEvents.cpp
+  ModuleGUI.cpp
+  ModuleRenderer.cpp
+  ModuleWindow.cpp
+  Generating Code...
+LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
   MantelGameEditor.vcxproj -> D:\repos\Github\MantelGameMaker\x64\Debug\MantelGameEditor.exe
   D:\repos\Github\MantelGameMaker\\vcpkg\installed\x64-windows\bin\assimp-vc143-mt.dll
   D:\repos\Github\MantelGameMaker\\vcpkg\installed\x64-windows\bin\assimp-vc143-mt.pdb

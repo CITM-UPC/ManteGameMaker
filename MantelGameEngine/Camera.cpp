@@ -6,5 +6,3 @@ Camera::Camera() : fov(60), aspect(4.0/3.0), zNear(0.1), zFar(100), eye(10, 2, 1
 mat4 Camera::computeLookAt() const {
 	return glm::lookAt(eye, center, up);
 }
-
-

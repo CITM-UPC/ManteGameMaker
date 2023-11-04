@@ -1,1 +1,8 @@
-D:\repos\Github\MantelGameMaker\MantelGameEditor\MantelGameEditor.cpp;D:\repos\Github\MantelGameMaker\MantelGameEditor\x64\Debug\MantelGameEditor.obj
+D:\repos\Github\MantelGameMaker\MantelGameEditor\App.cpp;D:\repos\Github\MantelGameMaker\MantelGameEditor\x64\Debug\App.obj
+D:\repos\Github\MantelGameMaker\MantelGameEditor\log.cpp;D:\repos\Github\MantelGameMaker\MantelGameEditor\x64\Debug\log.obj
+D:\repos\Github\MantelGameMaker\MantelGameEditor\Main.cpp;D:\repos\Github\MantelGameMaker\MantelGameEditor\x64\Debug\Main.obj
+D:\repos\Github\MantelGameMaker\MantelGameEditor\ModuleEngineManager.cpp;D:\repos\Github\MantelGameMaker\MantelGameEditor\x64\Debug\ModuleEngineManager.obj
+D:\repos\Github\MantelGameMaker\MantelGameEditor\ModuleEvents.cpp;D:\repos\Github\MantelGameMaker\MantelGameEditor\x64\Debug\ModuleEvents.obj
+D:\repos\Github\MantelGameMaker\MantelGameEditor\ModuleGUI.cpp;D:\repos\Github\MantelGameMaker\MantelGameEditor\x64\Debug\ModuleGUI.obj
+D:\repos\Github\MantelGameMaker\MantelGameEditor\ModuleRenderer.cpp;D:\repos\Github\MantelGameMaker\MantelGameEditor\x64\Debug\ModuleRenderer.obj
+D:\repos\Github\MantelGameMaker\MantelGameEditor\ModuleWindow.cpp;D:\repos\Github\MantelGameMaker\MantelGameEditor\x64\Debug\ModuleWindow.obj

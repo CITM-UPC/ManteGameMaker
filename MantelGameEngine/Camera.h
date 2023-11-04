@@ -12,9 +12,10 @@ struct Camera
 	vec3 eye;
 	vec3 center;
 	vec3 up;
+	vec3 cameraPos, cameraFront;
 
 	mat4 computeLookAt() const;
-
+	
 	Camera();
 };
 
