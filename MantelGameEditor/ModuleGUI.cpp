@@ -3,7 +3,7 @@
 
 ModuleGUI::ModuleGUI(bool startEnabled) : Module(startEnabled)
 {
-	show_demo_window = true;
+	show_demo_window = false;
 	show_another_window = false;
 	name = "GUI";
 }
@@ -28,7 +28,6 @@ bool ModuleGUI::Update(std::chrono::duration<double> dt) {
 	ImGui_ImplOpenGL3_NewFrame();
 	ImGui_ImplSDL2_NewFrame();
 	ImGui::NewFrame();
-	ImGui::ShowDemoWindow(); // Show demo window! :)
 	this->ImguiExample();
 	glClearColor(clear_color.x * clear_color.w, clear_color.y * clear_color.w, clear_color.z * clear_color.w, clear_color.w);
 
@@ -48,8 +47,10 @@ void ModuleGUI::ImguiInit(SDL_Window *window, SDL_GLContext gl_context){
 	ImGui::CreateContext();
 	ImGuiIO& io = ImGui::GetIO();
 	(void)io;
+	io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;         // Enable window DockSpaces
 	io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;     // Enable Keyboard Controls
 	io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;      // Enable Gamepad Controls
+	io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;
 
 	// Setup ImGui for SDL and OpenGL3
 	ImGui_ImplSDL2_InitForOpenGL(window, gl_context);
