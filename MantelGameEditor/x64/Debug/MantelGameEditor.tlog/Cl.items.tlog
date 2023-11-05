@@ -1,4 +1,5 @@
 D:\repos\Github\MantelGameMaker\MantelGameEditor\App.cpp;D:\repos\Github\MantelGameMaker\MantelGameEditor\x64\Debug\App.obj
+D:\repos\Github\MantelGameMaker\MantelGameEditor\FrameBuffer.cpp;D:\repos\Github\MantelGameMaker\MantelGameEditor\x64\Debug\FrameBuffer.obj
 D:\repos\Github\MantelGameMaker\MantelGameEditor\log.cpp;D:\repos\Github\MantelGameMaker\MantelGameEditor\x64\Debug\log.obj
 D:\repos\Github\MantelGameMaker\MantelGameEditor\Main.cpp;D:\repos\Github\MantelGameMaker\MantelGameEditor\x64\Debug\Main.obj
 D:\repos\Github\MantelGameMaker\MantelGameEditor\ModuleEngineManager.cpp;D:\repos\Github\MantelGameMaker\MantelGameEditor\x64\Debug\ModuleEngineManager.obj
@@ -6,3 +7,9 @@ D:\repos\Github\MantelGameMaker\MantelGameEditor\ModuleEvents.cpp;D:\repos\Githu
 D:\repos\Github\MantelGameMaker\MantelGameEditor\ModuleGUI.cpp;D:\repos\Github\MantelGameMaker\MantelGameEditor\x64\Debug\ModuleGUI.obj
 D:\repos\Github\MantelGameMaker\MantelGameEditor\ModuleRenderer.cpp;D:\repos\Github\MantelGameMaker\MantelGameEditor\x64\Debug\ModuleRenderer.obj
 D:\repos\Github\MantelGameMaker\MantelGameEditor\ModuleWindow.cpp;D:\repos\Github\MantelGameMaker\MantelGameEditor\x64\Debug\ModuleWindow.obj
+D:\repos\Github\MantelGameMaker\MantelGameEditor\WindowConsole.cpp;D:\repos\Github\MantelGameMaker\MantelGameEditor\x64\Debug\WindowConsole.obj
+D:\repos\Github\MantelGameMaker\MantelGameEditor\WindowHierarchy.cpp;D:\repos\Github\MantelGameMaker\MantelGameEditor\x64\Debug\WindowHierarchy.obj
+D:\repos\Github\MantelGameMaker\MantelGameEditor\WindowInspector.cpp;D:\repos\Github\MantelGameMaker\MantelGameEditor\x64\Debug\WindowInspector.obj
+D:\repos\Github\MantelGameMaker\MantelGameEditor\WindowProject.cpp;D:\repos\Github\MantelGameMaker\MantelGameEditor\x64\Debug\WindowProject.obj
+D:\repos\Github\MantelGameMaker\MantelGameEditor\WindowScene.cpp;D:\repos\Github\MantelGameMaker\MantelGameEditor\x64\Debug\WindowScene.obj
+D:\repos\Github\MantelGameMaker\MantelGameEditor\WindowSettings.cpp;D:\repos\Github\MantelGameMaker\MantelGameEditor\x64\Debug\WindowSettings.obj

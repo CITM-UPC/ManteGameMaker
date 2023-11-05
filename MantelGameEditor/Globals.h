@@ -43,6 +43,22 @@ enum update_status
 	UPDATE_ERROR
 };
 
+//states (same as bool basically)
+enum state
+{
+	disabled = 0,
+	enabled = 1,
+};
+
+struct iPoint 
+{
+	int x, y;
+};
+
+struct fPoint
+{
+	float x, y;
+};
 
 #define RELEASE( x ) \
 	{						\

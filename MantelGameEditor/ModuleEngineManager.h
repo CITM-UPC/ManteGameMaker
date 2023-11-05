@@ -19,6 +19,10 @@ public:
 
     void CleanUp();
 
+    MyGameEngine* GetEngine() {
+        return &engine;
+    }
+
 private:
     MyGameEngine engine;
 };

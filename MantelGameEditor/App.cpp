@@ -2,6 +2,11 @@
 
 App::App(int argc, char* args[]) : argc(argc), args(args) {
     
+    list<string> members = { "Luis Gonzalez", "Adrian Ponce" };
+    details.name = "MantelGameEngine";
+    details.org.name = "Mantel";
+    details.org.members = members;
+
     // Create the modules here (module = new Module(true);)
     window = new ModuleWindow(true);
     events = new ModuleEvents(true);
@@ -42,7 +47,7 @@ void App::Start() {
 
     for (const auto& item : modules)
     {
-        if (item->GetState() == States::DISABLED)
+        if (item->GetState() == state::disabled)
             continue;
 
         item->Start();
@@ -86,7 +91,7 @@ bool App::PreUpdate() {
     bool ret;
     for (const auto& item : modules)
     {
-        if (item->GetState() == States::DISABLED)
+        if (item->GetState() == state::disabled)
             continue;
 
         ret = item->PreUpdate();
@@ -106,7 +111,7 @@ bool App::Update() {
     bool ret;
     for (const auto& item : modules)
     {
-        if (item->GetState() == States::DISABLED)
+        if (item->GetState() == state::disabled)
             continue;
 
         ret = item->Update(this->dt);
@@ -126,7 +131,7 @@ bool App::PostUpdate() {
     bool ret;
     for (const auto& item : modules)
     {
-        if (item->GetState() == States::DISABLED)
+        if (item->GetState() == state::disabled)
             continue;
 
         ret = item->PostUpdate();

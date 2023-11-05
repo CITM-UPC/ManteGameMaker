@@ -2,35 +2,33 @@
 
 #include "Globals.h"
 
-class GUI_Window
+class GuiBase
 {
 public:
-	GUI_Window(string name, bool startEnabled, ImGuiWindowFlags flags = ImGuiWindowFlags_None) : name(name), flags(flags) {
-		if (startEnabled) { this->windowState = States::ENABLED; }
-		else if (!startEnabled) { this->windowState = States::DISABLED; }
+	GuiBase(string name, bool startEnabled, ImGuiWindowFlags flags = ImGuiWindowFlags_None) : name(name), flags(flags) {
+		if (startEnabled) { this->windowState = state::enabled; }
+		else if (!startEnabled) { this->windowState = state::disabled; }
 	};
-	~GUI_Window() {}
+	~GuiBase() {}
 
 	void UpdateWindow() {
 		this->PreUpdate();
 
-		static bool state;
-		if (windowState == States::ENABLED) { state = true; }
-		else if (windowState == States::DISABLED) { state = false; }
+		static bool state = (bool)windowState;
 		ImGui::Begin(name.c_str(), &state, flags);
-		if (state) { this->windowState = States::ENABLED; }
-		else if (!state) { this->windowState = States::DISABLED; }
+		if (state) { this->windowState = state::enabled; }
+		else if (!state) { this->windowState = state::disabled; }
 
 		this->Update();
 
 		ImGui::End();
 	}
 
-	States GetWindowState() {
+	state GetWindowState() {
 		return windowState;
 	}
 
-	void WindowChangeState(States newState) {
+	void WindowChangeState(state newState) {
 		this->windowState = newState;
 	}
 
@@ -43,7 +41,7 @@ private:
 	virtual void Update() {};
 
 	string name;
-	States windowState = States::DISABLED;
+	state windowState = state::disabled;
 
 public:
 	ImGuiWindowFlags flags;

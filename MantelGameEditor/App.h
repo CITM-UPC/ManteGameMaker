@@ -18,6 +18,19 @@ class ModuleEngineManager;
 class ModuleGUI;
 class ModuleRenderer;
 
+struct Organization
+{
+	std::string name;
+	std::list<std::string> members;
+};
+
+struct AppDetails
+{
+	std::string name;
+	Organization org;
+};
+
+
 class App
 {
 public:
@@ -79,6 +92,11 @@ public:
 		frameRate = newFrameRate;
 	}
 
+	void RequestBrowser(const char* link)
+	{
+		ShellExecuteA(NULL, "open", link, NULL, NULL, SW_SHOWNORMAL);
+	}
+
 private:
 
 	// Call active modules to perform PreUpdate
@@ -105,6 +123,16 @@ private:
 
 		this->previousTime = currentTime;
 	}
+
+
+public:
+	AppDetails GetAppDetails()
+	{
+		return details;
+	}
+
+private:
+	AppDetails details;
 };
 
 extern App* app;

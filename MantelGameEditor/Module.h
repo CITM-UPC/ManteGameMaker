@@ -2,18 +2,11 @@
 
 #include "Globals.h"
 
-enum States
-{
-	DISABLED,
-	ENABLED,
-};
-
 class Module
 {
 public:
 	Module(bool startEnabled = false) : name(""){
-		if (startEnabled) { this->state = States::ENABLED; }
-		else if (!startEnabled) { this->state = States::DISABLED; }
+		startEnabled ? (this->state = state::enabled): (this->state = state::disabled);
 	}
 
 	~Module() {}
@@ -37,20 +30,20 @@ public:
 	virtual void CleanUp() {}
 
 	void Enable() {
-		if (state != States::ENABLED) {
-			state = States::ENABLED;
+		if (state != state::enabled) {
+			state = state::enabled;
 			this->Start();
 		}
 	}
 
 	void Disable() {
-		if (state != States::DISABLED) {
-			state = States::DISABLED;
+		if (state != state::disabled) {
+			state = state::disabled;
 			this->CleanUp();
 		}
 	}
 
-	States GetState() {
+	state GetState() {
 		return state;
 	}
 
@@ -58,5 +51,5 @@ public:
 	string name;
 
 private:
-	States state;
+	state state;
 };
