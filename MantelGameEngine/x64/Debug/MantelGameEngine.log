@@ -26,7 +26,7 @@
   glew:x64-windows is already installed
   glm:x64-windows is already installed
   opengl:x64-windows is already installed
-  Total install time: 73.7 us
+  Total install time: 96.9 us
   assimp provides CMake targets:
   
     # this is heuristically generated, and may not be correct
@@ -69,7 +69,217 @@
       APPLE: consult your distribution vendor on the state of OpenGL support: https://support.apple.com/en-us/HT202823
   
   Scanning sources for module dependencies...
+  EGlobals.h
+  Compiling...
+  EGlobals.h
+  Camera.cpp
+  Cube.cpp
+  CubeImmediateMode.cpp
+  CubeInterleavedVBO.cpp
+  CubeVertexArray.cpp
+  CubeVertexBuffer.cpp
+  CubeWireframeIVBO.cpp
+  GraphicObject.cpp
+  Mesh.cpp
+D:\AppsRandom\Microsoft\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.37.32822\include\xutility(240,76): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+D:\AppsRandom\Microsoft\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.37.32822\include\xutility(250,14): message : see reference to function template instantiation '_Ty *std::construct_at<_Ty,Mesh::Formats,Mesh::V3T2*,unsigned __int64,unsigned int*,unsigned __int64,0x0>(_Ty *const ,Mesh::Formats &&,Mesh::V3T2 *&&,unsigned __int64 &&,unsigned int *&&,unsigned __int64 &&) noexcept(<expr>)' being compiled
+          with
+          [
+              _Ty=Mesh
+          ]
+D:\AppsRandom\Microsoft\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.37.32822\include\memory(2104,18): message : see reference to function template instantiation 'void std::_Construct_in_place<_Ty,Mesh::Formats,Mesh::V3T2*,unsigned __int64,unsigned int*,unsigned __int64>(_Ty &,Mesh::Formats &&,Mesh::V3T2 *&&,unsigned __int64 &&,unsigned int *&&,unsigned __int64 &&) noexcept(false)' being compiled
+          with
+          [
+              _Ty=Mesh
+          ]
+D:\AppsRandom\Microsoft\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.37.32822\include\memory(2779,46): message : see reference to function template instantiation 'std::_Ref_count_obj2<Mesh>::_Ref_count_obj2<_Ty,Mesh::V3T2*,unsigned __int64,unsigned int*,unsigned __int64>(_Ty &&,Mesh::V3T2 *&&,unsigned __int64 &&,unsigned int *&&,unsigned __int64 &&)' being compiled
+          with
+          [
+              _Ty=Mesh::Formats
+          ]
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Mesh.cpp(64,26): message : see reference to function template instantiation 'std::shared_ptr<Mesh> std::make_shared<Mesh,Mesh::Formats,_Ty*,unsigned __int64,unsigned int*,unsigned __int64>(Mesh::Formats &&,_Ty *&&,unsigned __int64 &&,unsigned int *&&,unsigned __int64 &&)' being compiled
+          with
+          [
+              _Ty=Mesh::V3T2
+          ]
+D:\AppsRandom\Microsoft\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.37.32822\include\xutility(254,82): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+D:\AppsRandom\Microsoft\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.37.32822\include\xutility(241,90): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+D:\AppsRandom\Microsoft\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.37.32822\include\xutility(250,14): message : see reference to function template instantiation '_Ty *std::construct_at<_Ty,Mesh::Formats,Mesh::V3T2*,unsigned __int64,unsigned int*,unsigned __int64,0x0>(_Ty *const ,Mesh::Formats &&,Mesh::V3T2 *&&,unsigned __int64 &&,unsigned int *&&,unsigned __int64 &&) noexcept(false)' being compiled
+          with
+          [
+              _Ty=Mesh
+          ]
+D:\AppsRandom\Microsoft\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.37.32822\include\memory(2104,18): message : see reference to function template instantiation 'void std::_Construct_in_place<_Ty,Mesh::Formats,Mesh::V3T2*,unsigned __int64,unsigned int*,unsigned __int64>(_Ty &,Mesh::Formats &&,Mesh::V3T2 *&&,unsigned __int64 &&,unsigned int *&&,unsigned __int64 &&) noexcept(false)' being compiled
+          with
+          [
+              _Ty=Mesh
+          ]
   MantelGameEngine.cpp
+  Texture2D.cpp
+  Transform.cpp
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(68,32): warning C4244: '=': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=double
+          ]
+          and
+          [
+              T=float
+          ]
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(68,67): warning C4244: '=': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=double
+          ]
+          and
+          [
+              T=float
+          ]
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(68,102): warning C4244: '=': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=double
+          ]
+          and
+          [
+              T=float
+          ]
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(69,29): warning C4244: '=': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=double
+          ]
+          and
+          [
+              T=float
+          ]
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(69,62): warning C4244: '=': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=double
+          ]
+          and
+          [
+              T=float
+          ]
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(69,95): warning C4244: '=': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=double
+          ]
+          and
+          [
+              T=float
+          ]
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(70,34): warning C4244: '=': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=double
+          ]
+          and
+          [
+              T=float
+          ]
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(70,71): warning C4244: '=': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=double
+          ]
+          and
+          [
+              T=float
+          ]
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(70,108): warning C4244: '=': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=double
+          ]
+          and
+          [
+              T=float
+          ]
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(77,32): warning C4244: '=': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=double
+          ]
+          and
+          [
+              T=float
+          ]
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(77,67): warning C4244: '=': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=double
+          ]
+          and
+          [
+              T=float
+          ]
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(77,102): warning C4244: '=': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=double
+          ]
+          and
+          [
+              T=float
+          ]
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(78,29): warning C4244: '=': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=double
+          ]
+          and
+          [
+              T=float
+          ]
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(78,62): warning C4244: '=': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=double
+          ]
+          and
+          [
+              T=float
+          ]
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(78,95): warning C4244: '=': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=double
+          ]
+          and
+          [
+              T=float
+          ]
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(79,34): warning C4244: '=': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=double
+          ]
+          and
+          [
+              T=float
+          ]
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(79,71): warning C4244: '=': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=double
+          ]
+          and
+          [
+              T=float
+          ]
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(79,108): warning C4244: '=': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=double
+          ]
+          and
+          [
+              T=float
+          ]
+  Generating Code...
 GLU32.lib(GLU32.dll) : warning LNK4006: __NULL_IMPORT_DESCRIPTOR already defined in OpenGL32.lib(OPENGL32.dll); second definition ignored
 glew32.lib(glew32.dll) : warning LNK4006: __NULL_IMPORT_DESCRIPTOR already defined in OpenGL32.lib(OPENGL32.dll); second definition ignored
 DevIL.lib(DevIL.dll) : warning LNK4006: __NULL_IMPORT_DESCRIPTOR already defined in OpenGL32.lib(OPENGL32.dll); second definition ignored

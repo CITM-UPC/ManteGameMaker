@@ -71,13 +71,13 @@ static void drawGrid(int grid_size, int grid_step) {
 void MyGameEngine::render() {
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    gluPerspective(camera.fov, camera.aspect, camera.zNear, camera.zFar);
+    gluPerspective(camera.fov, camera.aspectRatio, camera.clippingPlaneViewNear, camera.clippingPlaneViewFar);
 
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
-    gluLookAt( camera.eye.x, camera.eye.y, camera.eye.z,
-        camera.center.x, camera.center.y, camera.center.z,
-        camera.up.x, camera.up.y, camera.up.z);
+    gluLookAt(camera.transform.position.x, camera.transform.position.y, camera.transform.position.z,
+        camera.lookAtPos.x, camera.lookAtPos.y, camera.lookAtPos.z,
+        camera.transform.up.x, camera.transform.up.y, camera.transform.up.z);
 
     drawGrid(100, 1);
     drawAxis();

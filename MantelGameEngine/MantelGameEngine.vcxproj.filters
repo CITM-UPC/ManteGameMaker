@@ -13,6 +13,15 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="GameObject">
+      <UniqueIdentifier>{3ac40696-5bf9-4418-b55d-a58471b12b41}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\Transform">
+      <UniqueIdentifier>{cf56f78f-c80e-4ee6-a125-e2bd76106847}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tools">
+      <UniqueIdentifier>{00530be5-bfcd-4ebb-a09b-40ad52d11f80}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MantelGameEngine.h">
@@ -54,6 +63,9 @@
     <ClInclude Include="Mesh.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Transform.h">
+      <Filter>GameObject\Transform</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MantelGameEngine.cpp">
@@ -89,8 +101,11 @@
     <ClCompile Include="Mesh.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Transform.cpp">
+      <Filter>GameObject\Transform</Filter>
+    </ClCompile>
     <ClCompile Include="EGlobals.h">
-      <Filter>Header Files</Filter>
+      <Filter>Tools</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

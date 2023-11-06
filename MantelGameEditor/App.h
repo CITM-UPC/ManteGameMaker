@@ -5,6 +5,7 @@
 #include "DualOutputBuffer.h"
 
 #include "ModuleWindow.h"
+#include "ModuleInput.h"
 #include "ModuleEvents.h"
 #include "ModuleEngineManager.h"
 #include "ModuleGUI.h"
@@ -14,6 +15,7 @@ using namespace chrono;
 
 // Modules Classes
 class ModuleWindow;
+class ModuleInput;
 class ModuleEvents;
 class ModuleEngineManager;
 class ModuleGUI;
@@ -37,6 +39,7 @@ class App
 public:
 	// Modules
 	ModuleWindow* window;
+	ModuleInput* input;
 	ModuleEvents* events;
 	ModuleEngineManager* engineManager;
 	ModuleGUI* gui;

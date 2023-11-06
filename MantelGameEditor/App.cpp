@@ -9,6 +9,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args) {
 
     // Create the modules here (module = new Module(true);)
     window = new ModuleWindow(true);
+    input = new ModuleInput(true);
     events = new ModuleEvents(true);
     engineManager = new ModuleEngineManager(true);
     gui = new ModuleGUI(true);
@@ -16,6 +17,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args) {
 
     // Add the modules to the modules list in the proper order (AddModule(module);)
     AddModule(window);
+    AddModule(input);
     AddModule(events);
     AddModule(engineManager);
 

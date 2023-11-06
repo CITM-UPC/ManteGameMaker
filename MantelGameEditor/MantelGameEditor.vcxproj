@@ -97,6 +97,7 @@ $(SolutionDir)\vcpkg\vcpkg.exe install opengl sdl2 imgui[opengl3-binding,sdl2-bi
   <ItemGroup>
     <ClCompile Include="App.cpp" />
     <ClCompile Include="FrameBuffer.cpp" />
+    <ClCompile Include="ModuleInput.cpp" />
     <ClCompile Include="log.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="ModuleEngineManager.cpp" />
@@ -123,6 +124,7 @@ $(SolutionDir)\vcpkg\vcpkg.exe install opengl sdl2 imgui[opengl3-binding,sdl2-bi
     <ClInclude Include="Globals.h" />
     <ClInclude Include="GuiBase.h" />
     <ClInclude Include="GuiMenuBar.h" />
+    <ClInclude Include="ModuleInput.h" />
     <ClInclude Include="Module.h" />
     <ClInclude Include="ModuleEngineManager.h" />
     <ClInclude Include="ModuleEvents.h" />

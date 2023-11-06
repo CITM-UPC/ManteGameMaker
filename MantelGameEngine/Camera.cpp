@@ -1,8 +1,12 @@
 #include "Camera.h"
-#include <glm/ext/matrix_transform.hpp>
 
-Camera::Camera() : fov(60), aspect(4.0/3.0), zNear(0.1), zFar(100), eye(10, 2, 10), center(0, 1, 0), up(0, 1, 0) {}
+Camera::Camera() : fov(60), aspectRatio(4.0 / 3.0), clippingPlaneViewNear(0.1), clippingPlaneViewFar(100), camOffset(3)
+{
+	transform.position = vec3(2, 2, -5);
+	UpdateLookAt();
+}
 
-mat4 Camera::computeLookAt() const {
-	return glm::lookAt(eye, center, up);
+void Camera::UpdateLookAt()
+{
+	lookAtPos = transform.position + (transform.forward * camOffset);
 }

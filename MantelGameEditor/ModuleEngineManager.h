@@ -19,11 +19,21 @@ public:
 
     void CleanUp();
 
+    void DoCameraInput();
+    void keysInputFPS();
+    void mouseInputFPS();
+    void mouseCamOrbit();
+    void mouseCameraPan();
+    void DoZoom();
+
+
     MyGameEngine* GetEngine() {
         return &engine;
     }
 
 private:
+
+    double camSpeed = 0.1;
     MyGameEngine engine;
 };
 
