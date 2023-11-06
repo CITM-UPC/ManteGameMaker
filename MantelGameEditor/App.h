@@ -2,6 +2,7 @@
 
 #include "Globals.h"
 #include "Module.h"
+#include "DualOutputBuffer.h"
 
 #include "ModuleWindow.h"
 #include "ModuleEvents.h"
@@ -131,8 +132,13 @@ public:
 		return details;
 	}
 
+	//console output access
+	std::stringstream consoleOutput;
+	DualOutputBuffer* dualOutputBuffer;
+
 private:
 	AppDetails details;
 };
 
+//app access
 extern App* app;

@@ -118,6 +118,7 @@ $(SolutionDir)\vcpkg\vcpkg.exe install opengl sdl2 imgui[opengl3-binding,sdl2-bi
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.h" />
+    <ClInclude Include="DualOutputBuffer.h" />
     <ClInclude Include="FrameBuffer.h" />
     <ClInclude Include="Globals.h" />
     <ClInclude Include="GuiBase.h" />

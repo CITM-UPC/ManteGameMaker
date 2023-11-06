@@ -22,3 +22,4 @@ private:
 	GLuint RBO;
 	GLuint texture_id;
 };
+

@@ -21,6 +21,10 @@ App::App(int argc, char* args[]) : argc(argc), args(args) {
 
     AddModule(gui);
     AddModule(renderer);
+
+    dualOutputBuffer = new DualOutputBuffer(std::cout.rdbuf(), consoleOutput);
+
+    std::cout.rdbuf(dualOutputBuffer);
 }
 
 App::~App()
@@ -153,5 +157,11 @@ void App::CleanUp() {
     {
         item->CleanUp();
         cout << "Performed CleanUp of Module " << item->name << endl;
+    }
+
+    if (dualOutputBuffer != nullptr)
+    {
+        std::cout.rdbuf(dualOutputBuffer->GetOriginalStream());
+        RELEASE(dualOutputBuffer);
     }
 }

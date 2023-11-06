@@ -131,6 +131,9 @@
     <ClInclude Include="FrameBuffer.h">
       <Filter>Utils</Filter>
     </ClInclude>
+    <ClInclude Include="DualOutputBuffer.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="MantelGameEditor.rc">
