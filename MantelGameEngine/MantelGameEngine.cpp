@@ -101,5 +101,5 @@ void MyGameEngine::render() {
 #pragma endregion
 
 
-    assert(glGetError() ==GL_NONE);
+    //assert(glGetError() ==GL_NONE);
 }

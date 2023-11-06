@@ -150,17 +150,17 @@ bool ModuleGUI::ImguiDockspace() {
 		if (!deployed) {
 			deployed = true;
 
-			//ImGui::DockBuilderRemoveNode(dockspace_id); // clear previous layouts
-			//ImGui::DockBuilderAddNode(dockspace_id, dockspace_flags | ImGuiDockNodeFlags_DockSpace);
-			//ImGui::DockBuilderSetNodeSize(dockspace_id, viewport->Size);
+			ImGui::DockBuilderRemoveNode(dockspace_id); // clear previous layouts
+			ImGui::DockBuilderAddNode(dockspace_id, dockspace_flags | ImGuiDockNodeFlags_DockSpace);
+			ImGui::DockBuilderSetNodeSize(dockspace_id, viewport->Size);
 
-			//ImGui::DockBuilderDockWindow("Scene", dockspace_id);
-			//ImGui::DockBuilderDockWindow("Inspector", ImGui::DockBuilderSplitNode(dockspace_id, ImGuiDir_Right, 0.2f, nullptr, &dockspace_id));
-			//auto dock_down = ImGui::DockBuilderSplitNode(dockspace_id, ImGuiDir_Down, 0.3f, nullptr, &dockspace_id);
-			//ImGui::DockBuilderDockWindow("Project", dock_down);
-			//ImGui::DockBuilderDockWindow("Console", dock_down);
-			//ImGui::DockBuilderDockWindow("Hierarchy", ImGui::DockBuilderSplitNode(dockspace_id, ImGuiDir_Left, 0.25f, nullptr, &dockspace_id));
-			//ImGui::DockBuilderFinish(dockspace_id);
+			ImGui::DockBuilderDockWindow("Scene", dockspace_id);
+			ImGui::DockBuilderDockWindow("Inspector", ImGui::DockBuilderSplitNode(dockspace_id, ImGuiDir_Right, 0.2f, nullptr, &dockspace_id));
+			auto dock_down = ImGui::DockBuilderSplitNode(dockspace_id, ImGuiDir_Down, 0.3f, nullptr, &dockspace_id);
+			ImGui::DockBuilderDockWindow("Project", dock_down);
+			ImGui::DockBuilderDockWindow("Console", dock_down);
+			ImGui::DockBuilderDockWindow("Hierarchy", ImGui::DockBuilderSplitNode(dockspace_id, ImGuiDir_Left, 0.25f, nullptr, &dockspace_id));
+			ImGui::DockBuilderFinish(dockspace_id);
 		}
 	}
 
