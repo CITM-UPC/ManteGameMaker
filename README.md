@@ -11,3 +11,5 @@ This engine has some features like:
 - Drag and Drop .fbx files to load them.
 - Drag and Drop texture files to the fbx already loaded in the fbx files to add the texture.
 - GameObject Hierarchy
+- F to watch selected GameObject
+- BackSpace to delete selected GameObject

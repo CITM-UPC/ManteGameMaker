@@ -3,9 +3,12 @@
 #include <list>
 GameObject::GameObject(const std::string &name, const std::string &path)
 {
+    this->fbxPath = path;
+    this->texturePath = Mesh::getTexturePathFromFbxPath(path);
     if (name.empty()) {
         std::string correctedPath = path;
         std::regex_replace(correctedPath, std::regex("/"), "\\");
+        this->fbxPath = correctedPath;
         // Extract the name from the path
         size_t lastSlashPos = path.find_last_of('\\');
         size_t lastDotPos = path.find_last_of('.');

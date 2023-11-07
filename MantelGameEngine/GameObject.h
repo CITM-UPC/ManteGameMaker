@@ -26,7 +26,13 @@ public:
 	//important options
 	bool selected = false;
 	bool visible = true;
+	bool showNormals = false;
 	
+	//paths
+	std::string fbxPath;
+	std::string texturePath;
+
+
 	//getters and setters
 public:
 	void setName(std::string &name)
@@ -37,7 +43,6 @@ public:
 	{
 		return name.c_str();
 	}
-
 private:
 	std::string name;
 };

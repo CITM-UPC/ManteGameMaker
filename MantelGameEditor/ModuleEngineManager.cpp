@@ -26,6 +26,19 @@ void ModuleEngineManager::Start() {
 
 bool ModuleEngineManager::PreUpdate() {
 
+	//delete a GameObject if so
+	if (app->input->GetKey(SDL_SCANCODE_BACKSPACE) == KEY_DOWN)
+	{
+		for (auto& item : app->engineManager->GetEngine()->hierarchy)
+		{
+			if (item->selected)
+			{
+				app->engineManager->GetEngine()->DeleteGameObject(item);
+				break;
+			}
+		}
+	}
+
     return true;
 }
 

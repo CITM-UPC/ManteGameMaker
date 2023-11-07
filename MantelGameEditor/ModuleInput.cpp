@@ -120,7 +120,13 @@ bool ModuleInput::PreUpdate()
 				{
 					if (item->selected)
 					{
-						//item->texture.
+						item->texture = nullptr;
+						item->texture = make_shared<Texture2D>(filePath);
+						for (size_t i = 0; i < item->mesh_ptr.size(); i++)
+						{
+							item->mesh_ptr[i].get()->texture = item->texture;
+							item->texturePath = filePath;
+						}
 						break;
 					}
 				}

@@ -16,6 +16,16 @@ public:
 	struct V3C4 { vec3f v; vec4f c; };
 	struct V3T2 { vec3f v; vec2f t; };
 
+	//getters
+	const unsigned int getNumVerts()
+	{
+		return _numVerts;
+	}
+	const unsigned int getNumIndexs()
+	{
+		return _numIndexs;
+	}
+
 private:
 	const enum Formats _format;
 
@@ -28,6 +38,7 @@ private:
 public:
 	using Ptr = std::shared_ptr<Mesh>;
 
+	static std::string getTexturePathFromFbxPath(const std::string& path);
 	static std::vector<Ptr> loadFromFile(const std::string& path);
 	
 	Texture2D::Ptr texture;

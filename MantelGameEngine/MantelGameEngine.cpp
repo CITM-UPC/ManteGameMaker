@@ -73,8 +73,8 @@ void MyGameEngine::Start()
 {
     GameObject* BakerHouse = new GameObject("BakerHouse", "Assets/BakerHouse.fbx");
     AddGameObject(BakerHouse);
-    GameObject* BakerHouse2 = new GameObject("BakerHouse", "Assets\\BakerHouse.fbx");
-    AddGameObject(BakerHouse2);
+    //GameObject* BakerHouse2 = new GameObject("BakerHouse", "Assets\\BakerHouse.fbx");
+    //AddGameObject(BakerHouse2);
 }
 
 

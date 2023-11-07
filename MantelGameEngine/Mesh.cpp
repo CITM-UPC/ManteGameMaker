@@ -26,6 +26,21 @@ struct aiSceneExt : aiScene {
     auto meshes() const { return span((aiMeshExt**)mMeshes, mNumMeshes); }
 };
 
+std::string Mesh::getTexturePathFromFbxPath(const std::string& path)
+{
+    const auto scene_ptr = aiImportFile(path.c_str(), aiProcess_Triangulate | aiProcess_FlipUVs);
+    const aiSceneExt& scene = *(aiSceneExt*)scene_ptr;
+
+    //load textures
+    vector<Texture2D::Ptr> texture_ptrs;
+    for (const auto& material : scene.materials()) {
+        aiString aiPath;
+        material->GetTexture(aiTextureType_DIFFUSE, 0, &aiPath);
+        fs::path texPath = fs::path(path).parent_path() / fs::path(aiPath.C_Str()).filename();
+        return texPath.string();
+    }
+    return "pathNotFound";
+}
 
 std::vector<Mesh::Ptr> Mesh::loadFromFile(const std::string& path) {
 
