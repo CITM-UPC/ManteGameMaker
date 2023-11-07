@@ -112,10 +112,18 @@ bool ModuleInput::PreUpdate()
 			if (filePath.substr(filePath.find_last_of(".") + 1) == "fbx") {
 				cout << ".fbx file detected" << endl;
 
-				//app->engineManager->GetEngine()    ->     addFbx(filePath)
+				app->engineManager->GetEngine()->AddGameObject(new GameObject("", filePath));
 			}
 			if (filePath.substr(filePath.find_last_of(".") + 1) == "png") {
 				cout << ".png file detected" << endl;
+				for (auto& item : app->engineManager->GetEngine()->hierarchy)
+				{
+					if (item->selected)
+					{
+						//item->texture.
+						break;
+					}
+				}
 			}
 
 			SDL_free(e.drop.file);

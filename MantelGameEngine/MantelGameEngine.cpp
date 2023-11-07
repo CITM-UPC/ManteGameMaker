@@ -23,11 +23,6 @@ static double angle = 0.0;
 MyGameEngine::MyGameEngine() {
 
     ilInit();
-
-
-    GameObject* BakerHouse = new GameObject("BakerHouse", "Assets/BakerHouse.fbx");
-    hierarchy.push_back(BakerHouse);
-
     //auto glew_init_error = glewInit();
     //if (glew_init_error != GLEW_OK) throw exception((char*)glewGetErrorString(glew_init_error));
     //if (!GLEW_VERSION_3_1) throw exception("OpenGL 3.1 Not Supported!");
@@ -74,6 +69,56 @@ static void drawGrid(int grid_size, int grid_step) {
     glEnd();
 }
 
+void MyGameEngine::Start()
+{
+    GameObject* BakerHouse = new GameObject("BakerHouse", "Assets/BakerHouse.fbx");
+    AddGameObject(BakerHouse);
+    GameObject* BakerHouse2 = new GameObject("BakerHouse", "Assets\\BakerHouse.fbx");
+    AddGameObject(BakerHouse2);
+}
+
+
+void MyGameEngine::AddGameObject(GameObject* go)
+{
+    std::string originalName = go->GetName();
+    std::string newName = originalName;
+    int counter = 1;
+
+    while (true)
+    {
+        bool nameTaken = false;
+
+        for (const auto& item : hierarchy)
+        {
+            if (item->GetName() == newName)
+            {
+                nameTaken = true;
+                break;
+            }
+        }
+
+        if (!nameTaken)
+        {
+            go->setName(newName);
+            hierarchy.push_back(go);
+            break;
+        }
+
+        newName = originalName + "_" + std::to_string(counter);
+        counter++;
+    }
+}
+
+void MyGameEngine::DeleteGameObject(GameObject* go)
+{
+    // Find and remove the GameObject with the same pointer from the hierarchy list
+    hierarchy.remove(go);
+
+    // Now, you should delete the GameObject to free the memory if necessary
+    delete go;
+}
+
+
 void MyGameEngine::render() {
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
@@ -89,16 +134,13 @@ void MyGameEngine::render() {
     drawAxis();
     
 #pragma region Draw Sandbox
+
+
     //draw using GameObject class
-
-
-    //for (const auto& item : hierarchy)
-    //{
-    //    item->Draw();
-    //}
-
-
-
+    for (const auto& item : hierarchy)
+    {
+        item->Draw();
+    }
 
     //static auto mesh_ptrs = Mesh::loadFromFile("Assets/BakerHouse.fbx");
     //

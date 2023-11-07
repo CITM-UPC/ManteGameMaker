@@ -26,7 +26,7 @@
   glew:x64-windows is already installed
   glm:x64-windows is already installed
   opengl:x64-windows is already installed
-  Total install time: 87.1 us
+  Total install time: 124 us
   assimp provides CMake targets:
   
     # this is heuristically generated, and may not be correct
@@ -70,6 +70,9 @@
   
   Scanning sources for module dependencies...
   GameObject.cpp
+D:\repos\Github\MantelGameMaker\MantelGameEngine\GameObject.cpp(8,14): warning C4834: discarding return value of function with 'nodiscard' attribute
+  MantelGameEngine.cpp
+  Generating Code...
 GLU32.lib(GLU32.dll) : warning LNK4006: __NULL_IMPORT_DESCRIPTOR already defined in OpenGL32.lib(OPENGL32.dll); second definition ignored
 glew32.lib(glew32.dll) : warning LNK4006: __NULL_IMPORT_DESCRIPTOR already defined in OpenGL32.lib(OPENGL32.dll); second definition ignored
 DevIL.lib(DevIL.dll) : warning LNK4006: __NULL_IMPORT_DESCRIPTOR already defined in OpenGL32.lib(OPENGL32.dll); second definition ignored

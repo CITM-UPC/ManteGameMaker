@@ -10,6 +10,7 @@ ModuleEngineManager::ModuleEngineManager(bool startEnabled) : Module(startEnable
 ModuleEngineManager::~ModuleEngineManager() {}
 
 void ModuleEngineManager::Awake() {
+	engine.Start();
     engine.camera.fov = 60;
     engine.camera.aspect = static_cast<double>(SCREEN_WIDTH) / SCREEN_HEIGHT;
     engine.camera.zNear = 0.1;
@@ -20,7 +21,7 @@ void ModuleEngineManager::Awake() {
 }
 
 void ModuleEngineManager::Start() {
-
+	
 }
 
 bool ModuleEngineManager::PreUpdate() {
@@ -61,6 +62,36 @@ void ModuleEngineManager::CameraLogicInput()
 	//if alt button, all about mouse motion
 	if (app->input->GetKey(SDL_SCANCODE_LALT) == KEY_REPEAT)
 	{
+
+		//commented because it causes bugs in camera control :(
+
+		//IF CURSOR GOES OUT THE WINDOW IT WILL RETURN FROM THE OTHER SIDE
+		//if (app->input->GetMouseX() >= SCREEN_WIDTH - 1)
+		//{
+		//	POINT p;
+		//	GetCursorPos(&p);
+		//	SetCursorPos(p.x - (SCREEN_WIDTH - 1), p.y);
+		//}
+		//if (app->input->GetMouseX() <= 1)
+		//{
+		//	POINT p;
+		//	GetCursorPos(&p);
+		//	SetCursorPos(p.x + (SCREEN_WIDTH - 1), p.y);
+		//}
+		//if (app->input->GetMouseY() >= SCREEN_HEIGHT - 1)
+		//{
+		//	POINT p;
+		//	GetCursorPos(&p);
+		//	SetCursorPos(p.x, p.y - (SCREEN_HEIGHT - 1));
+		//}
+		//if (app->input->GetMouseY() <= 1)
+		//{
+		//	POINT p;
+		//	GetCursorPos(&p);
+		//	SetCursorPos(p.x, p.y + (SCREEN_HEIGHT - 1));
+		//}
+
+		//alt mouse functions
 		if (app->input->GetMouseButton(SDL_BUTTON_LEFT))
 		{
 			CameraOrbitUsingMouse();

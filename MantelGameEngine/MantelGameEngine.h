@@ -15,7 +15,12 @@ public:
 
 	MyGameEngine();
 	void step(std::chrono::duration<double> dt);
+	void Start();
 	void render();
+
+	//add and delete game object
+	void AddGameObject(GameObject* go);
+	void DeleteGameObject(GameObject* go);
 
 	int selectedGameObject = 0;
 
