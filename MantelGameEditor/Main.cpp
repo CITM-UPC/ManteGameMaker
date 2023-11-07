@@ -13,28 +13,28 @@ int main(int argc, char* args[])
         if (app == NULL) { throw exception("app = NULL"); }
 
         // Awake
-        cout << "AWAKE PHASE ===============================" << endl;
+        cout << "--Awake of app--" << endl;
         app->Awake();
 
         // Start
-        cout << "START PHASE ===============================" << endl;
+        cout << "--Start of App--" << endl;
         app->Start();
 
         // Update
-        cout << "UPDATE PHASE ===============================" << endl;
+        cout << "--Update of App--" << endl;
         while (app->DoUpdate()) { }
 
         // CleanUp
-        cout << "CLEANUP PHASE ===============================" << endl;
+        cout << "--CleanUp of app--" << endl;
         app->CleanUp();
 
 
         RELEASE(app);
-        cout << "Exiting without errors:  SUCCESS" << endl;
+        cout << "Exiting with NO errors :)" << endl;
         return EXIT_SUCCESS;
     }
     catch (const exception& ex) {
-        cout << "Exiting with errors: FAIL" << endl;
+        cout << "Exiting with errors :(  : " << endl;
         cerr << ex.what() << endl;
         return EXIT_FAILURE;
     }

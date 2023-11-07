@@ -9,7 +9,7 @@ Transform::Transform()
 	up = vec3(0, 1, 0);
 	forward = vec3(0, 0, 1);
 
-	referenceFrameMat = glm::mat3(1.0); //Identity
+	reference_frame_mat = glm::mat3(1.0); //Identity
 }
 
 Transform::~Transform() {}
@@ -20,7 +20,7 @@ void Transform::MoveTo(vec3 position, Space referenceFrame)
 
 	if (referenceFrame == Space::LOCAL)
 	{
-		resultingVector = referenceFrameMat * position;
+		resultingVector = reference_frame_mat * position;
 		this->position += resultingVector;
 		return;
 	}
@@ -33,7 +33,7 @@ void Transform::Move(vec3 displacement, Space referenceFrame)
 	vec3 resultingVector = displacement;
 
 	if (referenceFrame == Space::LOCAL)
-		resultingVector = referenceFrameMat * displacement;
+		resultingVector = reference_frame_mat * displacement;
 
 	position += resultingVector;
 }
@@ -65,22 +65,22 @@ void Transform::RotateTo(vec3f axis)
 	right = rotMatrix * right;
 	up = rotMatrix * up;
 
-	referenceFrameMat[0].x = right.x;		referenceFrameMat[0].y = right.y;		referenceFrameMat[0].z = right.z;
-	referenceFrameMat[1].x = up.x;			referenceFrameMat[1].y = up.y;			referenceFrameMat[1].z = up.z;
-	referenceFrameMat[2].x = forward.x;		referenceFrameMat[2].y = forward.y;		referenceFrameMat[2].z = forward.z;
+	reference_frame_mat[0].x = right.x;		reference_frame_mat[0].y = right.y;		reference_frame_mat[0].z = right.z;
+	reference_frame_mat[1].x = up.x;		reference_frame_mat[1].y = up.y;		reference_frame_mat[1].z = up.z;
+	reference_frame_mat[2].x = forward.x;	reference_frame_mat[2].y = forward.y;	reference_frame_mat[2].z = forward.z;
 }
 
 void Transform::Rotate(vec3f axis, Space referenceFrame)
 {
 	//Translate the axis to the local refernce frame to apply the rotation
 
-	referenceFrameMat[0].x = right.x;		referenceFrameMat[0].y = right.y;		referenceFrameMat[0].z = right.z;
-	referenceFrameMat[1].x = up.x;			referenceFrameMat[1].y = up.y;			referenceFrameMat[1].z = up.z;
-	referenceFrameMat[2].x = forward.x;		referenceFrameMat[2].y = forward.y;		referenceFrameMat[2].z = forward.z;
+	reference_frame_mat[0].x = right.x;		reference_frame_mat[0].y = right.y;		reference_frame_mat[0].z = right.z;
+	reference_frame_mat[1].x = up.x;		reference_frame_mat[1].y = up.y;		reference_frame_mat[1].z = up.z;
+	reference_frame_mat[2].x = forward.x;	reference_frame_mat[2].y = forward.y;	reference_frame_mat[2].z = forward.z;
 
 	glm::vec3 vecInRefFrame = axis;
 	if (referenceFrame == Space::LOCAL)
-		vecInRefFrame = referenceFrameMat * axis;
+		vecInRefFrame = reference_frame_mat * axis;
 
 
 	//Generate the rotation matrix that corresponds to the rotation

@@ -8,6 +8,7 @@
 
 ModuleInput::ModuleInput(bool start_enabled) : Module(start_enabled)
 {
+	name = "input";
 	keyboard = new KEY_STATE[MAX_KEYS];
 	memset(keyboard, KEY_IDLE, sizeof(KEY_STATE) * MAX_KEYS);
 }
@@ -26,7 +27,7 @@ void ModuleInput::Start()
 
 	if (SDL_InitSubSystem(SDL_INIT_EVENTS) < 0)
 	{
-		LOG("SDL_EVENTS could not initialize! SDL_Error: %s\n", SDL_GetError());
+		cout << "SDL_EVENTS could not initialize! SDL_Error: " << SDL_GetError() << endl;
 	}
 }
 
@@ -108,17 +109,16 @@ bool ModuleInput::PreUpdate()
 
 			filePath = e.drop.file;
 
-			// Check if the dropped file has the .fbx extension
 			if (filePath.substr(filePath.find_last_of(".") + 1) == "fbx") {
 				cout << ".fbx file detected" << endl;
-				//App->gEngine->renderer3D->addFbx(filePath);
+
+				//app->engineManager->GetEngine()    ->     addFbx(filePath)
 			}
-			// Check if the dropped file has the .png extension
 			if (filePath.substr(filePath.find_last_of(".") + 1) == "png") {
 				cout << ".png file detected" << endl;
 			}
 
-			SDL_free(e.drop.file);  // Free dropped file's memory
+			SDL_free(e.drop.file);
 
 			break;
 

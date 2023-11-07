@@ -71,7 +71,7 @@ static void drawGrid(int grid_size, int grid_step) {
 void MyGameEngine::render() {
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    gluPerspective(camera.fov, camera.aspectRatio, camera.clippingPlaneViewNear, camera.clippingPlaneViewFar);
+    gluPerspective(camera.fov, camera.aspect, camera.zNear, camera.zFar);
 
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();

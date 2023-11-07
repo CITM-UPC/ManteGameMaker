@@ -11,10 +11,10 @@ ModuleEngineManager::~ModuleEngineManager() {}
 
 void ModuleEngineManager::Awake() {
     engine.camera.fov = 60;
-    engine.camera.aspectRatio = static_cast<double>(SCREEN_WIDTH) / SCREEN_HEIGHT;
-    engine.camera.clippingPlaneViewNear = 0.1;
-    engine.camera.clippingPlaneViewFar = 100;
-    //engine.camera.eye = vec3(5, 1.75, 5);
+    engine.camera.aspect = static_cast<double>(SCREEN_WIDTH) / SCREEN_HEIGHT;
+    engine.camera.zNear = 0.1;
+    engine.camera.zFar = 100;
+    //engine.camera.eye = vec3(5, 1.75, 5);	
     //engine.camera.center = vec3(0, 1, 0);
     //engine.camera.up = vec3(0, 1, 0);
 }
@@ -31,7 +31,7 @@ bool ModuleEngineManager::PreUpdate() {
 bool ModuleEngineManager::Update(duration<double> dt) {
     engine.step(app->GetDeltaTime());
 
-	DoCameraInput();
+	CameraLogicInput();
 
     return true;
 }
@@ -47,107 +47,98 @@ void ModuleEngineManager::CleanUp() {
 }
 
 
-void ModuleEngineManager::DoCameraInput()
+void ModuleEngineManager::CameraLogicInput()
 {
-	DoZoom();
-
+	//if right button mouse, different input (principal wasd)
 	if (app->input->GetMouseButton(SDL_BUTTON_RIGHT))
 	{
-		keysInputFPS();
-		mouseInputFPS();
+		CameraKeyboardInput();
+		CameraInputUsingMouse();
 
 		engine.camera.UpdateLookAt();
 	}
-	if (app->input->GetKey(SDL_SCANCODE_LALT))
+
+	//if alt button, all about mouse motion
+	if (app->input->GetKey(SDL_SCANCODE_LALT) == KEY_REPEAT)
 	{
 		if (app->input->GetMouseButton(SDL_BUTTON_LEFT))
 		{
-			mouseCamOrbit();
+			CameraOrbitUsingMouse();
 		}
 		if (app->input->GetMouseButton(SDL_BUTTON_MIDDLE))
 		{
-			mouseCameraPan();
+			CameraPanUsingMouse();
 		}
 	}
+	//camera can do zoom with no condition
+	CameraZoom();
 }
 
-void ModuleEngineManager::keysInputFPS()
+void ModuleEngineManager::CameraKeyboardInput()
 {
-	if (app->input->GetKey(SDL_SCANCODE_LSHIFT) == KEY_DOWN) { camSpeed = 0.2; }
-	if (app->input->GetKey(SDL_SCANCODE_LSHIFT) == KEY_UP) { camSpeed = 0.1; }
+	if (app->input->GetKey(SDL_SCANCODE_LSHIFT) == KEY_DOWN) camSpeed = 0.2;
+	if (app->input->GetKey(SDL_SCANCODE_LSHIFT) == KEY_UP) camSpeed = 0.1;
 
 	if (app->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT)
-	{
 		engine.camera.transform.Move(glm::dvec3(0, 0, camSpeed));
-	}
+
 	if (app->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT)
-	{
 		engine.camera.transform.Move(glm::dvec3(0, 0, -camSpeed));
-	}
+
 	if (app->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT)
-	{
 		engine.camera.transform.Move(glm::dvec3(camSpeed, 0, 0));
-	}
+
 	if (app->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT)
-	{
 		engine.camera.transform.Move(glm::dvec3(-camSpeed, 0, 0));
-	}
+
 	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_REPEAT)
-	{
-		engine.camera.transform.Move(glm::dvec3(0, camSpeed, 0), Transform::Space::GLOBAL);
-	}
+		engine.camera.transform.Move(glm::dvec3(0, camSpeed, 0), Transform::moveType::GLOBAL);
+
 	if (app->input->GetKey(SDL_SCANCODE_LCTRL) == KEY_REPEAT)
-	{
-		engine.camera.transform.Move(glm::dvec3(0, -camSpeed, 0), Transform::Space::GLOBAL);
-	}
+		engine.camera.transform.Move(glm::dvec3(0, -camSpeed, 0), Transform::moveType::GLOBAL);
+
 }
-void ModuleEngineManager::mouseInputFPS()
+void ModuleEngineManager::CameraInputUsingMouse()
 {
-	float sensitivity = 0.1;
+	int mmotionx = app->input->GetMouseXMotion();
+	int mmotiony = -app->input->GetMouseYMotion();
+	float sense = 0.1;
 
-	int dx = app->input->GetMouseXMotion();
-	int dy = -app->input->GetMouseYMotion();
-
-	engine.camera.transform.Rotate(glm::vec3(0, dx * sensitivity, 0), Transform::Space::GLOBAL);
-	engine.camera.transform.Rotate(glm::vec3(dy * sensitivity, 0, 0));
+	engine.camera.transform.Rotate(glm::vec3(0, mmotionx * sense, 0), Transform::moveType::GLOBAL);
+	engine.camera.transform.Rotate(glm::vec3(mmotiony * sense, 0, 0));
 }
 
-void ModuleEngineManager::mouseCamOrbit()
+void ModuleEngineManager::CameraOrbitUsingMouse()
 {
-	float sensitivity = 0.2;
-
-	int dx = app->input->GetMouseXMotion();
-	int dy = -app->input->GetMouseYMotion();
+	int mmotionx = app->input->GetMouseXMotion();
+	int mmotiony = -app->input->GetMouseYMotion();
+	float sense = 0.2;
 
 	engine.camera.transform.MoveTo(engine.camera.lookAtPos);
 
-	engine.camera.transform.Rotate(vec3(0, dx * sensitivity, 0), Transform::Space::GLOBAL);
-	engine.camera.transform.Rotate(vec3(dy * sensitivity, 0, 0));
+	engine.camera.transform.Rotate(vec3(0, mmotionx * sense, 0), Transform::moveType::GLOBAL);
+	engine.camera.transform.Rotate(vec3(mmotiony * sense, 0, 0));
 
 	vec3 finalPos = engine.camera.transform.position - (engine.camera.transform.forward * engine.camera.camOffset);
 	engine.camera.transform.MoveTo(finalPos);
 }
-void ModuleEngineManager::mouseCameraPan()
+void ModuleEngineManager::CameraPanUsingMouse()
 {
-	int dx = app->input->GetMouseXMotion();
-	int dy = app->input->GetMouseYMotion();
+	int mmotionx = app->input->GetMouseXMotion();
+	int mmotiony = app->input->GetMouseYMotion();
+	float speedPan = 0.01f;
 
-	float panSpeed = 0.01f;
-
-	engine.camera.transform.Move(vec3(dx * panSpeed, 0, 0));
-	engine.camera.transform.Move(vec3(0, dy * panSpeed, 0));
+	engine.camera.transform.Move(vec3(mmotionx * speedPan, 0, 0));
+	engine.camera.transform.Move(vec3(0, mmotiony * speedPan, 0));
 
 	engine.camera.UpdateLookAt();
 }
-void ModuleEngineManager::DoZoom()
+void ModuleEngineManager::CameraZoom()
 {
-	int scrollWheel = app->input->GetMouseZ();
-
-	if (scrollWheel != 0)
+	if (app->input->GetMouseZ() != 0)
 	{
-		float zoomSensitivity = 0.3f;
-
-		engine.camera.camOffset -= scrollWheel * zoomSensitivity;
+		float zoomSens = 0.3f;
+		engine.camera.camOffset -= app->input->GetMouseZ() * zoomSens;
 
 		if (engine.camera.camOffset <= 0.1f)
 		{
@@ -159,7 +150,6 @@ void ModuleEngineManager::DoZoom()
 			engine.camera.camOffset = 50.0f;
 			return;
 		}
-
-		engine.camera.transform.Move(vec3(0, 0, scrollWheel * zoomSensitivity));
+		engine.camera.transform.Move(vec3(0, 0, app->input->GetMouseZ() * zoomSens));
 	}
 }

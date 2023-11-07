@@ -11,9 +11,9 @@ public:
 
 public:
 	double fov;
-	double aspectRatio;
-	double clippingPlaneViewNear;
-	double clippingPlaneViewFar;
+	double aspect;
+	double zNear;
+	double zFar;
 
 	Transform transform;
 	vec3 lookAtPos;

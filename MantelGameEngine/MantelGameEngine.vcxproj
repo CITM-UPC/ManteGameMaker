@@ -18,6 +18,7 @@
     <ClInclude Include="CubeVertexArray.h" />
     <ClInclude Include="CubeVertexBuffer.h" />
     <ClInclude Include="CubeWireframeIVBO.h" />
+    <ClInclude Include="GameObject.h" />
     <ClInclude Include="Graphic.h" />
     <ClInclude Include="GraphicObject.h" />
     <ClInclude Include="Mesh.h" />
@@ -35,6 +36,7 @@
     <ClCompile Include="CubeVertexBuffer.cpp" />
     <ClCompile Include="CubeWireframeIVBO.cpp" />
     <ClCompile Include="EGlobals.h" />
+    <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GraphicObject.cpp" />
     <ClCompile Include="Mesh.cpp" />
     <ClCompile Include="MantelGameEngine.cpp" />

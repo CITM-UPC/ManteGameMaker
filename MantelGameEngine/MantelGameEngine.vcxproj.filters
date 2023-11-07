@@ -22,6 +22,12 @@
     <Filter Include="Tools">
       <UniqueIdentifier>{00530be5-bfcd-4ebb-a09b-40ad52d11f80}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameObject\Texture2D">
+      <UniqueIdentifier>{a90aa763-3b66-4f83-8b6c-914a782bb322}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\Mesh">
+      <UniqueIdentifier>{1dae94b4-fbbe-4b80-9832-87bf0d153d72}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MantelGameEngine.h">
@@ -57,14 +63,17 @@
     <ClInclude Include="Graphic.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Texture2D.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Mesh.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Transform.h">
       <Filter>GameObject\Transform</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture2D.h">
+      <Filter>GameObject\Texture2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh.h">
+      <Filter>GameObject\Mesh</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -95,17 +104,20 @@
     <ClCompile Include="GraphicObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Texture2D.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Mesh.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Transform.cpp">
       <Filter>GameObject\Transform</Filter>
     </ClCompile>
     <ClCompile Include="EGlobals.h">
       <Filter>Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture2D.cpp">
+      <Filter>GameObject\Texture2D</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh.cpp">
+      <Filter>GameObject\Mesh</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
