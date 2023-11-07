@@ -19,12 +19,13 @@ public:
 
     void CleanUp();
 
-    void DoCameraInput();
-    void keysInputFPS();
-    void mouseInputFPS();
-    void mouseCamOrbit();
-    void mouseCameraPan();
-    void DoZoom();
+    //camera functions
+    void CameraLogicInput();
+    void CameraKeyboardInput();
+    void CameraInputUsingMouse();
+    void CameraOrbitUsingMouse();
+    void CameraPanUsingMouse();
+    void CameraZoom();
 
 
     MyGameEngine* GetEngine() {
@@ -36,4 +37,3 @@ private:
     double camSpeed = 0.1;
     MyGameEngine engine;
 };
-

@@ -67,7 +67,7 @@ std::vector<Mesh::Ptr> Mesh::loadFromFile(const std::string& path) {
     }
 
     aiReleaseImport(scene_ptr);
-    
+
     return mesh_ptrs;
 }
 

@@ -11,6 +11,8 @@
 #include "CubeWireframeIVBO.h"
 
 #include "Mesh.h"
+#include "Transform.h"
+#include "GameObject.h"
 
 #include "GraphicObject.h"
 
@@ -21,6 +23,10 @@ static double angle = 0.0;
 MyGameEngine::MyGameEngine() {
 
     ilInit();
+
+
+    GameObject* BakerHouse = new GameObject("BakerHouse", "Assets/BakerHouse.fbx");
+    hierarchy.push_back(BakerHouse);
 
     //auto glew_init_error = glewInit();
     //if (glew_init_error != GLEW_OK) throw exception((char*)glewGetErrorString(glew_init_error));
@@ -83,20 +89,31 @@ void MyGameEngine::render() {
     drawAxis();
     
 #pragma region Draw Sandbox
-    static auto mesh_ptrs = Mesh::loadFromFile("Assets/BakerHouse.fbx");
-    
-    GraphicObject mesh1(mesh_ptrs.front());
-    GraphicObject mesh2(mesh_ptrs.back());
+    //draw using GameObject class
 
-    GraphicObject house;
 
-    house.addChild( std::move(mesh1));
-    house.addChild( std::move(mesh2));
+    //for (const auto& item : hierarchy)
+    //{
+    //    item->Draw();
+    //}
 
-    GraphicObject root;
-    root.addChild(std::move(house));
 
-    root.paint();
+
+
+    //static auto mesh_ptrs = Mesh::loadFromFile("Assets/BakerHouse.fbx");
+    //
+    //GraphicObject mesh1(mesh_ptrs.front());
+    //GraphicObject mesh2(mesh_ptrs.back());
+
+    //GraphicObject house;
+
+    //house.addChild( std::move(mesh1));
+    //house.addChild( std::move(mesh2));
+
+    //GraphicObject root;
+    //root.addChild(std::move(house));
+
+    //root.paint();
 
 #pragma endregion
 

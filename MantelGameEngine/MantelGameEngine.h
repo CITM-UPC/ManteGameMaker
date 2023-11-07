@@ -1,10 +1,12 @@
 #pragma once
 
 #include <chrono>
+#include <list>
 
 #include "types.h"
 #include "Camera.h"
 #include "GameObject.h"
+
 
 class MyGameEngine
 {
@@ -17,6 +19,6 @@ public:
 
 	int selectedGameObject = 0;
 
-	list<GameObject*> hierarchy;
+	std::list<GameObject*> hierarchy;
 };
 

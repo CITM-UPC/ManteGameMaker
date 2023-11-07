@@ -28,11 +28,11 @@
     <Filter Include="GameObject\Mesh">
       <UniqueIdentifier>{1dae94b4-fbbe-4b80-9832-87bf0d153d72}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Main">
+      <UniqueIdentifier>{164b03c7-7279-45c7-9643-a9d0017d7028}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="MantelGameEngine.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Camera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -75,11 +75,11 @@
     <ClInclude Include="Mesh.h">
       <Filter>GameObject\Mesh</Filter>
     </ClInclude>
+    <ClInclude Include="MantelGameEngine.h">
+      <Filter>Main</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="MantelGameEngine.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Camera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -118,6 +118,9 @@
     </ClCompile>
     <ClCompile Include="Mesh.cpp">
       <Filter>GameObject\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="MantelGameEngine.cpp">
+      <Filter>Main</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

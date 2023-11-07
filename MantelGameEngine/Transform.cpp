@@ -14,11 +14,11 @@ Transform::Transform()
 
 Transform::~Transform() {}
 
-void Transform::MoveTo(vec3 position, Space referenceFrame)
+void Transform::MoveTo(vec3 position, moveType referenceFrame)
 {
 	vec3 resultingVector = position;
 
-	if (referenceFrame == Space::LOCAL)
+	if (referenceFrame == moveType::LOCAL)
 	{
 		resultingVector = reference_frame_mat * position;
 		this->position += resultingVector;
@@ -28,11 +28,11 @@ void Transform::MoveTo(vec3 position, Space referenceFrame)
 	this->position = resultingVector;
 }
 
-void Transform::Move(vec3 displacement, Space referenceFrame)
+void Transform::Move(vec3 displacement, moveType referenceFrame)
 {
 	vec3 resultingVector = displacement;
 
-	if (referenceFrame == Space::LOCAL)
+	if (referenceFrame == moveType::LOCAL)
 		resultingVector = reference_frame_mat * displacement;
 
 	position += resultingVector;
@@ -70,7 +70,7 @@ void Transform::RotateTo(vec3f axis)
 	reference_frame_mat[2].x = forward.x;	reference_frame_mat[2].y = forward.y;	reference_frame_mat[2].z = forward.z;
 }
 
-void Transform::Rotate(vec3f axis, Space referenceFrame)
+void Transform::Rotate(vec3f axis, moveType referenceFrame)
 {
 	//Translate the axis to the local refernce frame to apply the rotation
 
@@ -79,7 +79,7 @@ void Transform::Rotate(vec3f axis, Space referenceFrame)
 	reference_frame_mat[2].x = forward.x;	reference_frame_mat[2].y = forward.y;	reference_frame_mat[2].z = forward.z;
 
 	glm::vec3 vecInRefFrame = axis;
-	if (referenceFrame == Space::LOCAL)
+	if (referenceFrame == moveType::LOCAL)
 		vecInRefFrame = reference_frame_mat * axis;
 
 

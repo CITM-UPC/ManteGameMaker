@@ -26,7 +26,7 @@
   glew:x64-windows is already installed
   glm:x64-windows is already installed
   opengl:x64-windows is already installed
-  Total install time: 125 us
+  Total install time: 87.1 us
   assimp provides CMake targets:
   
     # this is heuristically generated, and may not be correct
@@ -70,14 +70,9 @@
   
   Scanning sources for module dependencies...
   GameObject.cpp
-D:\repos\Github\MantelGameMaker\MantelGameEngine\GameObject.h(16,21): error C2065: 'Ptr': undeclared identifier
-D:\repos\Github\MantelGameMaker\MantelGameEngine\GameObject.h(16,14): error C2923: 'std::vector': 'Ptr' is not a valid template type argument for parameter '_Ty'
-D:\repos\Github\MantelGameMaker\MantelGameEngine\GameObject.h(16,21): message : see declaration of 'Ptr'
-D:\repos\Github\MantelGameMaker\MantelGameEngine\GameObject.h(16,14): error C2976: 'std::vector': too few template arguments
-D:\AppsRandom\Microsoft\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.37.32822\include\vector(438,1): message : see declaration of 'std::vector'
-D:\repos\Github\MantelGameMaker\MantelGameEngine\GameObject.h(16,26): error C2955: 'std::vector': use of class template requires template argument list
-D:\AppsRandom\Microsoft\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.37.32822\include\vector(438,1): message : see declaration of 'std::vector'
-D:\repos\Github\MantelGameMaker\MantelGameEngine\GameObject.cpp(4,1): error C2512: 'Texture2D': no appropriate default constructor available
-D:\repos\Github\MantelGameMaker\MantelGameEngine\Texture2D.h(6,7): message : see declaration of 'Texture2D'
-  MantelGameEngine.cpp
-  Generating Code...
+GLU32.lib(GLU32.dll) : warning LNK4006: __NULL_IMPORT_DESCRIPTOR already defined in OpenGL32.lib(OPENGL32.dll); second definition ignored
+glew32.lib(glew32.dll) : warning LNK4006: __NULL_IMPORT_DESCRIPTOR already defined in OpenGL32.lib(OPENGL32.dll); second definition ignored
+DevIL.lib(DevIL.dll) : warning LNK4006: __NULL_IMPORT_DESCRIPTOR already defined in OpenGL32.lib(OPENGL32.dll); second definition ignored
+assimp-vc143-mt.lib(assimp-vc143-mt.dll) : warning LNK4006: __NULL_IMPORT_DESCRIPTOR already defined in OpenGL32.lib(OPENGL32.dll); second definition ignored
+Mesh.obj : warning LNK4006: "public: enum aiReturn __cdecl aiMaterial::GetTexture(enum aiTextureType,unsigned int,struct aiString *,enum aiTextureMapping *,unsigned int *,float *,enum aiTextureOp *,enum aiTextureMapMode *)const " (?GetTexture@aiMaterial@@QEBA?AW4aiReturn@@W4aiTextureType@@IPEAUaiString@@PEAW4aiTextureMapping@@PEAIPEAMPEAW4aiTextureOp@@PEAW4aiTextureMapMode@@@Z) already defined in assimp-vc143-mt.lib(assimp-vc143-mt.dll); second definition ignored
+  MantelGameEngine.vcxproj -> D:\repos\Github\MantelGameMaker\x64\Debug\MantelGameEngine.lib
