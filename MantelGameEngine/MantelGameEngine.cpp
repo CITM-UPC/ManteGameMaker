@@ -15,6 +15,7 @@
 #include "GameObject.h"
 
 #include "GraphicObject.h"
+#include <iostream>
 
 using namespace std;
 
@@ -107,10 +108,14 @@ void MyGameEngine::AddGameObject(GameObject* go)
         newName = originalName + "_" + std::to_string(counter);
         counter++;
     }
+    std::cout << go->GetName() << " created" << endl;
+
 }
 
 void MyGameEngine::DeleteGameObject(GameObject* go)
 {
+    std::cout << go->GetName() << " deleted" << endl;
+
     // Find and remove the GameObject with the same pointer from the hierarchy list
     hierarchy.remove(go);
 

@@ -2,12 +2,15 @@
 
 #include <glm/vec3.hpp>
 #include "Transform.h"
+#include "GameObject.h"
 
 struct Camera
 {
 public:
 	Camera();
 	void UpdateLookAt();
+
+	void LookAtGameObject(GameObject* go);
 
 public:
 	double fov;

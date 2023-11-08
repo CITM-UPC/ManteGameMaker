@@ -103,6 +103,9 @@ void WindowInspector::Update() {
 
 				if (ImGui::BeginTabItem("Texture")) {
 					// Content for the "Texture" tab
+					ImGui::Text("Information about Texture:");
+					ImGui::Text("  Size of Texture:\n  1024 x 1024\n\n");
+					ImGui::Text("  Path of Texture file:\n  %s", item->texturePath.c_str());
 					ImGui::EndTabItem();
 				}
 

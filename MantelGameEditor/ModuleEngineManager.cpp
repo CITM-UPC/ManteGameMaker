@@ -38,8 +38,18 @@ bool ModuleEngineManager::PreUpdate() {
 			}
 		}
 	}
+	if (app->input->GetKey(SDL_SCANCODE_F) == KEY_DOWN)
+	{
+		for (auto& item : app->engineManager->GetEngine()->hierarchy)
+		{
+			if (item->selected)
+			{
+				app->engineManager->GetEngine()->camera.LookAtGameObject(item);
+			}
+		}
+	}
 
-    return true;
+	return true;
 }
 
 bool ModuleEngineManager::Update(duration<double> dt) {
