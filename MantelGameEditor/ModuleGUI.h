@@ -52,6 +52,8 @@ public:
 	bool settingsState = false;
 	bool aboutState = false;
 
+	bool writing = false;
+
 private:
 
 	list<GuiBase*>		windows;

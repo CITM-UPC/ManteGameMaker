@@ -26,6 +26,10 @@ void ModuleEngineManager::Start() {
 
 bool ModuleEngineManager::PreUpdate() {
 
+	if (app->gui->writing)
+	{
+		return true;
+	}
 	//delete a GameObject if so
 	if (app->input->GetKey(SDL_SCANCODE_BACKSPACE) == KEY_DOWN)
 	{

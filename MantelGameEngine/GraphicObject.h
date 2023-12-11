@@ -62,7 +62,15 @@ public:
 	GraphicObject();
 	GraphicObject(std::shared_ptr<Graphic> graphic);
 	
-	inline void rotate(double rads, const vec3& axis) { _transform = glm::rotate(_transform, rads, axis); }
+	void translate(const vec3& dv) {
+		_transform = glm::translate(_transform, dv);
+	}
+
+	inline void rotate(double degrees, const vec3& axis) { _transform = glm::rotate(_transform, glm::radians(degrees), axis); }
+
+	void scale(const vec3& dv) {
+		_transform = glm::scale(_transform, dv);
+	}
 
 	void paint() const;
 };

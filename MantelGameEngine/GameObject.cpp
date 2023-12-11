@@ -36,24 +36,26 @@ void GameObject::Draw()
 {
     if (visible)
     {
-        //GraphicObject mesh1(this->mesh_ptr.front());
-        //GraphicObject mesh2(this->mesh_ptr.back());
-
         GraphicObject house;
 
         for (const auto& item : this->mesh_ptr)
         {
             GraphicObject mesh(item);
+            // set the position from gameobject to the meshes
+            mesh.translate(transform.position - mesh.pos());
+            // set the rotation from gameobject to the meshes
+            mesh.rotate(transform.rotation.x,vec3(1,0,0));
+            mesh.rotate(transform.rotation.y,vec3(0,1,0));
+            mesh.rotate(transform.rotation.z,vec3(0,0,1));
+            // set the scale from gameobject to the meshes
+            mesh.scale(transform.scale);
+
             house.addChild(std::move(mesh));
         }
 
-
-        //house.addChild(std::move(mesh1));
-        //house.addChild(std::move(mesh2));
-
         GraphicObject root;
         root.addChild(std::move(house));
-
+        
         root.paint();
     }
 }

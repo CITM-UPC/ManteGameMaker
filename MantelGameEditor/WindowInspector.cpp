@@ -22,20 +22,48 @@ void WindowInspector::Update() {
 					ImGui::Text("x: ");
 					ImGui::SameLine(); // Ensure items are on the same line
 					//Position parameters
-					if (ImGui::Button(std::to_string(item->transform.position.x).c_str())) {
+					vec3 tpos = item->transform.position;
+					if (ImGui::InputDouble(" ", &(tpos.x))) {
+						// enable writing mode
+						app->gui->writing = true;
 						// Code to modify position parameter x, not yet to add
+						if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || app->input->GetKey(SDL_SCANCODE_TAB) == KEY_DOWN)
+						{
+							item->transform.MoveTo(tpos);
+							cout << "New position x: " << item->transform.position.x << endl;
+							//disable writing mode once we finished
+							app->gui->writing = false;
+						}
 					}
 					ImGui::Text("y: ");
 					ImGui::SameLine(); // Add spacing between the buttons
 
-					if (ImGui::Button(std::to_string(item->transform.position.y).c_str())) {
-						// Code to modify position parameter x, not yet to add
+					if (ImGui::InputDouble("  ", &(tpos.y))) {
+						// enable writing mode
+						app->gui->writing = true;
+						// Code to modify position parameter y, not yet to add
+						if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || app->input->GetKey(SDL_SCANCODE_TAB) == KEY_DOWN)
+						{
+							item->transform.MoveTo(tpos);
+							cout << "New position y: " << item->transform.position.y << endl;
+							//disable writing mode once we finished
+							app->gui->writing = false;
+						}
 					}
 					ImGui::Text("z: ");
 					ImGui::SameLine(); // Add spacing between the buttons
 
-					if (ImGui::Button(std::to_string(item->transform.position.z).c_str())) {
-						// Code to modify position parameter x, not yet to add
+					if (ImGui::InputDouble("   ", &(tpos.z))) {
+						// enable writing mode
+						app->gui->writing = true;
+						// Code to modify position parameter z, not yet to add
+						if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || app->input->GetKey(SDL_SCANCODE_TAB) == KEY_DOWN)
+						{
+							item->transform.MoveTo(tpos);
+							cout << "New position z: " << item->transform.position.z << endl;
+							//disable writing mode once we finished
+							app->gui->writing = false;
+						}
 					}
 
 					//rotation of transform
@@ -43,21 +71,50 @@ void WindowInspector::Update() {
 					// Create three squares with "0" inside
 					ImGui::Text("x: ");
 					ImGui::SameLine(); // Ensure items are on the same line
-					//Position parameters
-					if (ImGui::Button(std::to_string(item->transform.rotation.x).c_str())) {
-						// Code to modify position parameter x, not yet to add
+					//rotation parameters
+					//temporary variable for rotation input
+					vec3 trot = item->transform.rotation;
+					if (ImGui::InputDouble("    ", &(trot.x))) {
+						// enable writing mode
+						app->gui->writing = true;
+						// Code to modify rotation parameter x, not yet to add
+						if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || app->input->GetKey(SDL_SCANCODE_TAB) == KEY_DOWN)
+						{
+							item->transform.rotation.x = trot.x;
+							cout << "New rotation x: " << item->transform.rotation.x << endl;
+							//disable writing mode once we finished
+							app->gui->writing = false;
+						}
 					}
 					ImGui::Text("y: ");
 					ImGui::SameLine(); // Add spacing between the buttons
 
-					if (ImGui::Button(std::to_string(item->transform.rotation.y).c_str())) {
-						// Code to modify position parameter x, not yet to add
+					if (ImGui::InputDouble("     ", &(trot.y))) {
+						// enable writing mode
+						app->gui->writing = true;
+						// Code to modify rotation parameter y, not yet to add
+						if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || app->input->GetKey(SDL_SCANCODE_TAB) == KEY_DOWN)
+						{
+							item->transform.rotation.y = trot.y;
+							cout << "New rotation y: " << item->transform.rotation.y << endl;
+							//disable writing mode once we finished
+							app->gui->writing = false;
+						}
 					}
 					ImGui::Text("z: ");
 					ImGui::SameLine(); // Add spacing between the buttons
 
-					if (ImGui::Button(std::to_string(item->transform.rotation.z).c_str())) {
-						// Code to modify position parameter x, not yet to add
+					if (ImGui::InputDouble("      ", &(trot.z))) {
+						// enable writing mode
+						app->gui->writing = true;
+						// Code to modify rotation parameter z, not yet to add
+						if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || app->input->GetKey(SDL_SCANCODE_TAB) == KEY_DOWN)
+						{
+							item->transform.rotation.z = trot.z;
+							cout << "New rotation z: " << item->transform.rotation.z << endl;
+							//disable writing mode once we finished
+							app->gui->writing = false;
+						}
 					}
 
 					//scale of transform
@@ -66,20 +123,49 @@ void WindowInspector::Update() {
 					ImGui::Text("x: ");
 					ImGui::SameLine(); // Ensure items are on the same line
 					//Position parameters
-					if (ImGui::Button(std::to_string(item->transform.scale.x).c_str())) {
-						// Code to modify position parameter x, not yet to add
+					//temporary variable for scale input
+					vec3 tscale = item->transform.scale;
+					if (ImGui::InputDouble("       ", &(tscale.x))) {
+						// enable writing mode
+						app->gui->writing = true;
+						// Code to modify scale parameter x, not yet to add
+						if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || app->input->GetKey(SDL_SCANCODE_TAB) == KEY_DOWN)
+						{
+							item->transform.scale = (tscale);
+							cout << "New scale x: " << item->transform.scale.x << endl;
+							//disable writing mode once we finished
+							app->gui->writing = false;
+						}
 					}
 					ImGui::Text("y: ");
 					ImGui::SameLine(); // Add spacing between the buttons
 
-					if (ImGui::Button(std::to_string(item->transform.scale.y).c_str())) {
-						// Code to modify position parameter x, not yet to add
+					if (ImGui::InputDouble("        ", &(tscale.y))) {
+						// enable writing mode
+						app->gui->writing = true;
+						// Code to modify scale parameter y, not yet to add
+						if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || app->input->GetKey(SDL_SCANCODE_TAB) == KEY_DOWN)
+						{
+							item->transform.scale = (tscale);
+							cout << "New scale y: " << item->transform.scale.y << endl;
+							//disable writing mode once we finished
+							app->gui->writing = false;
+						}
 					}
 					ImGui::Text("z: ");
 					ImGui::SameLine(); // Add spacing between the buttons
 
-					if (ImGui::Button(std::to_string(item->transform.scale.z).c_str())) {
-						// Code to modify position parameter x, not yet to add
+					if (ImGui::InputDouble("         ", &(tscale.z))) {
+						// enable writing mode
+						app->gui->writing = true;
+						// Code to modify scale parameter z, not yet to add
+						if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || app->input->GetKey(SDL_SCANCODE_TAB) == KEY_DOWN)
+						{
+							item->transform.scale = (tscale);
+							cout << "New scale z: " << item->transform.scale.z << endl;
+							//disable writing mode once we finished
+							app->gui->writing = false;
+						}
 					}
 					ImGui::EndTabItem();
 				}

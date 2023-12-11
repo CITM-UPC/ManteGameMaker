@@ -22,7 +22,7 @@
   imgui:x64-windows is already installed
   opengl:x64-windows is already installed
   sdl2:x64-windows is already installed
-  Total install time: 66.3 us
+  Total install time: 71.8 us
   imgui provides CMake targets:
   
     # this is heuristically generated, and may not be correct
@@ -66,11 +66,15 @@
   App.cpp
   Main.cpp
   ModuleEngineManager.cpp
-D:\repos\Github\MantelGameMaker\MantelGameEditor\ModuleEngineManager.cpp(159,14): warning C4305: 'initializing': truncation from 'double' to 'float'
-D:\repos\Github\MantelGameMaker\MantelGameEditor\ModuleEngineManager.cpp(169,14): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\repos\Github\MantelGameMaker\MantelGameEditor\ModuleEngineManager.cpp(163,14): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\repos\Github\MantelGameMaker\MantelGameEditor\ModuleEngineManager.cpp(173,14): warning C4305: 'initializing': truncation from 'double' to 'float'
   ModuleGUI.cpp
 D:\repos\Github\MantelGameMaker\MantelGameEditor\GuiMenuBar.h(146,81): warning C4390: ';': empty controlled statement found; is this the intent?
+  (compiling source file 'ModuleGUI.cpp')
+  
 D:\repos\Github\MantelGameMaker\MantelGameEditor\GuiMenuBar.h(149,81): warning C4390: ';': empty controlled statement found; is this the intent?
+  (compiling source file 'ModuleGUI.cpp')
+  
 D:\repos\Github\MantelGameMaker\MantelGameEditor\ModuleGUI.cpp(70,86): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 D:\repos\Github\MantelGameMaker\MantelGameEditor\ModuleGUI.cpp(70,54): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   ModuleInput.cpp
