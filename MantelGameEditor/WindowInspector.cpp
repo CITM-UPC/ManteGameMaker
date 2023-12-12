@@ -177,7 +177,7 @@ void WindowInspector::Update() {
 
 					for (size_t i = 0; i < item->mesh_ptr.size(); i++)
 					{
-						ImGui::Text("Information about mesh number: %d", i);
+						ImGui::Text("Information about mesh number: %d", i+1);
 						ImGui::Text("  Number of Verts: %d", item->mesh_ptr[i].get()->getNumVerts());
 						ImGui::Text("  Number of Indexs: %d", item->mesh_ptr[i].get()->getNumIndexs());
 						ImGui::Text("  Number of Triangles: %f\n\n", float((float)item->mesh_ptr[i].get()->getNumIndexs()/3));

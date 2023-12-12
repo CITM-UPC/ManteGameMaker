@@ -20,7 +20,17 @@ void WindowHierarchy::Update() {
             cout << item->GetName() << " selected" << endl;
             item->selected = true;
         }
-        //debug text to know if selected bool worked well
-        //ImGui::Text("       Selected: %s", item->selected ? "true" : "false");
+        if (item->selected)
+        {
+            int meshesAmount = 1;
+            ImGui::Indent(); // Opcional: Indentar para mostrar la jerarquía visualmente
+            for (auto& meshItem : item->mesh_ptr)
+            {
+                std:string newName = (std::string)(item->GetName()) + "_Mesh_" + std::to_string(meshesAmount);
+                ImGui::Selectable(newName.c_str());
+                ++meshesAmount;
+            }
+            ImGui::Unindent();
+        }
     }
 }
