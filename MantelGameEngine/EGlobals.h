@@ -6,8 +6,15 @@
 #include <glm/vec4.hpp>
 #include <glm/mat4x4.hpp>
 
+#include <iostream>
+
+using namespace std;
+
 
 #define CAP(n) ((n <= 0.0f) ? n=0.0f : (n >= 1.0f) ? n=1.0f : n=n)
+
+#define SCREEN_WIDTH 1483
+#define SCREEN_HEIGHT 857
 
 #define DEGTORAD 0.0174532925199432957f
 #define RADTODEG 57.295779513082320876f

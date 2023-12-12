@@ -1,15 +1,18 @@
 #pragma once
 #include "EGlobals.h"
 #include "GraphicObject.h"
+#include "Camera.h"
 
 #include "Transform.h"
 #include "Mesh.h"
 #include "Texture2D.h"
 
+struct Camera;
+
 class GameObject
 {
 public:
-	GameObject(const std::string &name, const std::string &path);
+	GameObject(const std::string &name, const std::string &path, bool emptyGameObject = false, bool camera = false);
 	~GameObject();
 
 
@@ -28,6 +31,10 @@ public:
 	bool visible = true;
 	bool showNormals = false;
 	
+	bool emptyGameObject = false;
+
+	bool camera = false;
+
 	//paths
 	std::string fbxPath;
 	std::string texturePath;
@@ -43,6 +50,27 @@ public:
 	{
 		return name.c_str();
 	}
+
+	// if gameobject is NOT an EMPTY game object do NOT use this function
+	list<GameObject*>* GetChildrenList()
+	{
+		if (!emptyGameObject)
+		{
+			cout << "WARNING: GetChildrenList() function called on a NON EMPTY game object, returned list is USELESS" << endl;
+		}
+		return (emptyGameObject ? &childrenList : nullptr);
+	}
+
+	// if gameobject is NOT an CAMERA do NOT use this function
+	Camera* GetCamera()
+	{
+		return (camera ? cameraGo : nullptr);
+	}
+
 private:
 	std::string name;
+
+	list<GameObject*> childrenList;
+
+	Camera* cameraGo;
 };

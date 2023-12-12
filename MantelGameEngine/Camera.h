@@ -4,6 +4,8 @@
 #include "Transform.h"
 #include "GameObject.h"
 
+class GameObject;
+
 struct Camera
 {
 public:

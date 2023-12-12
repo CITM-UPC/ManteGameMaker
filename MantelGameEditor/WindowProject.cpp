@@ -22,21 +22,27 @@ void WindowProject::DrawFileTree(const fs::path& path) {
             }
         }
         else {
-            if (ImGui::Selectable(entry.path().filename().string().c_str()), &selected)
+            //drag and drop doesnt work, so lets add items when double click
+            if (ImGui::Selectable(entry.path().filename().string().c_str(), &selected) && ImGui::IsMouseDoubleClicked(0))
             {
-                selectedFilePath = entry.path().string();
-                if (ImGui::BeginDragDropSource()) {
-                    ImGui::SetDragDropPayload("DRAG_FILE", selectedFilePath.c_str(), selectedFilePath.size() + 1);
-                    ImGui::Text("Dragging %s file", entry.path().filename().string().c_str());
-                    ImGui::EndDragDropSource();
-                }
+                cout << entry.path().filename().string().c_str() << " selected" << endl;
+                app->engineManager->GetEngine()->AddGameObject(new GameObject("", entry.path().string()));
             }
+            //if (ImGui::Selectable(entry.path().filename().string().c_str()), &selected)
+            //{
+
+            //    selectedFilePath = entry.path().string();
+            //    if (ImGui::BeginDragDropSource()) {
+            //        ImGui::SetDragDropPayload("DRAG_FILE", selectedFilePath.c_str(), selectedFilePath.size() + 1);
+            //        ImGui::Text("Dragging %s file", entry.path().filename().string().c_str());
+            //        ImGui::EndDragDropSource();
+            //    }
+            //}
         }
     }
 }
 
 void WindowProject::HandleDropEvent() {
-
 
     if (selectedFilePath.substr(selectedFilePath.find_last_of(".") + 1) == "fbx") {
         cout << ".fbx file detected" << endl;
@@ -66,11 +72,14 @@ void WindowProject::HandleDropEvent() {
 void WindowProject::Update() {
 
     fs::path assets_path = fs::current_path() / "Assets";
+    ////drag and drop from imgui not working
+    //if (selectedFilePath.size() != 0)
+    //{
+    //    cout << "Dragging and dropping " << selectedFilePath << " file." << endl;
+    //}
 
     if (ImGui::TreeNode("Assets")) {
         DrawFileTree(assets_path);
         ImGui::TreePop();
     }
-
-
 }

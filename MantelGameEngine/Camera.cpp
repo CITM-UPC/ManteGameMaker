@@ -4,7 +4,7 @@
 
 Camera::Camera() : fov(60), aspect(4.0 / 3.0), zNear(0.1), zFar(100), camOffset(3)
 {
-	transform.position = vec3(5, 2, -5);
+	transform.position = vec3(0, 1, -10);
 	UpdateLookAt();
 }
 

@@ -147,6 +147,10 @@ bool ModuleInput::PreUpdate()
 
 		//This here works (sends input to ImGui). Maybe should be in ModuleUI.cpp?
 		ImGui_ImplSDL2_ProcessEvent(&e);
+		if (e.type == SDL_DROPFILE)
+		{
+			//app->gui->w_project->HandleDropEvent();
+		}
 	}
 
 	if (quit == true || keyboard[SDL_SCANCODE_ESCAPE] == KEY_UP)

@@ -85,14 +85,25 @@ static bool MenuBarUpdate() {
 
             ImGui::Separator();
 
-            if (ImGui::MenuItem("Play", "Ctrl+P", false, false)) {          // Temporarly disabled because not implemented (..., false, false)
+            if (ImGui::MenuItem("Play", NULL, false, true)) {          // Temporarly disabled because not implemented (..., false, false)
                 // Code to execute when "Play" is selected
+                app->engineManager->GetEngine()->engineState = EngineState::PLAY;
+                for (auto& item : app->engineManager->GetEngine()->hierarchy)
+                {
+                    if (item->camera)
+                    {
+                        app->engineManager->GetEngine()->actualCamera = item->GetCamera();
+                        break;
+                    }
+                }
             }
-            if (ImGui::MenuItem("Pause", "Ctrl+Shift+P", false, false)) {          // Temporarly disabled because not implemented (..., false, false)
+            if (ImGui::MenuItem("Pause", NULL, false, false)) {          // Temporarly disabled because not implemented (..., false, false)
                 // Code to execute when "Pause" is selected
             }
-            if (ImGui::MenuItem("Step", "Ctrl+Alt+P", false, false)) {          // Temporarly disabled because not implemented (..., false, false)
-                // Code to execute when "Step" is selected
+            if (ImGui::MenuItem("Stop", NULL, false, true)) {          // Temporarly disabled because not implemented (..., false, false)
+                // Code to execute when "Stop" is selected
+                app->engineManager->GetEngine()->engineState = EngineState::EDITOR;
+                app->engineManager->GetEngine()->actualCamera = &app->engineManager->GetEngine()->camera;
             }
 
             ImGui::Separator();
@@ -156,25 +167,55 @@ static bool MenuBarUpdate() {
 
         if (ImGui::BeginMenu("GameObjects")) {
 
-            if (ImGui::MenuItem("Create Empty", NULL, false, false))          // Temporarly disabled because not implemented (..., false, false)
+            if (ImGui::MenuItem("Create Empty", NULL, false, true))          // Temporarly disabled because not implemented (..., false, false)
             {
-                // Code to execute when "Create Empty" is selected 
+                GameObject* emptyGo = new GameObject("EmptyObject", "");
+                emptyGo->visible = false;
+                app->engineManager->GetEngine()->AddGameObject(emptyGo);
             }
 
-            if (ImGui::BeginMenu("3D Object")) {
-                if (ImGui::MenuItem("Plane", NULL, false, false))          // Temporarly disabled because not implemented (..., false, false)
+            if (ImGui::MenuItem("Create Parent", NULL, false, true))          // Temporarly disabled because not implemented (..., false, false)
+            {
+                GameObject* emptyGo = new GameObject("EmptyParent", "", true);
+                emptyGo->visible = false;
+                app->engineManager->GetEngine()->AddGameObject(emptyGo);
+                
+                for (auto& item : app->engineManager->GetEngine()->hierarchy)
                 {
-                    // Code to execute when "Plane" is selected
+                    if (item->selected)
+                    {
+                        //add item as a child of parent created
+                        emptyGo->GetChildrenList()->push_back(item);
+                    }
+                    //remove item from hierarchy principal list
+                    app->engineManager->GetEngine()->hierarchy.remove(item);
+                    break;
                 }
-                if (ImGui::MenuItem("Cube", NULL, false, false))          // Temporarly disabled because not implemented (..., false, false)
-                {
-                    // Code to execute when "Cube" is selected
-                }
-                if (ImGui::MenuItem("Sphere", NULL, false, false))          // Temporarly disabled because not implemented (..., false, false)
-                {
-                    // Code to execute when "Sphere" is selected
-                }
+            }
 
+            if (ImGui::MenuItem("Create Camera", NULL, false, true))          // Temporarly disabled because not implemented (..., false, false)
+            {
+                GameObject* cameraGo = new GameObject("Camera", "", false, true);
+                app->engineManager->GetEngine()->AddGameObject(cameraGo);
+            }
+
+            GameObject* tGo = new GameObject("", "Assets/BakerHouse.fbx");
+            if (ImGui::BeginMenu("3D Object")) {
+                if (ImGui::MenuItem("Plane", NULL, false, true))          // Temporarly disabled because not implemented (..., false, false)
+                {
+                    tGo = new GameObject("Plane", "Assets/Primals/Plane.fbx");
+                    app->engineManager->GetEngine()->AddGameObject(tGo);
+                }
+                if (ImGui::MenuItem("Cube", NULL, false, true))          // Temporarly disabled because not implemented (..., false, false)
+                {
+                    tGo = new GameObject("Cube", "Assets/Primals/Cube.fbx");
+                    app->engineManager->GetEngine()->AddGameObject(tGo);
+                }
+                if (ImGui::MenuItem("Sphere", NULL, false, true))          // Temporarly disabled because not implemented (..., false, false)
+                {
+                    tGo = new GameObject("Sphere", "Assets/Primals/Sphere.fbx");
+                    app->engineManager->GetEngine()->AddGameObject(tGo);
+                }
                 ImGui::EndMenu();
             }
 

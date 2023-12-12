@@ -7,11 +7,23 @@
 #include "Camera.h"
 #include "GameObject.h"
 
+enum EngineState
+{
+	EDITOR = 0,
+	PLAY,
+	PAUSE,
+	STOP
+
+};
 
 class MyGameEngine
 {
 public:
+	Camera* actualCamera;
+
 	Camera camera;
+
+	EngineState engineState = EngineState:: EDITOR;
 
 	MyGameEngine();
 	void step(std::chrono::duration<double> dt);

@@ -1,10 +1,13 @@
 #include "GameObject.h"
 #include <regex>
 #include <list>
-GameObject::GameObject(const std::string &name, const std::string &path)
+#include <iostream>
+
+using namespace std;
+
+GameObject::GameObject(const std::string& name, const std::string& path, bool emptyGameObject, bool camera)
 {
     this->fbxPath = path;
-    this->texturePath = Mesh::getTexturePathFromFbxPath(path);
     if (name.empty()) {
         std::string correctedPath = path;
         std::regex_replace(correctedPath, std::regex("/"), "\\");
@@ -24,8 +27,28 @@ GameObject::GameObject(const std::string &name, const std::string &path)
         this->name = name;
     }
 
-    this->mesh_ptr = Mesh::loadFromFile(path);
-    this->texture = this->mesh_ptr[0].get()->texture;
+    if (!path.empty())
+    {
+        this->texturePath = Mesh::getTexturePathFromFbxPath(path);
+        this->mesh_ptr = Mesh::loadFromFile(path);
+        this->texture = this->mesh_ptr[0].get()->texture;
+    }
+    else
+    {
+        cout << "Creating GameObject with no fbx" << endl;
+    }
+    this->emptyGameObject = emptyGameObject;
+    if (camera)
+    {
+        this->camera = camera;
+        Camera tCamera;
+        tCamera.fov = 60;
+        tCamera.aspect = static_cast<double>(SCREEN_WIDTH) / SCREEN_HEIGHT;
+        tCamera.zNear = 0.1;
+        tCamera.zFar = 100;
+
+        this->cameraGo = &tCamera;
+    }
 }
 
 GameObject::~GameObject()
@@ -38,24 +61,48 @@ void GameObject::Draw()
     {
         GraphicObject house;
 
-        for (const auto& item : this->mesh_ptr)
+        if (!emptyGameObject)
         {
-            GraphicObject mesh(item);
-            // set the position from gameobject to the meshes
-            mesh.translate(transform.position - mesh.pos());
-            // set the rotation from gameobject to the meshes
-            mesh.rotate(transform.rotation.x,vec3(1,0,0));
-            mesh.rotate(transform.rotation.y,vec3(0,1,0));
-            mesh.rotate(transform.rotation.z,vec3(0,0,1));
-            // set the scale from gameobject to the meshes
-            mesh.scale(transform.scale);
 
-            house.addChild(std::move(mesh));
+            for (const auto& item : this->mesh_ptr)
+            {
+                GraphicObject mesh(item);
+                // set the position from gameobject to the meshes
+                mesh.translate(transform.position - mesh.pos());
+                // set the rotation from gameobject to the meshes
+                mesh.rotate(transform.rotation.x, vec3(1, 0, 0));
+                mesh.rotate(transform.rotation.y, vec3(0, 1, 0));
+                mesh.rotate(transform.rotation.z, vec3(0, 0, 1));
+                // set the scale from gameobject to the meshes
+                mesh.scale(transform.scale);
+
+                house.addChild(std::move(mesh));
+            }
+
+            GraphicObject root;
+            root.addChild(std::move(house));
+
+            root.paint();
         }
+        else
+        {
+            for (const auto& child : this->childrenList)
+            {
+                for (const auto& item : child->mesh_ptr)
+                {
+                    GraphicObject mesh(item);
+                    // set the position from gameobject to the meshes
+                    mesh.translate(transform.position - mesh.pos());
+                    // set the rotation from gameobject to the meshes
+                    mesh.rotate(transform.rotation.x, vec3(1, 0, 0));
+                    mesh.rotate(transform.rotation.y, vec3(0, 1, 0));
+                    mesh.rotate(transform.rotation.z, vec3(0, 0, 1));
+                    // set the scale from gameobject to the meshes
+                    mesh.scale(transform.scale);
 
-        GraphicObject root;
-        root.addChild(std::move(house));
-        
-        root.paint();
+                    house.addChild(std::move(mesh));
+                }
+            }
+        }
     }
 }

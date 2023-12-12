@@ -14,6 +14,8 @@
 #include "Transform.h"
 #include "GameObject.h"
 
+#include "EGlobals.h"
+
 #include "GraphicObject.h"
 #include <iostream>
 
@@ -72,10 +74,18 @@ static void drawGrid(int grid_size, int grid_step) {
 
 void MyGameEngine::Start()
 {
+    //default fbx loaded
     GameObject* BakerHouse = new GameObject("BakerHouse", "Assets/BakerHouse.fbx");
     AddGameObject(BakerHouse);
-    //GameObject* BakerHouse2 = new GameObject("BakerHouse", "Assets\\BakerHouse.fbx");
-    //AddGameObject(BakerHouse2);
+    //default play camera
+    GameObject* playCamera = new GameObject("Camera", "", false, true);
+    AddGameObject(playCamera);
+    //playCamera->GetCamera()->fov = 60;
+    //playCamera->GetCamera()->aspect = static_cast<double>(SCREEN_WIDTH) / SCREEN_HEIGHT;
+    //playCamera->GetCamera()->zNear = 0.1;
+    //playCamera->GetCamera()->zFar = 100;
+
+    actualCamera = &camera;
 }
 
 
@@ -125,42 +135,39 @@ void MyGameEngine::DeleteGameObject(GameObject* go)
 
 
 void MyGameEngine::render() {
-    glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();
-    gluPerspective(camera.fov, camera.aspect, camera.zNear, camera.zFar);
 
-    glMatrixMode(GL_MODELVIEW);
-    glLoadIdentity();
-    gluLookAt(camera.transform.position.x, camera.transform.position.y, camera.transform.position.z,
-        camera.lookAtPos.x, camera.lookAtPos.y, camera.lookAtPos.z,
-        camera.transform.up.x, camera.transform.up.y, camera.transform.up.z);
 
-    drawGrid(100, 1);
-    drawAxis();
-    
+        glMatrixMode(GL_PROJECTION);
+        glLoadIdentity();
+        gluPerspective(actualCamera->fov, actualCamera->aspect, actualCamera->zNear, actualCamera->zFar);
+
+        glMatrixMode(GL_MODELVIEW);
+        glLoadIdentity();
+        gluLookAt(actualCamera->transform.position.x, actualCamera->transform.position.y, actualCamera->transform.position.z,
+            actualCamera->lookAtPos.x, actualCamera->lookAtPos.y, actualCamera->lookAtPos.z,
+            actualCamera->transform.up.x, actualCamera->transform.up.y, actualCamera->transform.up.z);
+
+        drawGrid(100, 1);
+        drawAxis();
+
 #pragma region Draw Sandbox
 
+    if (engineState == EngineState::EDITOR)
+    {
 
+
+    }
+    if (engineState == EngineState::PLAY)
+    {
+
+    }
+
+    //out of conditions cz always renders
     //draw using GameObject class
     for (const auto& item : hierarchy)
     {
         item->Draw();
     }
-
-    //static auto mesh_ptrs = Mesh::loadFromFile("Assets/BakerHouse.fbx");
-    //
-    //GraphicObject mesh1(mesh_ptrs.front());
-    //GraphicObject mesh2(mesh_ptrs.back());
-
-    //GraphicObject house;
-
-    //house.addChild( std::move(mesh1));
-    //house.addChild( std::move(mesh2));
-
-    //GraphicObject root;
-    //root.addChild(std::move(house));
-
-    //root.paint();
 
 #pragma endregion
 

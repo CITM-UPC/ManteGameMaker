@@ -23,13 +23,55 @@ void WindowHierarchy::Update() {
         if (item->selected)
         {
             int meshesAmount = 1;
-            ImGui::Indent(); // Opcional: Indentar para mostrar la jerarquía visualmente
+            ImGui::Indent(); 
             for (auto& meshItem : item->mesh_ptr)
             {
                 std:string newName = (std::string)(item->GetName()) + "_Mesh_" + std::to_string(meshesAmount);
                 ImGui::Selectable(newName.c_str());
                 ++meshesAmount;
             }
+
+            if (item->emptyGameObject && !item->GetChildrenList()->empty())
+            {
+
+
+
+                /////////////////////////////////////////////////////////////////////////////////////
+                 
+
+                for (auto& item2 : *item->GetChildrenList())
+                {
+                    if (ImGui::Selectable(item2->GetName(), item2->selected))
+                    {
+                        // Unselect all other items
+                        for (auto& otherItem2 : *item->GetChildrenList())
+                        {
+                            if (&otherItem2 != &item2)
+                            {
+                                otherItem2->selected = false;
+                                //cout << item->GetName() << " unselected" << endl;
+                            }
+                        }
+                        cout << item2->GetName() << " selected" << endl;
+                        item2->selected = true;
+                    }
+                    if (item2->selected)
+                    {
+                        int meshesAmount = 1;
+                        ImGui::Indent();
+                        for (auto& meshItem : item2->mesh_ptr)
+                        {
+                        std::string newName = (std::string)(item2->GetName()) + "_Mesh_" + std::to_string(meshesAmount);
+                            ImGui::Selectable(newName.c_str());
+                            ++meshesAmount;
+                        }
+                        ImGui::Unindent();
+                    }
+                }
+                
+                /////////////////////////////////////////////////////////////////////////////////////
+            }
+
             ImGui::Unindent();
         }
     }
