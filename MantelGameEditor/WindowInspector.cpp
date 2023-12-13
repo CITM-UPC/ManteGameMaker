@@ -30,10 +30,15 @@ void WindowInspector::Update() {
 						if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || app->input->GetKey(SDL_SCANCODE_TAB) == KEY_DOWN)
 						{
 							item->transform.MoveTo(tpos);
-							for (const auto& mesh : item->mesh_ptr)
+							if (item->camera && app->engineManager->GetEngine()->engineState == EngineState::PLAY)
 							{
-								mesh.get()->boundingBoxMin -= tpos;
+								item->GetCamera()->transform = item->transform;
+								app->engineManager->GetEngine()->actualCamera->transform = item->transform;
 							}
+							//for (const auto& mesh : item->mesh_ptr)
+							//{
+							//	mesh.get()->boundingBoxMin -= tpos;
+							//}
 							cout << "New position x: " << item->transform.position.x << endl;
 							//disable writing mode once we finished
 							app->gui->writing = false;
@@ -49,6 +54,13 @@ void WindowInspector::Update() {
 						if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || app->input->GetKey(SDL_SCANCODE_TAB) == KEY_DOWN)
 						{
 							item->transform.MoveTo(tpos);
+
+							if (item->camera && app->engineManager->GetEngine()->engineState == EngineState::PLAY)
+							{
+								item->GetCamera()->transform = item->transform;
+								app->engineManager->GetEngine()->actualCamera->transform = item->transform;
+							}
+
 							cout << "New position y: " << item->transform.position.y << endl;
 							//disable writing mode once we finished
 							app->gui->writing = false;
@@ -64,6 +76,14 @@ void WindowInspector::Update() {
 						if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || app->input->GetKey(SDL_SCANCODE_TAB) == KEY_DOWN)
 						{
 							item->transform.MoveTo(tpos);
+
+							if (item->camera && app->engineManager->GetEngine()->engineState == EngineState::PLAY)
+							{
+								item->GetCamera()->transform = item->transform;
+								app->engineManager->GetEngine()->actualCamera->transform = item->transform;
+							}
+
+
 							cout << "New position z: " << item->transform.position.z << endl;
 							//disable writing mode once we finished
 							app->gui->writing = false;
@@ -85,6 +105,14 @@ void WindowInspector::Update() {
 						if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || app->input->GetKey(SDL_SCANCODE_TAB) == KEY_DOWN)
 						{
 							item->transform.rotation.x = trot.x;
+
+							if (item->camera && app->engineManager->GetEngine()->engineState == EngineState::PLAY)
+							{
+								item->GetCamera()->transform = item->transform;
+								app->engineManager->GetEngine()->actualCamera->transform = item->transform;
+							}
+
+
 							cout << "New rotation x: " << item->transform.rotation.x << endl;
 							//disable writing mode once we finished
 							app->gui->writing = false;
@@ -100,6 +128,14 @@ void WindowInspector::Update() {
 						if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || app->input->GetKey(SDL_SCANCODE_TAB) == KEY_DOWN)
 						{
 							item->transform.rotation.y = trot.y;
+
+							if (item->camera && app->engineManager->GetEngine()->engineState == EngineState::PLAY)
+							{
+								item->GetCamera()->transform = item->transform;
+								app->engineManager->GetEngine()->actualCamera->transform = item->transform;
+							}
+
+
 							cout << "New rotation y: " << item->transform.rotation.y << endl;
 							//disable writing mode once we finished
 							app->gui->writing = false;
@@ -115,6 +151,13 @@ void WindowInspector::Update() {
 						if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || app->input->GetKey(SDL_SCANCODE_TAB) == KEY_DOWN)
 						{
 							item->transform.rotation.z = trot.z;
+
+							if (item->camera && app->engineManager->GetEngine()->engineState == EngineState::PLAY)
+							{
+								item->GetCamera()->transform = item->transform;
+								app->engineManager->GetEngine()->actualCamera->transform = item->transform;
+							}
+
 							cout << "New rotation z: " << item->transform.rotation.z << endl;
 							//disable writing mode once we finished
 							app->gui->writing = false;
@@ -171,6 +214,120 @@ void WindowInspector::Update() {
 							app->gui->writing = false;
 						}
 					}
+
+					if (item->camera)
+					{
+						ImGui::Text("Camera");
+						// Create three squares with "0" inside
+						ImGui::Text("FOV: ");
+						ImGui::SameLine(); // Ensure items are on the same line
+						//Position parameters
+						double fov = app->engineManager->GetEngine()->actualCamera->fov;
+						if (ImGui::InputDouble("          ", &fov)) {
+							// enable writing mode
+							app->gui->writing = true;
+							// Code to modify position parameter x, not yet to add
+							if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || app->input->GetKey(SDL_SCANCODE_TAB) == KEY_DOWN)
+							{
+								if (item->camera && app->engineManager->GetEngine()->engineState == EngineState::PLAY)
+								{
+									item->GetCamera()->fov = fov;
+									app->engineManager->GetEngine()->actualCamera->fov = fov;
+								}
+								cout << "New fov: " << fov << endl;
+								//disable writing mode once we finished
+								app->gui->writing = false;
+							}
+						}
+
+
+						ImGui::Text("Aspect: ");
+						ImGui::SameLine(); // Ensure items are on the same line
+						//Position parameters
+						double aspect = app->engineManager->GetEngine()->actualCamera->aspect;
+						if (ImGui::InputDouble("           ", &aspect)) {
+							// enable writing mode
+							app->gui->writing = true;
+							// Code to modify position parameter x, not yet to add
+							if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || app->input->GetKey(SDL_SCANCODE_TAB) == KEY_DOWN)
+							{
+								if (item->camera && app->engineManager->GetEngine()->engineState == EngineState::PLAY)
+								{
+									item->GetCamera()->aspect = aspect;
+									app->engineManager->GetEngine()->actualCamera->aspect = aspect;
+								}
+								cout << "New aspect: " << aspect << endl;
+								//disable writing mode once we finished
+								app->gui->writing = false;
+							}
+						}
+
+						ImGui::Text("zNear: ");
+						ImGui::SameLine(); // Ensure items are on the same line
+						//Position parameters
+						double zNear = app->engineManager->GetEngine()->actualCamera->zNear;
+						if (ImGui::InputDouble("            ", &zNear)) {
+							// enable writing mode
+							app->gui->writing = true;
+							// Code to modify position parameter x, not yet to add
+							if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || app->input->GetKey(SDL_SCANCODE_TAB) == KEY_DOWN)
+							{
+								if (item->camera && app->engineManager->GetEngine()->engineState == EngineState::PLAY)
+								{
+									item->GetCamera()->zNear = zNear;
+									app->engineManager->GetEngine()->actualCamera->zNear = zNear;
+								}
+								cout << "New zNear: " << zNear << endl;
+								//disable writing mode once we finished
+								app->gui->writing = false;
+							}
+						}
+
+						ImGui::Text("zFar: ");
+						ImGui::SameLine(); // Ensure items are on the same line
+						//Position parameters
+						double zFar = app->engineManager->GetEngine()->actualCamera->zFar;
+						if (ImGui::InputDouble("             ", &zFar)) {
+							// enable writing mode
+							app->gui->writing = true;
+							// Code to modify position parameter x, not yet to add
+							if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || app->input->GetKey(SDL_SCANCODE_TAB) == KEY_DOWN)
+							{
+								if (item->camera && app->engineManager->GetEngine()->engineState == EngineState::PLAY)
+								{
+									item->GetCamera()->zFar = zFar;
+									app->engineManager->GetEngine()->actualCamera->zFar = zFar;
+								}
+								cout << "New zFar: " << zFar << endl;
+								//disable writing mode once we finished
+								app->gui->writing = false;
+							}
+						}
+
+						ImGui::Text("camOffset: ");
+						ImGui::SameLine(); // Ensure items are on the same line
+						//Position parameters
+						double camOffset = app->engineManager->GetEngine()->actualCamera->camOffset;
+						if (ImGui::InputDouble("              ", &camOffset)) {
+							// enable writing mode
+							app->gui->writing = true;
+							// Code to modify position parameter x, not yet to add
+							if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || app->input->GetKey(SDL_SCANCODE_TAB) == KEY_DOWN)
+							{
+								if (item->camera && app->engineManager->GetEngine()->engineState == EngineState::PLAY)
+								{
+									item->GetCamera()->camOffset = camOffset;
+									app->engineManager->GetEngine()->actualCamera->camOffset = camOffset;
+								}
+								cout << "New camOffset: " << camOffset << endl;
+								//disable writing mode once we finished
+								app->gui->writing = false;
+							}
+						}
+					}
+
+
+
 					ImGui::EndTabItem();
 				}
 

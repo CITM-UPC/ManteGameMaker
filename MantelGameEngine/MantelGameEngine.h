@@ -21,7 +21,7 @@ class MyGameEngine
 public:
 	Camera* actualCamera;
 
-	Camera camera;
+	Camera camera, cameraStatic;
 
 	EngineState engineState = EngineState:: EDITOR;
 
@@ -29,6 +29,9 @@ public:
 	void step(std::chrono::duration<double> dt);
 	void Start();
 	void render();
+
+	//restart cam options
+	void ResetActualCamera();
 
 	// adds a gameobject, check out bools
 	void AddGameObject(GameObject* go, bool isChildren = false, GameObject* parentGo = nullptr);

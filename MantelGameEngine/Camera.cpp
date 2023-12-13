@@ -2,7 +2,7 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
-Camera::Camera() : fov(60), aspect(4.0 / 3.0), zNear(0.1), zFar(100), camOffset(3)
+Camera::Camera() : fov(60), aspect(4.0 / 3.0), zNear(0.1), zFar(100), camOffset(10)
 {
 	transform.position = vec3(0, 1, -10);
 	UpdateLookAt();

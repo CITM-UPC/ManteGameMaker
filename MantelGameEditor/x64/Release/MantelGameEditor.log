@@ -21,7 +21,7 @@
   imgui:x64-windows is already installed
   opengl:x64-windows is already installed
   sdl2:x64-windows is already installed
-  Total install time: 83.5 us
+  Total install time: 58 us
   imgui provides CMake targets:
   
     # this is heuristically generated, and may not be correct
@@ -62,6 +62,8 @@
           $<IF:$<TARGET_EXISTS:SDL2::SDL2>,SDL2::SDL2,SDL2::SDL2-static>
       )
   
+  Scanning sources for module dependencies...
+  pugixml.cpp
   App.cpp
   FrameBuffer.cpp
 D:\repos\Github\MantelGameMaker\MantelGameEditor\FrameBuffer.cpp(51,48): warning C4244: 'argument': conversion from 'float' to 'GLsizei', possible loss of data
@@ -72,12 +74,16 @@ D:\repos\Github\MantelGameMaker\MantelGameEditor\FrameBuffer.cpp(57,62): warning
   log.cpp
   Main.cpp
   ModuleEngineManager.cpp
-D:\repos\Github\MantelGameMaker\MantelGameEditor\ModuleEngineManager.cpp(159,14): warning C4305: 'initializing': truncation from 'double' to 'float'
-D:\repos\Github\MantelGameMaker\MantelGameEditor\ModuleEngineManager.cpp(169,14): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\repos\Github\MantelGameMaker\MantelGameEditor\ModuleEngineManager.cpp(330,14): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\repos\Github\MantelGameMaker\MantelGameEditor\ModuleEngineManager.cpp(340,14): warning C4305: 'initializing': truncation from 'double' to 'float'
   ModuleEvents.cpp
   ModuleGUI.cpp
-D:\repos\Github\MantelGameMaker\MantelGameEditor\GuiMenuBar.h(146,81): warning C4390: ';': empty controlled statement found; is this the intent?
-D:\repos\Github\MantelGameMaker\MantelGameEditor\GuiMenuBar.h(149,81): warning C4390: ';': empty controlled statement found; is this the intent?
+D:\repos\Github\MantelGameMaker\MantelGameEditor\GuiMenuBar.h(167,81): warning C4390: ';': empty controlled statement found; is this the intent?
+  (compiling source file 'ModuleGUI.cpp')
+  
+D:\repos\Github\MantelGameMaker\MantelGameEditor\GuiMenuBar.h(170,81): warning C4390: ';': empty controlled statement found; is this the intent?
+  (compiling source file 'ModuleGUI.cpp')
+  
 D:\repos\Github\MantelGameMaker\MantelGameEditor\ModuleGUI.cpp(70,86): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 D:\repos\Github\MantelGameMaker\MantelGameEditor\ModuleGUI.cpp(70,54): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   ModuleRenderer.cpp
@@ -92,8 +98,8 @@ D:\repos\Github\MantelGameMaker\MantelGameEditor\WindowScene.cpp(11,19): warning
 D:\repos\Github\MantelGameMaker\MantelGameEditor\WindowScene.cpp(26,3): warning C4312: 'type cast': conversion from 'GLuint' to 'void *' of greater size
   WindowSettings.cpp
   Generating code
-  Previous IPDB not found, fall back to full compilation.
-  All 2011 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Previous IPDB was built with incompatible compiler, fall back to full compilation.
+  All 2539 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
   Finished generating code
   MantelGameEditor.vcxproj -> D:\repos\Github\MantelGameMaker\x64\Release\MantelGameEditor.exe
   D:\repos\Github\MantelGameMaker\\vcpkg\installed\x64-windows\bin\assimp-vc143-mt.dll

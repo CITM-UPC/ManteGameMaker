@@ -88,6 +88,10 @@ static bool MenuBarUpdate() {
             }
 
             ImGui::Separator();
+            if (ImGui::MenuItem("Reset Camera", NULL, false, true)) {          // Temporarly disabled because not implemented (..., false, false)
+                app->engineManager->GetEngine()->ResetActualCamera();
+            }
+            ImGui::Separator();
 
             if (ImGui::MenuItem("Play", NULL, false, true)) {          // Temporarly disabled because not implemented (..., false, false)
                 // Code to execute when "Play" is selected
@@ -96,7 +100,9 @@ static bool MenuBarUpdate() {
                 {
                     if (item->camera)
                     {
-                        app->engineManager->GetEngine()->actualCamera = item->GetCamera();
+                        Camera* camt = item->GetCamera();
+                        camt = &app->engineManager->GetEngine()->cameraStatic;
+                        app->engineManager->GetEngine()->actualCamera = camt;
                         break;
                     }
                 }
@@ -327,6 +333,10 @@ static bool MenuBarUpdate() {
                 ImGui::Bullet();
                 if (ImGui::SmallButton("glew (v2.0)")) {
                     app->RequestBrowser("http://glew.sourceforge.net/");
+                }
+                ImGui::Bullet();
+                if (ImGui::SmallButton("pugixml (v1.0)")) {
+                    app->RequestBrowser("https://pugixml.org/docs/quickstart.html");
                 }
                 ImGui::Bullet();
                 if (ImGui::SmallButton("MathGeoLib (v1.5)")) {

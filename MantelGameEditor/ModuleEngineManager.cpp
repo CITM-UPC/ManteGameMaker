@@ -130,6 +130,16 @@ bool ModuleEngineManager::PreUpdate() {
 		engine.deleteList = false;
 	}
 
+	//gameobjects dont have update so...
+	//cam Transform will be GameObject of cam tranform
+	//for (auto& item : engine.allGameObjects)
+	//{
+	//	if (item->camera)
+	//	{
+	//		item->GetCamera()->transform = item->transform;
+	//	}
+	//}
+
 	if (app->gui->writing)
 	{
 		return true;
@@ -417,6 +427,14 @@ void ModuleEngineManager::LoadTreeLoop(GameObject* parent, pugi::xml_node& nodeG
 	}
 
 	tgo->texturePath = nodeGo.attribute("texturePath").as_string();
+
+	//we apply it to the recently created GameObject
+	tgo->texture = nullptr;
+	tgo->texture = make_shared<Texture2D>(tgo->texturePath);
+	for (size_t i = 0; i < tgo->mesh_ptr.size(); i++)
+	{
+		tgo->mesh_ptr[i].get()->texture = tgo->texture;
+	}
 
 	for (auto& childNode : nodeGo.children("GameObject"))
 	{

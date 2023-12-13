@@ -80,14 +80,26 @@ void MyGameEngine::Start()
     //default play camera
     GameObject* playCamera = new GameObject("Camera", "", false, true);
     AddGameObject(playCamera);
-    //playCamera->GetCamera()->fov = 60;
-    //playCamera->GetCamera()->aspect = static_cast<double>(SCREEN_WIDTH) / SCREEN_HEIGHT;
-    //playCamera->GetCamera()->zNear = 0.1;
-    //playCamera->GetCamera()->zFar = 100;
-
+    
+    cameraStatic = camera;
     actualCamera = &camera;
 }
 
+void MyGameEngine::ResetActualCamera()
+{
+    actualCamera->transform.position = vec3(0,1,-10);
+    actualCamera->transform.rotation = vec3(0, 0, 0);
+    actualCamera->transform.scale = vec3(1, 1, 1);
+    //actualCamera->transform.forward = vec3(0, 0, 0);
+    //actualCamera->transform.right = vec3(1, 1, 1);
+    //actualCamera->transform.up = vec3(0, 0, 0);
+    actualCamera->fov = 60;
+    actualCamera->aspect = static_cast<double>(SCREEN_WIDTH) / SCREEN_HEIGHT;
+    actualCamera->zNear = 0.1;
+    actualCamera->zFar = 100;
+    actualCamera->camOffset = 10;
+    actualCamera->UpdateLookAt();
+}
 
 void MyGameEngine::AddGameObject(GameObject* go, bool isChildren, GameObject* parentGo)
 {

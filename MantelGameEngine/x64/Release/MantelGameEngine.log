@@ -25,7 +25,7 @@
   glew:x64-windows is already installed
   glm:x64-windows is already installed
   opengl:x64-windows is already installed
-  Total install time: 105 us
+  Total install time: 133 us
   assimp provides CMake targets:
   
     # this is heuristically generated, and may not be correct
@@ -79,207 +79,223 @@
   CubeVertexBuffer.cpp
   CubeWireframeIVBO.cpp
   GameObject.cpp
-D:\repos\Github\MantelGameMaker\MantelGameEngine\GameObject.cpp(10,14): warning C4834: discarding return value of function with 'nodiscard' attribute
+D:\repos\Github\MantelGameMaker\MantelGameEngine\GameObject.cpp(18,14): warning C4834: discarding return value of function with [[nodiscard]] attribute
   GraphicObject.cpp
   Mesh.cpp
-D:\AppsRandom\Microsoft\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.37.32822\include\xutility(240,76): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
-D:\AppsRandom\Microsoft\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.37.32822\include\xutility(250,14): message : see reference to function template instantiation '_Ty *std::construct_at<_Ty,Mesh::Formats,Mesh::V3T2*,unsigned __int64,unsigned int*,unsigned __int64,0x0>(_Ty *const ,Mesh::Formats &&,Mesh::V3T2 *&&,unsigned __int64 &&,unsigned int *&&,unsigned __int64 &&) noexcept(<expr>)' being compiled
-          with
-          [
-              _Ty=Mesh
-          ]
-D:\AppsRandom\Microsoft\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.37.32822\include\memory(2104,18): message : see reference to function template instantiation 'void std::_Construct_in_place<_Ty,Mesh::Formats,Mesh::V3T2*,unsigned __int64,unsigned int*,unsigned __int64>(_Ty &,Mesh::Formats &&,Mesh::V3T2 *&&,unsigned __int64 &&,unsigned int *&&,unsigned __int64 &&) noexcept(false)' being compiled
-          with
-          [
-              _Ty=Mesh
-          ]
-D:\AppsRandom\Microsoft\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.37.32822\include\memory(2779,46): message : see reference to function template instantiation 'std::_Ref_count_obj2<Mesh>::_Ref_count_obj2<_Ty,Mesh::V3T2*,unsigned __int64,unsigned int*,unsigned __int64>(_Ty &&,Mesh::V3T2 *&&,unsigned __int64 &&,unsigned int *&&,unsigned __int64 &&)' being compiled
-          with
-          [
-              _Ty=Mesh::Formats
-          ]
-D:\repos\Github\MantelGameMaker\MantelGameEngine\Mesh.cpp(79,26): message : see reference to function template instantiation 'std::shared_ptr<Mesh> std::make_shared<Mesh,Mesh::Formats,_Ty*,unsigned __int64,unsigned int*,unsigned __int64>(Mesh::Formats &&,_Ty *&&,unsigned __int64 &&,unsigned int *&&,unsigned __int64 &&)' being compiled
+D:\AppsRandom\Microsoft\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xutility(241,76): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+  (compiling source file 'Mesh.cpp')
+  D:\AppsRandom\Microsoft\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xutility(241,76):
+  the template instantiation context (the oldest one first) is
+  	D:\repos\Github\MantelGameMaker\MantelGameEngine\Mesh.cpp(97,26):
+  	see reference to function template instantiation 'std::shared_ptr<Mesh> std::make_shared<Mesh,Mesh::Formats,_Ty*,unsigned __int64,unsigned int*,unsigned __int64>(Mesh::Formats &&,_Ty *&&,unsigned __int64 &&,unsigned int *&&,unsigned __int64 &&)' being compiled
           with
           [
               _Ty=Mesh::V3T2
           ]
-D:\AppsRandom\Microsoft\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.37.32822\include\xutility(254,82): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
-D:\AppsRandom\Microsoft\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.37.32822\include\xutility(241,90): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
-D:\AppsRandom\Microsoft\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.37.32822\include\xutility(250,14): message : see reference to function template instantiation '_Ty *std::construct_at<_Ty,Mesh::Formats,Mesh::V3T2*,unsigned __int64,unsigned int*,unsigned __int64,0x0>(_Ty *const ,Mesh::Formats &&,Mesh::V3T2 *&&,unsigned __int64 &&,unsigned int *&&,unsigned __int64 &&) noexcept(false)' being compiled
+  	D:\AppsRandom\Microsoft\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\memory(2769,46):
+  	see reference to function template instantiation 'std::_Ref_count_obj2<Mesh>::_Ref_count_obj2<_Ty,Mesh::V3T2*,unsigned __int64,unsigned int*,unsigned __int64>(_Ty &&,Mesh::V3T2 *&&,unsigned __int64 &&,unsigned int *&&,unsigned __int64 &&)' being compiled
+          with
+          [
+              _Ty=Mesh::Formats
+          ]
+  	D:\AppsRandom\Microsoft\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\memory(2094,18):
+  	see reference to function template instantiation 'void std::_Construct_in_place<_Ty,Mesh::Formats,Mesh::V3T2*,unsigned __int64,unsigned int*,unsigned __int64>(_Ty &,Mesh::Formats &&,Mesh::V3T2 *&&,unsigned __int64 &&,unsigned int *&&,unsigned __int64 &&) noexcept(false)' being compiled
           with
           [
               _Ty=Mesh
           ]
-D:\AppsRandom\Microsoft\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.37.32822\include\memory(2104,18): message : see reference to function template instantiation 'void std::_Construct_in_place<_Ty,Mesh::Formats,Mesh::V3T2*,unsigned __int64,unsigned int*,unsigned __int64>(_Ty &,Mesh::Formats &&,Mesh::V3T2 *&&,unsigned __int64 &&,unsigned int *&&,unsigned __int64 &&) noexcept(false)' being compiled
+  	D:\AppsRandom\Microsoft\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xutility(251,14):
+  	see reference to function template instantiation '_Ty *std::construct_at<_Ty,Mesh::Formats,Mesh::V3T2*,unsigned __int64,unsigned int*,unsigned __int64,0x0>(_Ty *const ,Mesh::Formats &&,Mesh::V3T2 *&&,unsigned __int64 &&,unsigned int *&&,unsigned __int64 &&) noexcept(<expr>)' being compiled
           with
           [
               _Ty=Mesh
           ]
+  
+D:\AppsRandom\Microsoft\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xutility(255,82): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+  (compiling source file 'Mesh.cpp')
+  
+D:\AppsRandom\Microsoft\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xutility(242,90): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+  (compiling source file 'Mesh.cpp')
+  D:\AppsRandom\Microsoft\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xutility(242,90):
+  the template instantiation context (the oldest one first) is
+  	D:\AppsRandom\Microsoft\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\memory(2094,18):
+  	see reference to function template instantiation 'void std::_Construct_in_place<_Ty,Mesh::Formats,Mesh::V3T2*,unsigned __int64,unsigned int*,unsigned __int64>(_Ty &,Mesh::Formats &&,Mesh::V3T2 *&&,unsigned __int64 &&,unsigned int *&&,unsigned __int64 &&) noexcept(false)' being compiled
+          with
+          [
+              _Ty=Mesh
+          ]
+  	D:\AppsRandom\Microsoft\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xutility(251,14):
+  	see reference to function template instantiation '_Ty *std::construct_at<_Ty,Mesh::Formats,Mesh::V3T2*,unsigned __int64,unsigned int*,unsigned __int64,0x0>(_Ty *const ,Mesh::Formats &&,Mesh::V3T2 *&&,unsigned __int64 &&,unsigned int *&&,unsigned __int64 &&) noexcept(false)' being compiled
+          with
+          [
+              _Ty=Mesh
+          ]
+  
   MantelGameEngine.cpp
   Texture2D.cpp
   Transform.cpp
 D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(69,34): warning C4244: '=': conversion from 'T' to 'T', possible loss of data
-          with
-          [
-              T=double
-          ]
-          and
-          [
-              T=float
-          ]
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(69,34): warning C4244:         with
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(69,34): warning C4244:         [
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(69,34): warning C4244:             T=double
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(69,34): warning C4244:         ]
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(69,34): warning C4244:         and
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(69,34): warning C4244:         [
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(69,34): warning C4244:             T=float
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(69,34): warning C4244:         ]
 D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(69,71): warning C4244: '=': conversion from 'T' to 'T', possible loss of data
-          with
-          [
-              T=double
-          ]
-          and
-          [
-              T=float
-          ]
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(69,71): warning C4244:         with
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(69,71): warning C4244:         [
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(69,71): warning C4244:             T=double
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(69,71): warning C4244:         ]
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(69,71): warning C4244:         and
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(69,71): warning C4244:         [
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(69,71): warning C4244:             T=float
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(69,71): warning C4244:         ]
 D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(69,108): warning C4244: '=': conversion from 'T' to 'T', possible loss of data
-          with
-          [
-              T=double
-          ]
-          and
-          [
-              T=float
-          ]
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(69,108): warning C4244:         with
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(69,108): warning C4244:         [
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(69,108): warning C4244:             T=double
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(69,108): warning C4244:         ]
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(69,108): warning C4244:         and
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(69,108): warning C4244:         [
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(69,108): warning C4244:             T=float
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(69,108): warning C4244:         ]
 D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(70,31): warning C4244: '=': conversion from 'T' to 'T', possible loss of data
-          with
-          [
-              T=double
-          ]
-          and
-          [
-              T=float
-          ]
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(70,31): warning C4244:         with
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(70,31): warning C4244:         [
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(70,31): warning C4244:             T=double
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(70,31): warning C4244:         ]
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(70,31): warning C4244:         and
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(70,31): warning C4244:         [
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(70,31): warning C4244:             T=float
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(70,31): warning C4244:         ]
 D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(70,65): warning C4244: '=': conversion from 'T' to 'T', possible loss of data
-          with
-          [
-              T=double
-          ]
-          and
-          [
-              T=float
-          ]
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(70,65): warning C4244:         with
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(70,65): warning C4244:         [
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(70,65): warning C4244:             T=double
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(70,65): warning C4244:         ]
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(70,65): warning C4244:         and
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(70,65): warning C4244:         [
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(70,65): warning C4244:             T=float
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(70,65): warning C4244:         ]
 D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(70,99): warning C4244: '=': conversion from 'T' to 'T', possible loss of data
-          with
-          [
-              T=double
-          ]
-          and
-          [
-              T=float
-          ]
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(70,99): warning C4244:         with
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(70,99): warning C4244:         [
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(70,99): warning C4244:             T=double
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(70,99): warning C4244:         ]
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(70,99): warning C4244:         and
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(70,99): warning C4244:         [
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(70,99): warning C4244:             T=float
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(70,99): warning C4244:         ]
 D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(71,36): warning C4244: '=': conversion from 'T' to 'T', possible loss of data
-          with
-          [
-              T=double
-          ]
-          and
-          [
-              T=float
-          ]
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(71,36): warning C4244:         with
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(71,36): warning C4244:         [
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(71,36): warning C4244:             T=double
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(71,36): warning C4244:         ]
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(71,36): warning C4244:         and
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(71,36): warning C4244:         [
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(71,36): warning C4244:             T=float
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(71,36): warning C4244:         ]
 D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(71,74): warning C4244: '=': conversion from 'T' to 'T', possible loss of data
-          with
-          [
-              T=double
-          ]
-          and
-          [
-              T=float
-          ]
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(71,74): warning C4244:         with
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(71,74): warning C4244:         [
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(71,74): warning C4244:             T=double
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(71,74): warning C4244:         ]
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(71,74): warning C4244:         and
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(71,74): warning C4244:         [
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(71,74): warning C4244:             T=float
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(71,74): warning C4244:         ]
 D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(71,112): warning C4244: '=': conversion from 'T' to 'T', possible loss of data
-          with
-          [
-              T=double
-          ]
-          and
-          [
-              T=float
-          ]
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(71,112): warning C4244:         with
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(71,112): warning C4244:         [
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(71,112): warning C4244:             T=double
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(71,112): warning C4244:         ]
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(71,112): warning C4244:         and
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(71,112): warning C4244:         [
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(71,112): warning C4244:             T=float
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(71,112): warning C4244:         ]
 D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(78,34): warning C4244: '=': conversion from 'T' to 'T', possible loss of data
-          with
-          [
-              T=double
-          ]
-          and
-          [
-              T=float
-          ]
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(78,34): warning C4244:         with
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(78,34): warning C4244:         [
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(78,34): warning C4244:             T=double
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(78,34): warning C4244:         ]
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(78,34): warning C4244:         and
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(78,34): warning C4244:         [
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(78,34): warning C4244:             T=float
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(78,34): warning C4244:         ]
 D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(78,71): warning C4244: '=': conversion from 'T' to 'T', possible loss of data
-          with
-          [
-              T=double
-          ]
-          and
-          [
-              T=float
-          ]
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(78,71): warning C4244:         with
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(78,71): warning C4244:         [
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(78,71): warning C4244:             T=double
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(78,71): warning C4244:         ]
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(78,71): warning C4244:         and
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(78,71): warning C4244:         [
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(78,71): warning C4244:             T=float
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(78,71): warning C4244:         ]
 D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(78,108): warning C4244: '=': conversion from 'T' to 'T', possible loss of data
-          with
-          [
-              T=double
-          ]
-          and
-          [
-              T=float
-          ]
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(78,108): warning C4244:         with
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(78,108): warning C4244:         [
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(78,108): warning C4244:             T=double
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(78,108): warning C4244:         ]
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(78,108): warning C4244:         and
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(78,108): warning C4244:         [
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(78,108): warning C4244:             T=float
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(78,108): warning C4244:         ]
 D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(79,31): warning C4244: '=': conversion from 'T' to 'T', possible loss of data
-          with
-          [
-              T=double
-          ]
-          and
-          [
-              T=float
-          ]
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(79,31): warning C4244:         with
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(79,31): warning C4244:         [
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(79,31): warning C4244:             T=double
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(79,31): warning C4244:         ]
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(79,31): warning C4244:         and
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(79,31): warning C4244:         [
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(79,31): warning C4244:             T=float
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(79,31): warning C4244:         ]
 D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(79,65): warning C4244: '=': conversion from 'T' to 'T', possible loss of data
-          with
-          [
-              T=double
-          ]
-          and
-          [
-              T=float
-          ]
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(79,65): warning C4244:         with
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(79,65): warning C4244:         [
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(79,65): warning C4244:             T=double
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(79,65): warning C4244:         ]
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(79,65): warning C4244:         and
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(79,65): warning C4244:         [
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(79,65): warning C4244:             T=float
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(79,65): warning C4244:         ]
 D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(79,99): warning C4244: '=': conversion from 'T' to 'T', possible loss of data
-          with
-          [
-              T=double
-          ]
-          and
-          [
-              T=float
-          ]
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(79,99): warning C4244:         with
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(79,99): warning C4244:         [
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(79,99): warning C4244:             T=double
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(79,99): warning C4244:         ]
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(79,99): warning C4244:         and
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(79,99): warning C4244:         [
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(79,99): warning C4244:             T=float
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(79,99): warning C4244:         ]
 D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(80,36): warning C4244: '=': conversion from 'T' to 'T', possible loss of data
-          with
-          [
-              T=double
-          ]
-          and
-          [
-              T=float
-          ]
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(80,36): warning C4244:         with
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(80,36): warning C4244:         [
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(80,36): warning C4244:             T=double
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(80,36): warning C4244:         ]
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(80,36): warning C4244:         and
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(80,36): warning C4244:         [
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(80,36): warning C4244:             T=float
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(80,36): warning C4244:         ]
 D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(80,74): warning C4244: '=': conversion from 'T' to 'T', possible loss of data
-          with
-          [
-              T=double
-          ]
-          and
-          [
-              T=float
-          ]
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(80,74): warning C4244:         with
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(80,74): warning C4244:         [
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(80,74): warning C4244:             T=double
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(80,74): warning C4244:         ]
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(80,74): warning C4244:         and
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(80,74): warning C4244:         [
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(80,74): warning C4244:             T=float
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(80,74): warning C4244:         ]
 D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(80,112): warning C4244: '=': conversion from 'T' to 'T', possible loss of data
-          with
-          [
-              T=double
-          ]
-          and
-          [
-              T=float
-          ]
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(80,112): warning C4244:         with
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(80,112): warning C4244:         [
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(80,112): warning C4244:             T=double
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(80,112): warning C4244:         ]
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(80,112): warning C4244:         and
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(80,112): warning C4244:         [
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(80,112): warning C4244:             T=float
+D:\repos\Github\MantelGameMaker\MantelGameEngine\Transform.cpp(80,112): warning C4244:         ]
 GLU32.lib(GLU32.dll) : warning LNK4006: __NULL_IMPORT_DESCRIPTOR already defined in OpenGL32.lib(OPENGL32.dll); second definition ignored
 glew32.lib(glew32.dll) : warning LNK4006: __NULL_IMPORT_DESCRIPTOR already defined in OpenGL32.lib(OPENGL32.dll); second definition ignored
 DevIL.lib(DevIL.dll) : warning LNK4006: __NULL_IMPORT_DESCRIPTOR already defined in OpenGL32.lib(OPENGL32.dll); second definition ignored
