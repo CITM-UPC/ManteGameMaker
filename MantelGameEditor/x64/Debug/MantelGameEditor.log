@@ -1,5 +1,5 @@
-﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(531,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (MyGameEditor.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  Downloading https://github.com/microsoft/vcpkg-tool/releases/download/2023-09-15/vcpkg.exe -> C:\Users\luisgr3\Documents\GitHub\MantelGameMaker\vcpkg\vcpkg.exe... done.
+﻿D:\AppsRandom\Microsoft\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(531,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (MyGameEditor.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  Downloading https://github.com/microsoft/vcpkg-tool/releases/download/2023-09-15/vcpkg.exe -> D:\repos\Github\MantelGameMaker\vcpkg\vcpkg.exe... done.
   Validating signature... done.
   
   vcpkg package management program version 2023-09-15-ac02a9f660977426b8ec6392919fbb1d51b10998
@@ -22,7 +22,7 @@
   imgui:x64-windows is already installed
   opengl:x64-windows is already installed
   sdl2:x64-windows is already installed
-  Total install time: 43.1 us
+  Total install time: 61.2 us
   imgui provides CMake targets:
   
     # this is heuristically generated, and may not be correct
@@ -63,62 +63,54 @@
           $<IF:$<TARGET_EXISTS:SDL2::SDL2>,SDL2::SDL2,SDL2::SDL2-static>
       )
   
-C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(531,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (MyGameEngine.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  Scanning sources for module dependencies...
-  WindowHierarchy.cpp
-C:\Users\luisgr3\Documents\GitHub\MantelGameMaker\MantelGameEditor\WindowHierarchy.cpp(29,17): warning C4102: 'std': unreferenced label
-  WindowInspector.cpp
-  WindowScene.cpp
-C:\Users\luisgr3\Documents\GitHub\MantelGameMaker\MantelGameEditor\WindowScene.cpp(11,33): warning C4244: 'argument': conversion from 'const float' to 'GLsizei', possible loss of data
-C:\Users\luisgr3\Documents\GitHub\MantelGameMaker\MantelGameEditor\WindowScene.cpp(11,19): warning C4244: 'argument': conversion from 'const float' to 'GLsizei', possible loss of data
-C:\Users\luisgr3\Documents\GitHub\MantelGameMaker\MantelGameEditor\WindowScene.cpp(26,3): warning C4312: 'type cast': conversion from 'GLuint' to 'void *' of greater size
-  Generating Code...
 LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
-  MantelGameEditor.vcxproj -> C:\Users\luisgr3\Documents\GitHub\MantelGameMaker\x64\Debug\MantelGameEditor.exe
-  C:\Users\luisgr3\Documents\GitHub\MantelGameMaker\\vcpkg\installed\x64-windows\bin\assimp-vc143-mt.dll
-  C:\Users\luisgr3\Documents\GitHub\MantelGameMaker\\vcpkg\installed\x64-windows\bin\assimp-vc143-mt.pdb
-  C:\Users\luisgr3\Documents\GitHub\MantelGameMaker\\vcpkg\installed\x64-windows\bin\DevIL.dll
-  C:\Users\luisgr3\Documents\GitHub\MantelGameMaker\\vcpkg\installed\x64-windows\bin\DevIL.pdb
-  C:\Users\luisgr3\Documents\GitHub\MantelGameMaker\\vcpkg\installed\x64-windows\bin\freeglut.dll
-  C:\Users\luisgr3\Documents\GitHub\MantelGameMaker\\vcpkg\installed\x64-windows\bin\freeglut.pdb
-  C:\Users\luisgr3\Documents\GitHub\MantelGameMaker\\vcpkg\installed\x64-windows\bin\glew32.dll
-  C:\Users\luisgr3\Documents\GitHub\MantelGameMaker\\vcpkg\installed\x64-windows\bin\glew32.pdb
-  C:\Users\luisgr3\Documents\GitHub\MantelGameMaker\\vcpkg\installed\x64-windows\bin\Iex-3_1.dll
-  C:\Users\luisgr3\Documents\GitHub\MantelGameMaker\\vcpkg\installed\x64-windows\bin\Iex-3_1.pdb
-  C:\Users\luisgr3\Documents\GitHub\MantelGameMaker\\vcpkg\installed\x64-windows\bin\IlmThread-3_1.dll
-  C:\Users\luisgr3\Documents\GitHub\MantelGameMaker\\vcpkg\installed\x64-windows\bin\IlmThread-3_1.pdb
-  C:\Users\luisgr3\Documents\GitHub\MantelGameMaker\\vcpkg\installed\x64-windows\bin\ILU.dll
-  C:\Users\luisgr3\Documents\GitHub\MantelGameMaker\\vcpkg\installed\x64-windows\bin\ILU.pdb
-  C:\Users\luisgr3\Documents\GitHub\MantelGameMaker\\vcpkg\installed\x64-windows\bin\ILUT.dll
-  C:\Users\luisgr3\Documents\GitHub\MantelGameMaker\\vcpkg\installed\x64-windows\bin\ILUT.pdb
-  C:\Users\luisgr3\Documents\GitHub\MantelGameMaker\\vcpkg\installed\x64-windows\bin\Imath-3_1.dll
-  C:\Users\luisgr3\Documents\GitHub\MantelGameMaker\\vcpkg\installed\x64-windows\bin\Imath-3_1.pdb
-  C:\Users\luisgr3\Documents\GitHub\MantelGameMaker\\vcpkg\installed\x64-windows\bin\jasper.dll
-  C:\Users\luisgr3\Documents\GitHub\MantelGameMaker\\vcpkg\installed\x64-windows\bin\jasper.pdb
-  C:\Users\luisgr3\Documents\GitHub\MantelGameMaker\\vcpkg\installed\x64-windows\bin\jpeg62.dll
-  C:\Users\luisgr3\Documents\GitHub\MantelGameMaker\\vcpkg\installed\x64-windows\bin\jpeg62.pdb
-  C:\Users\luisgr3\Documents\GitHub\MantelGameMaker\\vcpkg\installed\x64-windows\bin\lcms2.dll
-  C:\Users\luisgr3\Documents\GitHub\MantelGameMaker\\vcpkg\installed\x64-windows\bin\lcms2.pdb
-  C:\Users\luisgr3\Documents\GitHub\MantelGameMaker\\vcpkg\installed\x64-windows\bin\liblzma.dll
-  C:\Users\luisgr3\Documents\GitHub\MantelGameMaker\\vcpkg\installed\x64-windows\bin\liblzma.pdb
-  C:\Users\luisgr3\Documents\GitHub\MantelGameMaker\\vcpkg\installed\x64-windows\bin\libpng16.dll
-  C:\Users\luisgr3\Documents\GitHub\MantelGameMaker\\vcpkg\installed\x64-windows\bin\libpng16.pdb
-  C:\Users\luisgr3\Documents\GitHub\MantelGameMaker\\vcpkg\installed\x64-windows\bin\minizip.dll
-  C:\Users\luisgr3\Documents\GitHub\MantelGameMaker\\vcpkg\installed\x64-windows\bin\minizip.pdb
-  C:\Users\luisgr3\Documents\GitHub\MantelGameMaker\\vcpkg\installed\x64-windows\bin\OpenEXR-3_1.dll
-  C:\Users\luisgr3\Documents\GitHub\MantelGameMaker\\vcpkg\installed\x64-windows\bin\OpenEXR-3_1.pdb
-  C:\Users\luisgr3\Documents\GitHub\MantelGameMaker\\vcpkg\installed\x64-windows\bin\OpenEXRCore-3_1.dll
-  C:\Users\luisgr3\Documents\GitHub\MantelGameMaker\\vcpkg\installed\x64-windows\bin\OpenEXRCore-3_1.pdb
-  C:\Users\luisgr3\Documents\GitHub\MantelGameMaker\\vcpkg\installed\x64-windows\bin\OpenEXRUtil-3_1.dll
-  C:\Users\luisgr3\Documents\GitHub\MantelGameMaker\\vcpkg\installed\x64-windows\bin\OpenEXRUtil-3_1.pdb
-  C:\Users\luisgr3\Documents\GitHub\MantelGameMaker\\vcpkg\installed\x64-windows\bin\pugixml.dll
-  C:\Users\luisgr3\Documents\GitHub\MantelGameMaker\\vcpkg\installed\x64-windows\bin\pugixml.pdb
-  C:\Users\luisgr3\Documents\GitHub\MantelGameMaker\\vcpkg\installed\x64-windows\bin\SDL2.dll
-  C:\Users\luisgr3\Documents\GitHub\MantelGameMaker\\vcpkg\installed\x64-windows\bin\SDL2.pdb
-  C:\Users\luisgr3\Documents\GitHub\MantelGameMaker\\vcpkg\installed\x64-windows\bin\tiff.dll
-  C:\Users\luisgr3\Documents\GitHub\MantelGameMaker\\vcpkg\installed\x64-windows\bin\tiff.pdb
-  C:\Users\luisgr3\Documents\GitHub\MantelGameMaker\\vcpkg\installed\x64-windows\bin\turbojpeg.dll
-  C:\Users\luisgr3\Documents\GitHub\MantelGameMaker\\vcpkg\installed\x64-windows\bin\turbojpeg.pdb
-  C:\Users\luisgr3\Documents\GitHub\MantelGameMaker\\vcpkg\installed\x64-windows\bin\zlib.pdb
-  C:\Users\luisgr3\Documents\GitHub\MantelGameMaker\\vcpkg\installed\x64-windows\bin\zlib1.dll
-         46 archivo(s) copiado(s).
+  MantelGameEditor.vcxproj -> D:\repos\Github\MantelGameMaker\x64\Debug\MantelGameEditor.exe
+  D:\repos\Github\MantelGameMaker\\vcpkg\installed\x64-windows\bin\assimp-vc143-mt.dll
+  D:\repos\Github\MantelGameMaker\\vcpkg\installed\x64-windows\bin\assimp-vc143-mt.pdb
+  D:\repos\Github\MantelGameMaker\\vcpkg\installed\x64-windows\bin\DevIL.dll
+  D:\repos\Github\MantelGameMaker\\vcpkg\installed\x64-windows\bin\DevIL.pdb
+  D:\repos\Github\MantelGameMaker\\vcpkg\installed\x64-windows\bin\freeglut.dll
+  D:\repos\Github\MantelGameMaker\\vcpkg\installed\x64-windows\bin\freeglut.pdb
+  D:\repos\Github\MantelGameMaker\\vcpkg\installed\x64-windows\bin\glew32.dll
+  D:\repos\Github\MantelGameMaker\\vcpkg\installed\x64-windows\bin\glew32.pdb
+  D:\repos\Github\MantelGameMaker\\vcpkg\installed\x64-windows\bin\Iex-3_1.dll
+  D:\repos\Github\MantelGameMaker\\vcpkg\installed\x64-windows\bin\Iex-3_1.pdb
+  D:\repos\Github\MantelGameMaker\\vcpkg\installed\x64-windows\bin\IlmThread-3_1.dll
+  D:\repos\Github\MantelGameMaker\\vcpkg\installed\x64-windows\bin\IlmThread-3_1.pdb
+  D:\repos\Github\MantelGameMaker\\vcpkg\installed\x64-windows\bin\ILU.dll
+  D:\repos\Github\MantelGameMaker\\vcpkg\installed\x64-windows\bin\ILU.pdb
+  D:\repos\Github\MantelGameMaker\\vcpkg\installed\x64-windows\bin\ILUT.dll
+  D:\repos\Github\MantelGameMaker\\vcpkg\installed\x64-windows\bin\ILUT.pdb
+  D:\repos\Github\MantelGameMaker\\vcpkg\installed\x64-windows\bin\Imath-3_1.dll
+  D:\repos\Github\MantelGameMaker\\vcpkg\installed\x64-windows\bin\Imath-3_1.pdb
+  D:\repos\Github\MantelGameMaker\\vcpkg\installed\x64-windows\bin\jasper.dll
+  D:\repos\Github\MantelGameMaker\\vcpkg\installed\x64-windows\bin\jasper.pdb
+  D:\repos\Github\MantelGameMaker\\vcpkg\installed\x64-windows\bin\jpeg62.dll
+  D:\repos\Github\MantelGameMaker\\vcpkg\installed\x64-windows\bin\jpeg62.pdb
+  D:\repos\Github\MantelGameMaker\\vcpkg\installed\x64-windows\bin\jsoncpp.dll
+  D:\repos\Github\MantelGameMaker\\vcpkg\installed\x64-windows\bin\jsoncpp.pdb
+  D:\repos\Github\MantelGameMaker\\vcpkg\installed\x64-windows\bin\lcms2.dll
+  D:\repos\Github\MantelGameMaker\\vcpkg\installed\x64-windows\bin\lcms2.pdb
+  D:\repos\Github\MantelGameMaker\\vcpkg\installed\x64-windows\bin\liblzma.dll
+  D:\repos\Github\MantelGameMaker\\vcpkg\installed\x64-windows\bin\liblzma.pdb
+  D:\repos\Github\MantelGameMaker\\vcpkg\installed\x64-windows\bin\libpng16.dll
+  D:\repos\Github\MantelGameMaker\\vcpkg\installed\x64-windows\bin\libpng16.pdb
+  D:\repos\Github\MantelGameMaker\\vcpkg\installed\x64-windows\bin\minizip.dll
+  D:\repos\Github\MantelGameMaker\\vcpkg\installed\x64-windows\bin\minizip.pdb
+  D:\repos\Github\MantelGameMaker\\vcpkg\installed\x64-windows\bin\OpenEXR-3_1.dll
+  D:\repos\Github\MantelGameMaker\\vcpkg\installed\x64-windows\bin\OpenEXR-3_1.pdb
+  D:\repos\Github\MantelGameMaker\\vcpkg\installed\x64-windows\bin\OpenEXRCore-3_1.dll
+  D:\repos\Github\MantelGameMaker\\vcpkg\installed\x64-windows\bin\OpenEXRCore-3_1.pdb
+  D:\repos\Github\MantelGameMaker\\vcpkg\installed\x64-windows\bin\OpenEXRUtil-3_1.dll
+  D:\repos\Github\MantelGameMaker\\vcpkg\installed\x64-windows\bin\OpenEXRUtil-3_1.pdb
+  D:\repos\Github\MantelGameMaker\\vcpkg\installed\x64-windows\bin\pugixml.dll
+  D:\repos\Github\MantelGameMaker\\vcpkg\installed\x64-windows\bin\pugixml.pdb
+  D:\repos\Github\MantelGameMaker\\vcpkg\installed\x64-windows\bin\SDL2.dll
+  D:\repos\Github\MantelGameMaker\\vcpkg\installed\x64-windows\bin\SDL2.pdb
+  D:\repos\Github\MantelGameMaker\\vcpkg\installed\x64-windows\bin\tiff.dll
+  D:\repos\Github\MantelGameMaker\\vcpkg\installed\x64-windows\bin\tiff.pdb
+  D:\repos\Github\MantelGameMaker\\vcpkg\installed\x64-windows\bin\turbojpeg.dll
+  D:\repos\Github\MantelGameMaker\\vcpkg\installed\x64-windows\bin\turbojpeg.pdb
+  D:\repos\Github\MantelGameMaker\\vcpkg\installed\x64-windows\bin\zlib.pdb
+  D:\repos\Github\MantelGameMaker\\vcpkg\installed\x64-windows\bin\zlib1.dll
+         48 file(s) copied.

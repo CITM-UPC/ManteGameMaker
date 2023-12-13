@@ -32,6 +32,7 @@ public:
 	bool showNormals = false;
 	
 	bool emptyGameObject = false;
+	bool expanded = false;
 
 	bool camera = false;
 
@@ -67,10 +68,22 @@ public:
 		return (camera ? cameraGo : nullptr);
 	}
 
+	GameObject* GetParent()
+	{
+		return parent;
+	}
+
+	void SetParent(GameObject* parent)
+	{
+		this->parent = parent;
+	}
+
 private:
 	std::string name;
 
 	list<GameObject*> childrenList;
+
+	GameObject* parent = nullptr;
 
 	Camera* cameraGo;
 };

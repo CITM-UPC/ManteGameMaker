@@ -89,7 +89,7 @@ void MyGameEngine::Start()
 }
 
 
-void MyGameEngine::AddGameObject(GameObject* go)
+void MyGameEngine::AddGameObject(GameObject* go, bool isChildren, GameObject* parentGo)
 {
     std::string originalName = go->GetName();
     std::string newName = originalName;
@@ -99,7 +99,7 @@ void MyGameEngine::AddGameObject(GameObject* go)
     {
         bool nameTaken = false;
 
-        for (const auto& item : hierarchy)
+        for (const auto& item : allGameObjects)
         {
             if (item->GetName() == newName)
             {
@@ -111,7 +111,21 @@ void MyGameEngine::AddGameObject(GameObject* go)
         if (!nameTaken)
         {
             go->setName(newName);
-            hierarchy.push_back(go);
+            if (!isChildren)
+            {
+                hierarchy.push_back(go);
+            }
+            else if (isChildren && parentGo->emptyGameObject)
+            {
+                parentGo->GetChildrenList()->push_back(go);
+                go->SetParent(parentGo);
+            }
+            else
+            {
+                cout << "Unable to add " << originalName << endl;
+            }
+            allGameObjects.push_back(go);
+
             break;
         }
 
@@ -127,10 +141,30 @@ void MyGameEngine::DeleteGameObject(GameObject* go)
     std::cout << go->GetName() << " deleted" << endl;
 
     // Find and remove the GameObject with the same pointer from the hierarchy list
-    hierarchy.remove(go);
+    allGameObjects.remove(go);
+    //if it's a parent, also delete its children
+    if (go->emptyGameObject && !go->GetChildrenList()->empty())
+    {
+        auto childrenList = *go->GetChildrenList(); // Copia la lista antes de la modificación
+
+        for (auto& child : childrenList)
+        {
+            DeleteGameObject(child);
+        }
+    }
+    //if has no parent delete from hierarchy
+    if (go->GetParent() == nullptr)
+    {
+        hierarchy.remove(go);
+    }
+    //if has parent, delete from parent children's list
+    else
+    {
+        go->GetParent()->GetChildrenList()->remove(go);
+    }
 
     // Now, you should delete the GameObject to free the memory if necessary
-    delete go;
+    //delete go;
 }
 
 
@@ -164,7 +198,7 @@ void MyGameEngine::render() {
 
     //out of conditions cz always renders
     //draw using GameObject class
-    for (const auto& item : hierarchy)
+    for (const auto& item : allGameObjects)
     {
         item->Draw();
     }

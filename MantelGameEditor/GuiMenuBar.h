@@ -88,7 +88,7 @@ static bool MenuBarUpdate() {
             if (ImGui::MenuItem("Play", NULL, false, true)) {          // Temporarly disabled because not implemented (..., false, false)
                 // Code to execute when "Play" is selected
                 app->engineManager->GetEngine()->engineState = EngineState::PLAY;
-                for (auto& item : app->engineManager->GetEngine()->hierarchy)
+                for (auto& item : app->engineManager->GetEngine()->allGameObjects)
                 {
                     if (item->camera)
                     {
@@ -174,22 +174,27 @@ static bool MenuBarUpdate() {
                 app->engineManager->GetEngine()->AddGameObject(emptyGo);
             }
 
-            if (ImGui::MenuItem("Create Parent", NULL, false, true))          // Temporarly disabled because not implemented (..., false, false)
+            if (ImGui::MenuItem("Create Parent", NULL, false, true))
             {
                 GameObject* emptyGo = new GameObject("EmptyParent", "", true);
                 emptyGo->visible = false;
                 app->engineManager->GetEngine()->AddGameObject(emptyGo);
-                
-                for (auto& item : app->engineManager->GetEngine()->hierarchy)
+
+                for (auto& item : app->engineManager->GetEngine()->allGameObjects)
                 {
                     if (item->selected)
                     {
-                        //add item as a child of parent created
+                        if (item->GetParent() == nullptr)
+                        {
+                            app->engineManager->GetEngine()->hierarchy.remove(item);
+                        }
+                        else
+                        {
+                            item->GetParent()->GetChildrenList()->remove(item);
+                        }
                         emptyGo->GetChildrenList()->push_back(item);
+                        item->SetParent(emptyGo);
                     }
-                    //remove item from hierarchy principal list
-                    app->engineManager->GetEngine()->hierarchy.remove(item);
-                    break;
                 }
             }
 

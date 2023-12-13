@@ -31,11 +31,12 @@ public:
 	void render();
 
 	//add and delete game object
-	void AddGameObject(GameObject* go);
+	void AddGameObject(GameObject* go, bool isChildren = false, GameObject* parentGo = nullptr);
 	void DeleteGameObject(GameObject* go);
 
 	int selectedGameObject = 0;
 
 	std::list<GameObject*> hierarchy;
+	std::list<GameObject*> allGameObjects;
 };
 

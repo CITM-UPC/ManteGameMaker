@@ -1,5 +1,5 @@
-﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(531,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (MyGameEngine.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  Downloading https://github.com/microsoft/vcpkg-tool/releases/download/2023-09-15/vcpkg.exe -> C:\Users\luisgr3\Documents\GitHub\MantelGameMaker\vcpkg\vcpkg.exe... done.
+﻿D:\AppsRandom\Microsoft\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(531,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (MyGameEngine.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  Downloading https://github.com/microsoft/vcpkg-tool/releases/download/2023-09-15/vcpkg.exe -> D:\repos\Github\MantelGameMaker\vcpkg\vcpkg.exe... done.
   Validating signature... done.
   
   vcpkg package management program version 2023-09-15-ac02a9f660977426b8ec6392919fbb1d51b10998
@@ -26,7 +26,7 @@
   glew:x64-windows is already installed
   glm:x64-windows is already installed
   opengl:x64-windows is already installed
-  Total install time: 47.1 us
+  Total install time: 94.8 us
   assimp provides CMake targets:
   
     # this is heuristically generated, and may not be correct
@@ -69,14 +69,10 @@
       APPLE: consult your distribution vendor on the state of OpenGL support: https://support.apple.com/en-us/HT202823
   
   Scanning sources for module dependencies...
-  Camera.cpp
-  GameObject.cpp
-C:\Users\luisgr3\Documents\GitHub\MantelGameMaker\MantelGameEngine\GameObject.cpp(13,14): warning C4834: discarding return value of function with 'nodiscard' attribute
   MantelGameEngine.cpp
-  Generating Code...
 GLU32.lib(GLU32.dll) : warning LNK4006: __NULL_IMPORT_DESCRIPTOR already defined in OpenGL32.lib(OPENGL32.dll); second definition ignored
 glew32.lib(glew32.dll) : warning LNK4006: __NULL_IMPORT_DESCRIPTOR already defined in OpenGL32.lib(OPENGL32.dll); second definition ignored
 DevIL.lib(DevIL.dll) : warning LNK4006: __NULL_IMPORT_DESCRIPTOR already defined in OpenGL32.lib(OPENGL32.dll); second definition ignored
 assimp-vc143-mt.lib(assimp-vc143-mt.dll) : warning LNK4006: __NULL_IMPORT_DESCRIPTOR already defined in OpenGL32.lib(OPENGL32.dll); second definition ignored
 Mesh.obj : warning LNK4006: "public: enum aiReturn __cdecl aiMaterial::GetTexture(enum aiTextureType,unsigned int,struct aiString *,enum aiTextureMapping *,unsigned int *,float *,enum aiTextureOp *,enum aiTextureMapMode *)const " (?GetTexture@aiMaterial@@QEBA?AW4aiReturn@@W4aiTextureType@@IPEAUaiString@@PEAW4aiTextureMapping@@PEAIPEAMPEAW4aiTextureOp@@PEAW4aiTextureMapMode@@@Z) already defined in assimp-vc143-mt.lib(assimp-vc143-mt.dll); second definition ignored
-  MantelGameEngine.vcxproj -> C:\Users\luisgr3\Documents\GitHub\MantelGameMaker\x64\Debug\MantelGameEngine.lib
+  MantelGameEngine.vcxproj -> D:\repos\Github\MantelGameMaker\x64\Debug\MantelGameEngine.lib

@@ -5,7 +5,7 @@ WindowInspector::WindowInspector(string name, bool startEnabled, ImGuiWindowFlag
 
 void WindowInspector::Update() {
 
-	for (auto& item : app->engineManager->GetEngine()->hierarchy)
+	for (auto& item : app->engineManager->GetEngine()->allGameObjects)
 	{
 		if (item->selected)
 		{

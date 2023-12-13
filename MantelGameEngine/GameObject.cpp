@@ -46,6 +46,7 @@ GameObject::GameObject(const std::string& name, const std::string& path, bool em
         tCamera.aspect = static_cast<double>(SCREEN_WIDTH) / SCREEN_HEIGHT;
         tCamera.zNear = 0.1;
         tCamera.zFar = 100;
+        tCamera.transform = this->transform;
 
         this->cameraGo = &tCamera;
     }

@@ -116,7 +116,7 @@ bool ModuleInput::PreUpdate()
 			}
 			if (filePath.substr(filePath.find_last_of(".") + 1) == "png") {
 				cout << ".png file detected" << endl;
-				for (auto& item : app->engineManager->GetEngine()->hierarchy)
+				for (auto& item : app->engineManager->GetEngine()->allGameObjects)
 				{
 					if (item->selected)
 					{

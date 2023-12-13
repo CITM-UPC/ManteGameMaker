@@ -30,7 +30,7 @@ bool ModuleEngineManager::PreUpdate() {
 	//delete a GameObject if so
 	if (app->input->GetKey(SDL_SCANCODE_BACKSPACE) == KEY_DOWN)
 	{
-		for (auto& item : app->engineManager->GetEngine()->hierarchy)
+		for (auto& item : app->engineManager->GetEngine()->allGameObjects)
 		{
 			if (item->selected)
 			{
@@ -41,7 +41,7 @@ bool ModuleEngineManager::PreUpdate() {
 	}
 	if (app->input->GetKey(SDL_SCANCODE_F) == KEY_DOWN)
 	{
-		for (auto& item : app->engineManager->GetEngine()->hierarchy)
+		for (auto& item : app->engineManager->GetEngine()->allGameObjects)
 		{
 			if (item->selected)
 			{

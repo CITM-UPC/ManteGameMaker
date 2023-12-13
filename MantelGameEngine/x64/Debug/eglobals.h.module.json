@@ -5,14 +5,14 @@
         {
             "primary-output": "x64\\Debug\\EGlobals.h.obj",
             "outputs": [
-                "C:\\Users\\luisgr3\\Documents\\GitHub\\MantelGameMaker\\x64\\Debug\\MantelGameEngine.pdb",
+                "D:\\repos\\Github\\MantelGameMaker\\x64\\Debug\\MantelGameEngine.pdb",
                 "x64\\Debug\\",
-                "C:\\Users\\luisgr3\\Documents\\GitHub\\MantelGameMaker\\MantelGameEngine\\x64\\Debug\\EGlobals.h.ifc"
+                "D:\\repos\\Github\\MantelGameMaker\\MantelGameEngine\\x64\\Debug\\EGlobals.h.ifc"
             ],
             "provides": [
                 {
                     "logical-name": "EGlobals.h",
-                    "source-path": "c:\\users\\luisgr3\\documents\\github\\mantelgamemaker\\mantelgameengine\\eglobals.h",
+                    "source-path": "d:\\repos\\github\\mantelgamemaker\\mantelgameengine\\eglobals.h",
                     "lookup-method": "absolute"
                 }
             ],
