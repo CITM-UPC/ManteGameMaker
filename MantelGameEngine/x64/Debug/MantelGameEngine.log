@@ -26,7 +26,7 @@
   glew:x64-windows is already installed
   glm:x64-windows is already installed
   opengl:x64-windows is already installed
-  Total install time: 94.8 us
+  Total install time: 100 us
   assimp provides CMake targets:
   
     # this is heuristically generated, and may not be correct

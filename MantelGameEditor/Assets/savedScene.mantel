@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<savedScene>
+	<window />
+	<input />
+	<events />
+	<engineManager>
+		<GameObject name="EmptyParent_1" p_x="0" p_y="0" p_z="0" r_x="0" r_y="0" r_z="0" s_x="1" s_y="1" s_z="1" visible="false" emptyGameObject="true" selected="false" camera="false" expanded="true" fbxPath="" texturePath="">
+			<GameObject name="EmptyParent" p_x="0" p_y="0" p_z="0" r_x="0" r_y="0" r_z="0" s_x="1" s_y="1" s_z="1" visible="false" emptyGameObject="true" selected="false" camera="false" expanded="true" fbxPath="" texturePath="">
+				<GameObject name="BakerHouse" p_x="0" p_y="0" p_z="0" r_x="0" r_y="0" r_z="0" s_x="1" s_y="1" s_z="1" visible="true" emptyGameObject="false" selected="true" camera="false" expanded="false" fbxPath="Assets/BakerHouse.fbx" texturePath="Assets\ExampleTexture.png" />
+			</GameObject>
+		</GameObject>
+		<GameObject name="Cube" p_x="5" p_y="0" p_z="0" r_x="0" r_y="0" r_z="0" s_x="1" s_y="1" s_z="1" visible="true" emptyGameObject="false" selected="false" camera="false" expanded="false" fbxPath="Assets/Primals/Cube.fbx" texturePath="Assets\Baker_house.png" />
+	</engineManager>
+	<GUI />
+	<renderer />
+</savedScene>

@@ -14,6 +14,10 @@ public:
 
 	void LookAtGameObject(GameObject* go);
 
+	glm::mat4 GetViewMatrix() const;
+
+	glm::mat4 GetProjectionMatrix() const;
+
 public:
 	double fov;
 	double aspect;

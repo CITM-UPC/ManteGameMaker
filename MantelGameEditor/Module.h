@@ -2,6 +2,10 @@
 
 #include "Globals.h"
 
+//#include "PugiXml/src/pugixml.hpp"
+#include <pugixml.hpp>
+
+
 class Module
 {
 public:
@@ -28,6 +32,16 @@ public:
 
 	// Called to clean the module before quiting or when it gets disabled
 	virtual void CleanUp() {}
+
+	virtual bool LoadState(pugi::xml_node&)
+	{
+		return true;
+	}
+
+	virtual bool SaveState(pugi::xml_node&)
+	{
+		return true;
+	}
 
 	void Enable() {
 		if (state != state::enabled) {

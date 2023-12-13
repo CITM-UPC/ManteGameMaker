@@ -6,6 +6,7 @@
 #include "Transform.h"
 #include "Mesh.h"
 #include "Texture2D.h"
+#include "BBox.hpp"
 
 struct Camera;
 
@@ -20,6 +21,21 @@ public:
 	void Draw();
 
 	using Ptr = std::shared_ptr<Texture2D>;
+
+public:
+	void setName(std::string& name)
+	{
+		this->name = name;
+	}
+	const char* GetName()
+	{
+		return name.c_str();
+	}
+
+private:
+	std::string name;
+
+public:
 
 	Transform transform;
 	//static std::vector<Ptr> mesh_ptr;
@@ -43,14 +59,8 @@ public:
 
 	//getters and setters
 public:
-	void setName(std::string &name)
-	{
-		this->name = name;
-	}
-	const char* GetName()
-	{
-		return name.c_str();
-	}
+
+	void PrintMeshBoundingBox();
 
 	// if gameobject is NOT an EMPTY game object do NOT use this function
 	list<GameObject*>* GetChildrenList()
@@ -79,7 +89,6 @@ public:
 	}
 
 private:
-	std::string name;
 
 	list<GameObject*> childrenList;
 

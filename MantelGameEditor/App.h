@@ -11,6 +11,11 @@
 #include "ModuleGUI.h"
 #include "ModuleRenderer.h"
 
+
+#include "PugiXml/src/pugixml.hpp"
+
+#define SAVE_STATE_FILENAME "savedScene.mantel"
+
 using namespace chrono;
 
 // Modules Classes
@@ -78,6 +83,16 @@ public:
 	// Add a new module to handle
 	void AddModule(Module* module);
 
+	void LoadGameRequest(string filePath = "Assets/savedScene.mantel");
+	void SaveGameRequest();
+	bool LoadFromFile();
+	bool SaveToFile();
+
+private:
+	bool saveGameRequested;
+	bool loadGameRequested;
+
+public:
 
 	// FPS control
 	void ChangeFramerate(double newFrameRate) {
@@ -112,6 +127,8 @@ private:
 	// Call active modules to perform PostUpdate
 	bool PostUpdate();
 
+
+	string loadPathFile = "Assets/savedScene.mantel";
 
 	//FPS control
 	double GetCurrentTime() {

@@ -10,8 +10,7 @@ Camera::Camera() : fov(60), aspect(4.0 / 3.0), zNear(0.1), zFar(100), camOffset(
 
 void Camera::UpdateLookAt()
 {
-	lookAtPos = (transform.forward * camOffset);
-	lookAtPos += transform.position;
+	lookAtPos = transform.forward * camOffset + transform.position;
 }
 
 void Camera::LookAtGameObject(GameObject* go)
@@ -35,4 +34,13 @@ void Camera::LookAtGameObject(GameObject* go)
 
 
 	lookAtPos = targetPosition;
+}
+
+glm::mat4 Camera::GetViewMatrix() const
+{
+	return glm::lookAt(transform.position, lookAtPos, transform.up);
+}
+
+glm::mat4 Camera::GetProjectionMatrix() const {
+	return glm::perspective(glm::radians(fov), aspect, zNear, zFar);
 }

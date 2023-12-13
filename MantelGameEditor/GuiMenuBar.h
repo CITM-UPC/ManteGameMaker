@@ -20,9 +20,13 @@ static bool MenuBarUpdate() {
 
             ImGui::Separator();
 
-            if (ImGui::MenuItem("Save", "Ctrl+S", false, false)) {          // Temporarly disabled because not implemented (..., false, false)
-                // Code to execute when "Save" is selected
+            if (ImGui::MenuItem("Save Scene", NULL, false, true)) { 
+                app->SaveGameRequest();
+            }            
+            if (ImGui::MenuItem("Load Scene", NULL, false, true)) { 
+                app->LoadGameRequest();
             }
+
             if (ImGui::MenuItem("Save As...", "Ctrl+Shift+S", false, false)) {          // Temporarly disabled because not implemented (..., false, false)
                 // Code to execute when "Save As..." is selected
             }

@@ -129,6 +129,7 @@ bool App::Update() {
 }
 
 bool App::PostUpdate() {
+
     bool ret;
     for (const auto& item : modules)
     {
@@ -143,6 +144,11 @@ bool App::PostUpdate() {
         }
     }
 
+
+    //lets save/load once postupdate is finished
+    if (loadGameRequested == true) LoadFromFile();
+    if (saveGameRequested == true) SaveToFile();
+    
     return ret;
 }
 
@@ -159,4 +165,67 @@ void App::CleanUp() {
         std::cout.rdbuf(dualOutputBuffer->GetOriginalStream());
         RELEASE(dualOutputBuffer);
     }
+}
+
+
+void App::LoadGameRequest(string filePath)
+{
+    this->loadPathFile = filePath;
+    // NOTE: We should check if SAVE_STATE_FILENAME actually exist
+    loadGameRequested = true;
+}
+
+// ---------------------------------------
+void App::SaveGameRequest()
+{
+    // NOTE: We should check if SAVE_STATE_FILENAME actually exist and... should we overwriten
+    saveGameRequested = true;
+}
+
+
+bool App::LoadFromFile()
+{
+    bool ret = true;
+
+    pugi::xml_document gameStateFile;
+    pugi::xml_parse_result result = gameStateFile.load_file(this->loadPathFile.c_str());
+
+    if (result == NULL)
+    {
+        cout << "Could not load xml file savedScene.mantel. pugi error: " << result.description() << endl;
+        ret = false;
+    }
+    else
+    {
+        for (auto& item : modules)
+        {
+            pugi::xml_node childNode = gameStateFile.child("savedScene").child(item->name.c_str());
+            ret = item->LoadState(childNode);
+        }
+    }
+
+    loadGameRequested = false;
+
+    return ret;
+}
+
+bool App::SaveToFile()
+{
+    bool ret = false;
+
+    pugi::xml_document* saveDoc = new pugi::xml_document();
+    pugi::xml_node saveStateNode = saveDoc->append_child("savedScene");
+
+
+    for (auto& item : modules)
+    {
+        pugi::xml_node childNode = saveStateNode.append_child(item->name.c_str());
+        ret = item->SaveState(childNode);
+    }
+
+    ret = saveDoc->save_file(this->loadPathFile.c_str());
+
+    saveGameRequested = false;
+
+    return ret;
 }

@@ -10,6 +10,11 @@
 #include <sstream>
 #include <list>
 
+#include "PugiXml/src/pugixml.hpp"
+#include "PugiXml/src/pugiconfig.hpp"
+
+#include <pugixml.hpp>
+
 
 #include "GL/glew.h"
 #include "SDL2/SDL.h"

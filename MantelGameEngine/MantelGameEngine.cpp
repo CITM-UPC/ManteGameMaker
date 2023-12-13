@@ -136,6 +136,16 @@ void MyGameEngine::AddGameObject(GameObject* go, bool isChildren, GameObject* pa
 
 }
 
+void MyGameEngine::ClearScene()
+{
+    for (auto it = allGameObjects.begin(); it != allGameObjects.end(); ++it) {
+        toDeleteGo.push_back(*it);
+    }
+    deleteList = true;
+    allGameObjects.clear();
+    hierarchy.clear();
+}
+
 void MyGameEngine::DeleteGameObject(GameObject* go)
 {
     std::cout << go->GetName() << " deleted" << endl;

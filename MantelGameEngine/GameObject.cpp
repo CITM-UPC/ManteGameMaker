@@ -1,7 +1,12 @@
 #include "GameObject.h"
+#include <GL/glew.h>
 #include <regex>
 #include <list>
 #include <iostream>
+
+#include <assimp/Importer.hpp>
+#include <assimp/scene.h>
+#include <assimp/postprocess.h>
 
 using namespace std;
 
@@ -56,6 +61,56 @@ GameObject::~GameObject()
 {
 }
 
+void DrawBoundingBox(const glm::vec3& min, const glm::vec3& max) {
+    // Dibuja las líneas de la bounding box
+    glLineWidth(2);
+    glBegin(GL_LINES);
+
+    // horizontal lines bounding box
+    glVertex3f(min.x, min.y, min.z);
+    glVertex3f(max.x, min.y, min.z);
+
+    glVertex3f(min.x, max.y, min.z);
+    glVertex3f(max.x, max.y, min.z);
+
+    glVertex3f(min.x, max.y, max.z);
+    glVertex3f(max.x, max.y, max.z);
+
+    glVertex3f(min.x, min.y, max.z);
+    glVertex3f(max.x, min.y, max.z);
+
+    // vertical lines bounding box
+    glVertex3f(min.x, min.y, min.z);
+    glVertex3f(min.x, max.y, min.z);
+
+    glVertex3f(max.x, min.y, min.z);
+    glVertex3f(max.x, max.y, min.z);
+
+    glVertex3f(max.x, min.y, max.z);
+    glVertex3f(max.x, max.y, max.z);
+
+    glVertex3f(min.x, min.y, max.z);
+    glVertex3f(min.x, max.y, max.z);
+
+    glEnd();
+}
+
+//void GameObject::PrintMeshBoundingBox()
+//{
+//    for (const auto& mesh : this->mesh_ptr) {
+//        glm::vec3 minBounds = mesh->boundingBoxMin;
+//        glm::vec3 maxBounds = mesh->boundingBoxMax;
+//
+//        float width = maxBounds.x - minBounds.x;
+//        float height = maxBounds.y - minBounds.y;
+//        float depth = maxBounds.z - minBounds.z;
+//
+//        //std::cout << "Mesh Size: Width = " << width << ", Height = " << height << ", Depth = " << depth << std::endl;
+//    }
+//}
+
+
+
 void GameObject::Draw()
 {
     if (visible)
@@ -104,6 +159,13 @@ void GameObject::Draw()
                     house.addChild(std::move(mesh));
                 }
             }
+        }
+    }
+    if (selected)
+    {
+        for (const auto& mesh : mesh_ptr)
+        {
+            DrawBoundingBox(mesh.get()->boundingBoxMin, mesh.get()->boundingBoxMax);
         }
     }
 }

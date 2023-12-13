@@ -30,6 +30,10 @@ void WindowInspector::Update() {
 						if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || app->input->GetKey(SDL_SCANCODE_TAB) == KEY_DOWN)
 						{
 							item->transform.MoveTo(tpos);
+							for (const auto& mesh : item->mesh_ptr)
+							{
+								mesh.get()->boundingBoxMin -= tpos;
+							}
 							cout << "New position x: " << item->transform.position.x << endl;
 							//disable writing mode once we finished
 							app->gui->writing = false;

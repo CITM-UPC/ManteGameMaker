@@ -26,6 +26,24 @@ struct aiSceneExt : aiScene {
     auto meshes() const { return span((aiMeshExt**)mMeshes, mNumMeshes); }
 };
 
+void Mesh::RecalculateBoundingBox() {
+    // Inicializar los límites con valores extremos para poder encontrar los mínimos y máximos
+    //boundingBoxMin = glm::vec3(std::numeric_limits<float>::max());
+    //boundingBoxMax = glm::vec3(std::numeric_limits<float>::lowest());
+
+    //// Iterar sobre cada vértice y ajustar los límites
+    //for (const auto& vert : ) {
+    //    boundingBoxMin.x = std::min(boundingBoxMin.x, vert.x);
+    //    boundingBoxMin.y = std::min(boundingBoxMin.y, vert.y);
+    //    boundingBoxMin.z = std::min(boundingBoxMin.z, vert.z);
+
+    //    boundingBoxMax.x = std::max(boundingBoxMax.x, vert.x);
+    //    boundingBoxMax.y = std::max(boundingBoxMax.y, vert.y);
+    //    boundingBoxMax.z = std::max(boundingBoxMax.z, vert.z);
+    //}
+}
+
+
 std::string Mesh::getTexturePathFromFbxPath(const std::string& path)
 {
     const auto scene_ptr = aiImportFile(path.c_str(), aiProcess_Triangulate | aiProcess_FlipUVs);
@@ -78,6 +96,23 @@ std::vector<Mesh::Ptr> Mesh::loadFromFile(const std::string& path) {
 
         auto mesh_sptr = make_shared<Mesh>(Formats::F_V3T2, vertex_data.data(), vertex_data.size(), index_data.data(), index_data.size());
         mesh_sptr->texture = texture_ptrs[mesh.mMaterialIndex];
+
+        // calculing bounds to do aabb
+        glm::vec3 minBounds(std::numeric_limits<float>::max());
+        glm::vec3 maxBounds(std::numeric_limits<float>::lowest());
+
+        for (const auto& vert : mesh.verts()) {
+            minBounds.x = std::min(minBounds.x, vert.x);
+            minBounds.y = std::min(minBounds.y, vert.y);
+            minBounds.z = std::min(minBounds.z, vert.z);
+
+            maxBounds.x = std::max(maxBounds.x, vert.x);
+            maxBounds.y = std::max(maxBounds.y, vert.y);
+            maxBounds.z = std::max(maxBounds.z, vert.z);
+        }
+        mesh_sptr->boundingBoxMin = minBounds;
+        mesh_sptr->boundingBoxMax = maxBounds;
+
         mesh_ptrs.push_back(mesh_sptr);
     }
 
@@ -97,12 +132,24 @@ Mesh::Mesh(Formats format, const void* vertex_data, unsigned int numVerts, const
     switch (_format) {
     case Formats::F_V3:
         glBufferData(GL_ARRAY_BUFFER, sizeof(V3) * numVerts, vertex_data, GL_STATIC_DRAW);
+        for (const auto& v : span((V3*)vertex_data, numVerts)) {
+            //aabb.min = glm::min(aabb.min, vec3(v.v));
+            //aabb.max = glm::max(aabb.max, vec3(v.v));
+        }
         break;
     case Formats::F_V3C4:
         glBufferData(GL_ARRAY_BUFFER, sizeof(V3C4) * numVerts, vertex_data, GL_STATIC_DRAW);
+        for (const auto& v : span((V3C4*)vertex_data, numVerts)) {
+            //aabb.min = glm::min(aabb.min, vec3(v.v));
+            //aabb.max = glm::max(aabb.max, vec3(v.v));
+        }
         break;
     case Formats::F_V3T2:
         glBufferData(GL_ARRAY_BUFFER, sizeof(V3T2) * numVerts, vertex_data, GL_STATIC_DRAW);
+        for (const auto& v : span((V3T2*)vertex_data, numVerts)) {
+            //aabb.min = glm::min(aabb.min, vec3(v.v));
+            //aabb.max = glm::max(aabb.max, vec3(v.v));
+        }
         break;
     }
     glBindBuffer(GL_ARRAY_BUFFER, 0);

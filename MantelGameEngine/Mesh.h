@@ -26,6 +26,9 @@ public:
 		return _numIndexs;
 	}
 
+	glm::vec3 boundingBoxMin;
+	glm::vec3 boundingBoxMax;
+
 private:
 	const enum Formats _format;
 
@@ -34,10 +37,12 @@ private:
 
 	unsigned int _indexs_buffer_id;
 	const unsigned int _numIndexs;
+
 	
 public:
 	using Ptr = std::shared_ptr<Mesh>;
 
+	void RecalculateBoundingBox();
 	static std::string getTexturePathFromFbxPath(const std::string& path);
 	static std::vector<Ptr> loadFromFile(const std::string& path);
 	

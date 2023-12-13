@@ -116,20 +116,30 @@ bool ModuleInput::PreUpdate()
 			}
 			if (filePath.substr(filePath.find_last_of(".") + 1) == "png") {
 				cout << ".png file detected" << endl;
-				for (auto& item : app->engineManager->GetEngine()->allGameObjects)
-				{
-					if (item->selected)
+				size_t pos = filePath.find("Assets");
+				if (pos != string::npos) {
+					string dynamicPath = filePath.substr(pos);
+
+					for (auto& item : app->engineManager->GetEngine()->allGameObjects)
 					{
-						item->texture = nullptr;
-						item->texture = make_shared<Texture2D>(filePath);
-						for (size_t i = 0; i < item->mesh_ptr.size(); i++)
+						if (item->selected)
 						{
-							item->mesh_ptr[i].get()->texture = item->texture;
-							item->texturePath = filePath;
+							item->texture = nullptr;
+							item->texture = make_shared<Texture2D>(dynamicPath);
+							for (size_t i = 0; i < item->mesh_ptr.size(); i++)
+							{
+								item->mesh_ptr[i].get()->texture = item->texture;
+								item->texturePath = dynamicPath;
+							}
+							break;
 						}
-						break;
 					}
 				}
+			}
+			if (filePath.substr(filePath.find_last_of(".") + 1) == "mantel")
+			{
+				cout << ".mantel file detected" << endl;
+				app->LoadGameRequest(filePath);
 			}
 
 			SDL_free(e.drop.file);

@@ -28,6 +28,9 @@
     <Filter Include="Source Files\GUIWindows\Windows">
       <UniqueIdentifier>{62fa4b8c-7089-4160-9a5c-010f5d692768}</UniqueIdentifier>
     </Filter>
+    <Filter Include="XMLstuff">
+      <UniqueIdentifier>{f8721d62-e32d-495e-a169-e72b835a1c82}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="log.cpp">
@@ -77,6 +80,9 @@
     </ClCompile>
     <ClCompile Include="ModuleInput.cpp">
       <Filter>Source Files\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="..\External\PugiXml\src\pugixml.cpp">
+      <Filter>XMLstuff</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -139,6 +145,12 @@
     </ClInclude>
     <ClInclude Include="ModuleInput.h">
       <Filter>Source Files\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="..\External\PugiXml\src\pugiconfig.hpp">
+      <Filter>XMLstuff</Filter>
+    </ClInclude>
+    <ClInclude Include="..\External\PugiXml\src\pugixml.hpp">
+      <Filter>XMLstuff</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
