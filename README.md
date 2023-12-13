@@ -13,3 +13,11 @@ This engine has some features like:
 - GameObject Hierarchy
 - F to watch selected GameObject
 - BackSpace to delete selected GameObject
+- Editor / Play with different cameras
+- Edit GameObject properties such as position
+- Save and load scene .mantel
+- Drag and drop any .mantel file to load it
+- Control + left click to select in screen (not always works and you must be very close from the object)
+- Hitboxes are printed
+- You can create empty objects or parents
+- New imgui window where Assets files are shown
