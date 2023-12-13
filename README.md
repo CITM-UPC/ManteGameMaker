@@ -21,3 +21,5 @@ This engine has some features like:
 - Hitboxes are printed
 - You can create empty objects or parents
 - New imgui window where Assets files are shown
+- Load Scene to show Street model
+- New primitives! Square, Sphere and Plane
