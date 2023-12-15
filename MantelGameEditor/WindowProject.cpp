@@ -23,21 +23,21 @@ void WindowProject::DrawFileTree(const fs::path& path) {
         }
         else {
             //drag and drop doesnt work, so lets add items when double click
-            if (ImGui::Selectable(entry.path().filename().string().c_str(), &selected) && ImGui::IsMouseDoubleClicked(0))
-            {
-                cout << entry.path().filename().string().c_str() << " selected" << endl;
-                app->engineManager->GetEngine()->AddGameObject(new GameObject("", entry.path().string()));
-            }
-            //if (ImGui::Selectable(entry.path().filename().string().c_str()), &selected)
+            //if (ImGui::Selectable(entry.path().filename().string().c_str(), &selected) && ImGui::IsMouseDoubleClicked(0))
             //{
-
-            //    selectedFilePath = entry.path().string();
-            //    if (ImGui::BeginDragDropSource()) {
-            //        ImGui::SetDragDropPayload("DRAG_FILE", selectedFilePath.c_str(), selectedFilePath.size() + 1);
-            //        ImGui::Text("Dragging %s file", entry.path().filename().string().c_str());
-            //        ImGui::EndDragDropSource();
-            //    }
+            //    cout << entry.path().filename().string().c_str() << " selected" << endl;
+            //    app->engineManager->GetEngine()->AddGameObject(new GameObject("", entry.path().string()));
             //}
+            if (ImGui::Selectable(entry.path().filename().string().c_str()), &selected)
+            {
+
+                selectedFilePath = entry.path().string();
+                if (ImGui::BeginDragDropSource()) {
+                    ImGui::SetDragDropPayload("DRAG_FILE", selectedFilePath.c_str(), selectedFilePath.size() + 1);
+                    ImGui::Text("Dragging %s file", entry.path().filename().string().c_str());
+                    ImGui::EndDragDropSource();
+                }
+            }
         }
     }
 }

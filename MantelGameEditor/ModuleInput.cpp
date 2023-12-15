@@ -111,8 +111,11 @@ bool ModuleInput::PreUpdate()
 
 			if (filePath.substr(filePath.find_last_of(".") + 1) == "fbx") {
 				cout << ".fbx file detected" << endl;
-
-				app->engineManager->GetEngine()->AddGameObject(new GameObject("", filePath));
+				size_t pos = filePath.find("Assets");
+				if (pos != string::npos) {
+					string dynamicPath = filePath.substr(pos);
+					app->engineManager->GetEngine()->AddGameObject(new GameObject("", dynamicPath));
+				}
 			}
 			if (filePath.substr(filePath.find_last_of(".") + 1) == "png") {
 				cout << ".png file detected" << endl;

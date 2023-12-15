@@ -214,20 +214,22 @@ static bool MenuBarUpdate() {
                 app->engineManager->GetEngine()->AddGameObject(cameraGo);
             }
 
-            GameObject* tGo = new GameObject("", "Assets/BakerHouse.fbx");
             if (ImGui::BeginMenu("3D Object")) {
                 if (ImGui::MenuItem("Plane", NULL, false, true))          // Temporarly disabled because not implemented (..., false, false)
                 {
+                    GameObject* tGo = new GameObject("", "Assets/BakerHouse.fbx");
                     tGo = new GameObject("Plane", "Assets/Primals/Plane.fbx");
                     app->engineManager->GetEngine()->AddGameObject(tGo);
                 }
                 if (ImGui::MenuItem("Cube", NULL, false, true))          // Temporarly disabled because not implemented (..., false, false)
                 {
+                    GameObject* tGo = new GameObject("", "Assets/BakerHouse.fbx");
                     tGo = new GameObject("Cube", "Assets/Primals/Cube.fbx");
                     app->engineManager->GetEngine()->AddGameObject(tGo);
                 }
                 if (ImGui::MenuItem("Sphere", NULL, false, true))          // Temporarly disabled because not implemented (..., false, false)
                 {
+                    GameObject* tGo = new GameObject("", "Assets/BakerHouse.fbx");
                     tGo = new GameObject("Sphere", "Assets/Primals/Sphere.fbx");
                     app->engineManager->GetEngine()->AddGameObject(tGo);
                 }

@@ -34,8 +34,17 @@ GameObject::GameObject(const std::string& name, const std::string& path, bool em
 
     if (!path.empty())
     {
-        this->texturePath = Mesh::getTexturePathFromFbxPath(path);
-        this->mesh_ptr = Mesh::loadFromFile(path);
+        size_t pos = path.find("Assets");
+        if (pos != string::npos) {
+            string dynamicPath = path.substr(pos);
+            this->texturePath = Mesh::getTexturePathFromFbxPath(dynamicPath);
+            this->mesh_ptr = Mesh::loadFromFile(dynamicPath);
+        }
+        else
+        {
+            this->texturePath = Mesh::getTexturePathFromFbxPath(path);
+            this->mesh_ptr = Mesh::loadFromFile(path);
+        }
         this->texture = this->mesh_ptr[0].get()->texture;
     }
     else
