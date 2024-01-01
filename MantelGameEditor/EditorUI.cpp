@@ -376,7 +376,7 @@ void EditorUI::UIAboutPopup() {
 	if (ImGui::BeginPopupModal("About")) {
 		{
 			// name engine + version
-			ImGui::SeparatorText("Mantel Game Engine v0.1");
+			ImGui::SeparatorText("Mantel Game Engine v2.0");
 
 			// made by
 			ImGui::Text("Made by: ");
@@ -396,6 +396,9 @@ void EditorUI::UIAboutPopup() {
 			ImGui::SameLine();
 			ImGui::Text(")");
 
+			if (ImGui::SmallButton("Github Base Project")) {
+				editor->WebRequest("https://github.com/CITM-UPC/FrogGameMaker");
+			}
 
 
 			// external libraries
@@ -431,7 +434,7 @@ void EditorUI::UIAboutPopup() {
 				// --TODO-- read directly the license document (?)
 				ImGui::Text("MIT License");
 				ImGui::Text("");
-				ImGui::Text("Copyright(c) 2023 CITM - UPC");
+				ImGui::Text("Copyright(c) 2023 Mantel (specifically Luis Gonzalez)");
 				ImGui::Text("");
 				ImGui::Text("Permission is hereby granted, free of charge, to any person obtaining a copy");
 				ImGui::Text("of this software and associated documentation files(the \"Software\"), to deal");
