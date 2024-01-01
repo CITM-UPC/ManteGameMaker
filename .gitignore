@@ -1,0 +1,19 @@
+################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/MantelGameMaker
+/MantelGameEditor/x64/Debug
+*.user
+/x64/Debug
+/.vs
+/MantelGameEngine/x64/Debug
+/MantelGameEditor/Library
+
+/.vs/MantelGameMaker
+/MantelGameEditor/x64/Release
+*.user
+/x64/Release
+/.vs
+/MantelGameEngine/x64/Release
+/MantelGameEditor/Library
