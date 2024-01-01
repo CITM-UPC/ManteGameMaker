@@ -1,4 +1,4 @@
-# FrogGameMaker
+# MantelGameMaker
 
 Mantel Game Maker is a game engine: 
 Github: https://github.com/CITM-UPC/MantelGameMaker
