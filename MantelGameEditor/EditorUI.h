@@ -7,7 +7,7 @@
 
 #include "imguizmo.h"
 
-#include "../FrogGameEngine/GameObject.h"
+#include "../MantelGameEngine/GameObject.h"
 
 class EditorUI : public EditorModule {
 public:

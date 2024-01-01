@@ -7,7 +7,7 @@
 #include "EditorCamera.h"
 #include "EditorUI.h"
 
-#include "../FrogGameEngine/GameObject.h"
+#include "../MantelGameEngine/GameObject.h"
 
 EditorCamera::EditorCamera() : EditorModule() { }
 

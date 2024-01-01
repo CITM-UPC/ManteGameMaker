@@ -11,11 +11,11 @@
 #include "EditorUI.h"
 #include "EditorCamera.h"
 
-#include "../FrogGameEngine/GameApp.h"
+#include "../MantelGameEngine/GameApp.h"
 
-#include "../FrogGameEngine/Scene.h"
+#include "../MantelGameEngine/Scene.h"
 
-#include "../FrogGameEngine/Mesh.h"
+#include "../MantelGameEngine/Mesh.h"
 
 namespace fs = std::filesystem;
 
@@ -282,6 +282,10 @@ void EditorUI::UIMainMenuBar() {
 			}
 
 			if (ImGui::MenuItem("Go To Github")) {
+				editor->WebRequest("https://github.com/CITM-UPC/MantelGameMaker");
+			}			
+
+			if (ImGui::MenuItem("Base Github Project")) {
 				editor->WebRequest("https://github.com/CITM-UPC/FrogGameMaker");
 			}
 
@@ -372,22 +376,22 @@ void EditorUI::UIAboutPopup() {
 	if (ImGui::BeginPopupModal("About")) {
 		{
 			// name engine + version
-			ImGui::SeparatorText("Frog Game Engine v0.1");
+			ImGui::SeparatorText("Mantel Game Engine v0.1");
 
 			// made by
 			ImGui::Text("Made by: ");
-			ImGui::Text("   Victor Martin (Github:");
+			ImGui::Text("   Luis Gonzalez (Github:");
 			ImGui::SameLine();
-			if (ImGui::SmallButton("VicMarBall")) {
-				editor->WebRequest("https://github.com/VicMarBall");
+			if (ImGui::SmallButton("punto16")) {
+				editor->WebRequest("https://github.com/punto16");
 			}
 			ImGui::SameLine();
 			ImGui::Text(")");
 
-			ImGui::Text("   Ari Sevcik (Github:");
+			ImGui::Text("   Adrian Gonzalo Ponce (Github:");
 			ImGui::SameLine();
-			if (ImGui::SmallButton("AriSevcik")) {
-				editor->WebRequest("https://github.com/AriSevcik");
+			if (ImGui::SmallButton("AdrianGPJ")) {
+				editor->WebRequest("https://github.com/AdrianGPJ");
 			}
 			ImGui::SameLine();
 			ImGui::Text(")");

@@ -1,12 +1,17 @@
 # FrogGameMaker
 
-Frog Game Maker is a game engine: 
-Github: https://github.com/CITM-UPC/FrogGameMaker
+Mantel Game Maker is a game engine: 
+Github: https://github.com/CITM-UPC/MantelGameMaker
 
 ### Made by: 
-Victor Martin (Github: VicMarBall (https://github.com/VicMarBall))
+Our organization is called Mantel and it's formed by 2 students of UPC in Barcelona:
+- Luis González Ramírez ~ https://github.com/punto16
+- Adrian Gonzalo Ponce Jara ~ https://github.com/AdrianGPJ
 
-Ari Sevcik (Github: AriSevcik (https://github.com/AriSevcik))
+This project is based on Frog Game Maker code on their 2nd release:
+Github: https://github.com/CITM-UPC/FrogGameMaker
+- Victor Martin ~ https://github.com/VicMarBall
+- Ari Sevcik ~ https://github.com/AriSevcik
 
 ## New Features: 
 
@@ -122,4 +127,4 @@ Demo Window: ImGui Demo Window
 
 About: 
 
- - Information about Frog Engine
+ - Information about Mantel Engine

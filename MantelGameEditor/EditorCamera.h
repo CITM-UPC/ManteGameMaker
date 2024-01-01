@@ -1,7 +1,7 @@
 #pragma once
 #include "EditorModule.h"
 
-#include "../FrogGameEngine/GameObject.h"
+#include "../MantelGameEngine/GameObject.h"
 
 class EditorCamera : public EditorModule {
 public:
