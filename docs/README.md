@@ -20,6 +20,12 @@ Resources loaded in /Library
 
 PLAY and STOP
 
+----
+
+![Gif of some features of the engine](https://raw.githubusercontent.com/CITM-UPC/MantelGameMaker/High-Level-System/docs/Assets/EnginesGif1.gif)
+
+----
+
 ## How To Use: 
 ### Move Camera 
 Right Click and WASD to move
@@ -72,6 +78,13 @@ Texture:
 
 Camera: 
  - You can edit the parameters of a camera (FOV, zNear, zFar, Aspect Ratio)
+
+
+----
+
+![Gif of some features of the engine](https://raw.githubusercontent.com/CITM-UPC/MantelGameMaker/High-Level-System/docs/Assets/EnginesGif2.gif)
+
+----
 
 ### Console Window
 See console logs
