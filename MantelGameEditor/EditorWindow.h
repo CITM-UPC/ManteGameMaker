@@ -35,7 +35,7 @@ public:
 	bool isResizable = true;
 	bool isBorderless = false;
 
-	int width = 720 * 16 / 9;
-	int height = 720;
+	int width = 1024;
+	int height = 768;
 };
 
