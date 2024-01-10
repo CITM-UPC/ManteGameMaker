@@ -122,13 +122,20 @@ About:
 ## Made by: 
 
 ![](https://raw.githubusercontent.com/CITM-UPC/MantelGameMaker/High-Level-System/docs/Assets/MantelLogo.png)
+
 Our organization is called Mantel and it's formed by 2 students of UPC in Barcelona:
+
+----
 
   ![](https://raw.githubusercontent.com/CITM-UPC/MantelGameMaker/High-Level-System/docs/Assets/LuisGonzalez.png)
 - [Luis González Ramírez](https://github.com/punto16)
 
+----
+
   ![](https://raw.githubusercontent.com/CITM-UPC/MantelGameMaker/High-Level-System/docs/Assets/AdrianPonce.png)
 - [Adrian Gonzalo Ponce Jara](https://github.com/AdrianGPJ)
+
+----
 
 This project is based on Frog Game Maker code on their 2nd release:
 [Github Project](https://github.com/CITM-UPC/FrogGameMaker)
