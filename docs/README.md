@@ -1,17 +1,6 @@
-# MantelGameMaker
-
-Mantel Game Maker is a game engine: 
-Github: https://github.com/CITM-UPC/MantelGameMaker
-
-### Made by: 
-Our organization is called Mantel and it's formed by 2 students of UPC in Barcelona:
-- Luis González Ramírez ~ https://github.com/punto16
-- Adrian Gonzalo Ponce Jara ~ https://github.com/AdrianGPJ
-
-This project is based on Frog Game Maker code on their 2nd release:
-Github: https://github.com/CITM-UPC/FrogGameMaker
-- Victor Martin ~ https://github.com/VicMarBall
-- Ari Sevcik ~ https://github.com/AriSevcik
+## Description of the project:
+[MantelGameMaker](https://github.com/CITM-UPC/MantelGameMaker) is a 3D GameEngine created by Mantel, a group of 2 students of Videogame Design and Development from CITM - Barcelona.
+Specifically, this 3D GameEngine focus on the High-Level System of audio.
 
 ## New Features: 
 
@@ -127,4 +116,26 @@ Demo Window: ImGui Demo Window
 
 About: 
 
- - Information about Mantel Engine
+ - Information about [Mantel Engine](https://github.com/CITM-UPC/MantelGameMaker)
+
+
+## Made by: 
+
+![](https://raw.githubusercontent.com/CITM-UPC/MantelGameMaker/High-Level-System/docs/Assets/MantelLogo.png)
+Our organization is called Mantel and it's formed by 2 students of UPC in Barcelona:
+
+  ![](https://raw.githubusercontent.com/CITM-UPC/MantelGameMaker/High-Level-System/docs/Assets/LuisGonzalez.png)
+- [Luis González Ramírez](https://github.com/punto16)
+
+  ![](https://raw.githubusercontent.com/CITM-UPC/MantelGameMaker/High-Level-System/docs/Assets/AdrianPonce.png)
+- [Adrian Gonzalo Ponce Jara](https://github.com/AdrianGPJ)
+
+This project is based on Frog Game Maker code on their 2nd release:
+[Github Project](https://github.com/CITM-UPC/FrogGameMaker)
+- [Victor Martin](https://github.com/VicMarBall)
+- [Ari Sevcik](https://github.com/AriSevcik)
+
+## [Click here to Download latest version of the engine](https://github.com/CITM-UPC/MantelGameMaker/releases/download/Release_v.2.0/MantelGameMaker_v.2.0.zip)
+
+## License 
+This project is licensed under an unmodified MIT license, which is an OSI-certified license that allows static linking with closed source software. Check [LICENSE](LICENSE.html) for further details.
