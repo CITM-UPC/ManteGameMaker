@@ -145,4 +145,4 @@ This project is based on Frog Game Maker code on their 2nd release:
 ## [Click here to Download latest version of the engine](https://github.com/CITM-UPC/MantelGameMaker/releases/download/Release_v.2.0/MantelGameMaker_v.2.0.zip)
 
 ## License 
-This project is licensed under an unmodified MIT license, which is an OSI-certified license that allows static linking with closed source software. Check [LICENSE](docs/LICENSE.html) for further details.
+This project is licensed under an unmodified MIT license, which is an OSI-certified license that allows static linking with closed source software. Check [LICENSE](LICENSE.html) for further details.
