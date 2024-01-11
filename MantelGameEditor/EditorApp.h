@@ -16,6 +16,7 @@
 #include "EditorModule.h"
 
 #include "../MantelGameEngine/GameApp.h"
+#include "../MantelAudioEngine/AudioEngine.h"
 
 using namespace std;
 using namespace chrono;
@@ -49,6 +50,10 @@ public:
 	EditorObjectSelector* editorObjectSelector;
 	EditorUI* editorUI;
 
+	// Audio Engine
+	AudioEngine* audioEngine;
+
+	// Game Engine
 	GameApp* gameApp;
 
 	list<EditorModule*> modules;

@@ -22,6 +22,8 @@ EditorApp::EditorApp() {
 
 	FPS_Log.push_back(0.0f);
 
+	audioEngine = new AudioEngine();
+
 	gameApp = new GameApp();
 }
 
@@ -56,6 +58,8 @@ bool EditorApp::Start() {
 			++item;
 		}
 	}
+
+	//audioEngine->Start();
 
 	gameApp->EditorStart();
 
@@ -95,6 +99,8 @@ bool EditorApp::Update() {
 
 	// post update
 	{
+		//audioEngine->Update();
+
 		if (gameIsOn) {
 			gameApp->GameRender(editorCamera->cameraObject.get()->GetComponent<CameraComponent>());
 		}
@@ -124,6 +130,17 @@ bool EditorApp::Update() {
 		gameApp->ClearLogs();
 	}
 
+	// get audio logs
+	//{
+	//	vector<string> audioLogs = audioEngine->GetLogs();
+
+	//	for (auto it = audioLogs.begin(); it != audioLogs.end(); ++it) {
+	//		AddLog((*it));
+	//	}
+
+	//	audioEngine->ClearLogs();
+	//}
+
 	const auto frame_end = steady_clock::now();
 	const auto frame_duration = frame_end - frame_start;
 
@@ -148,6 +165,8 @@ bool EditorApp::Cleanup() {
 	bool ret = true;
 
 	gameApp->CleanUp();
+
+	//audioEngine->CleanUp();
 
 	// clean up is made in reverse
 	modules.reverse();

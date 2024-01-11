@@ -19,10 +19,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <VCProjectVersion>16.0</VCProjectVersion>
+    <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{b850c1d8-9f78-4055-8fd0-db724e71f83f}</ProjectGuid>
-    <RootNamespace>MantelGameEditor</RootNamespace>
+    <ProjectGuid>{a9fb0a04-3b3f-4675-8f1f-212747103045}</ProjectGuid>
+    <RootNamespace>MantelAudioEngine</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -40,17 +40,17 @@
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
-    <CharacterSet>MultiByte</CharacterSet>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>MultiByte</CharacterSet>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -70,18 +70,6 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <LinkIncremental>true</LinkIncremental>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <LinkIncremental>false</LinkIncremental>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <LinkIncremental>true</LinkIncremental>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <LinkIncremental>false</LinkIncremental>
-  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -123,18 +111,15 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)vcpkg\installed\x64-windows\lib\;$(SolutionDir)vcpkg\installed\x64-windows\lib\manual-link\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glew32.lib;OpenGL32.lib;SDL2.lib;SDL2main.lib;imgui.lib;imguizmo.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <Lib>
+      <AdditionalDependencies>Ak3DAudioBedMixerFX.lib;AkAudioInputSource.lib;AkAutobahn.lib;AkCompressorFX.lib;AkDelayFX.lib;AkExpanderFX.lib;AkFlangerFX.lib;AkGainFX.lib;AkGuitarDistortionFX.lib;AkHarmonizerFX.lib;AkMatrixReverbFX.lib;AkMemoryMgr.lib;AkMeterFX.lib;AkMusicEngine.lib;AkOpusDecoder.lib;AkParametricEQFX.lib;AkPeakLimiterFX.lib;AkPitchShifterFX.lib;AkRecorderFX.lib;AkReflectFX.lib;AkRoomVerbFX.lib;AkSilenceSource.lib;AkSineSource.lib;AkSoundEngine.lib;AkSoundSeedWindSource.lib;AkSoundSeedWooshSource.lib;AkSpatialAudio.lib;AkStereoDelayFX.lib;AkStreamMgr.lib;AkSynthOneSource.lib;AkTimeStretchFX.lib;AkToneSource.lib;AkTremoloFX.lib;AkVorbisDecoder.lib;AuroHeadphoneFX.lib;CommunicationCentral.lib;iZHybridReverbFX.lib;iZTrashBoxModelerFX.lib;iZTrashDelayFX.lib;iZTrashDistortionFX.lib;iZTrashDynamicsFX.lib;iZTrashFiltersFX.lib;iZTrashMultibandDistortionFX.lib;McDSPFutzBoxFX.lib;McDSPLimiterFX.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Lib>
+    <Lib>
+      <AdditionalLibraryDirectories>$(SolutionDir)vcpkg\installed\x64-windows\lib\;$(SolutionDir)vcpkg\installed\x64-windows\lib\manual-link;$(SolutionDir)Wwise\SDK\Debug\lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <IgnoreSpecificDefaultLibraries>
       </IgnoreSpecificDefaultLibraries>
-    </Link>
-    <PreBuildEvent>
-      <Command>call "$(SolutionDir)vcpkg\bootstrap-vcpkg.bat"
-"$(SolutionDir)vcpkg\vcpkg.exe" install opengl glew sdl2 imgui[opengl3-binding,sdl2-binding,docking-experimental] imguizmo --recurse --triplet x64-windows</Command>
-    </PreBuildEvent>
-    <PostBuildEvent>
-      <Command>copy "$(SolutionDir)vcpkg\installed\x64-windows\bin\*.*" "$(OutDir)"</Command>
-    </PostBuildEvent>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -153,48 +138,22 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)vcpkg\installed\x64-windows\lib\;$(SolutionDir)vcpkg\installed\x64-windows\lib\manual-link\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glew32.lib;OpenGL32.lib;SDL2.lib;SDL2main.lib;imgui.lib;imguizmo.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <Lib>
+      <AdditionalDependencies>Ak3DAudioBedMixerFX.lib;AkAudioInputSource.lib;AkAutobahn.lib;AkCompressorFX.lib;AkDelayFX.lib;AkExpanderFX.lib;AkFlangerFX.lib;AkGainFX.lib;AkGuitarDistortionFX.lib;AkHarmonizerFX.lib;AkMatrixReverbFX.lib;AkMemoryMgr.lib;AkMeterFX.lib;AkMusicEngine.lib;AkOpusDecoder.lib;AkParametricEQFX.lib;AkPeakLimiterFX.lib;AkPitchShifterFX.lib;AkRecorderFX.lib;AkReflectFX.lib;AkRoomVerbFX.lib;AkSilenceSource.lib;AkSineSource.lib;AkSoundEngine.lib;AkSoundSeedWindSource.lib;AkSoundSeedWooshSource.lib;AkSpatialAudio.lib;AkStereoDelayFX.lib;AkStreamMgr.lib;AkSynthOneSource.lib;AkTimeStretchFX.lib;AkToneSource.lib;AkTremoloFX.lib;AkVorbisDecoder.lib;AuroHeadphoneFX.lib;iZHybridReverbFX.lib;iZTrashBoxModelerFX.lib;iZTrashDelayFX.lib;iZTrashDistortionFX.lib;iZTrashDynamicsFX.lib;iZTrashFiltersFX.lib;iZTrashMultibandDistortionFX.lib;McDSPFutzBoxFX.lib;McDSPLimiterFX.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Lib>
+    <Lib>
+      <AdditionalLibraryDirectories>$(SolutionDir)vcpkg\installed\x64-windows\lib\;$(SolutionDir)vcpkg\installed\x64-windows\lib\manual-link;$(SolutionDir)Wwise\SDK\Release\lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <IgnoreSpecificDefaultLibraries>
       </IgnoreSpecificDefaultLibraries>
-    </Link>
-    <PreBuildEvent>
-      <Command>call "$(SolutionDir)vcpkg\bootstrap-vcpkg.bat"
-"$(SolutionDir)vcpkg\vcpkg.exe" install opengl glew sdl2 imgui[opengl3-binding,sdl2-binding,docking-experimental] imguizmo --recurse --triplet x64-windows</Command>
-    </PreBuildEvent>
-    <PostBuildEvent>
-      <Command>copy "$(SolutionDir)vcpkg\installed\x64-windows\bin\*.*" "$(OutDir)"</Command>
-    </PostBuildEvent>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="EditorApp.cpp" />
-    <ClCompile Include="EditorCamera.cpp" />
-    <ClCompile Include="EditorInput.cpp" />
-    <ClCompile Include="EditorMain.cpp" />
-    <ClCompile Include="EditorObjectSelector.cpp" />
-    <ClCompile Include="EditorUI.cpp" />
-    <ClCompile Include="EditorWindow.cpp" />
+    <ClCompile Include="AudioEngine.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="EditorApp.h" />
-    <ClInclude Include="EditorCamera.h" />
-    <ClInclude Include="EditorInput.h" />
-    <ClInclude Include="EditorModule.h" />
-    <ClInclude Include="EditorObjectSelector.h" />
-    <ClInclude Include="EditorUI.h" />
-    <ClInclude Include="EditorWindow.h" />
-    <ClInclude Include="resource.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\MantelGameEngine\MantelGameEngine.vcxproj">
-      <Project>{8e3376f4-e954-4089-a40f-84d9033020f0}</Project>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="MantelGameEditor.rc" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="Assets\icon.ico" />
+    <ClInclude Include="AudioUtility.h" />
+    <ClInclude Include="AudioEngine.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
