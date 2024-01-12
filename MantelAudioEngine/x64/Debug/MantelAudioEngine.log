@@ -1832,4 +1832,4 @@ McDSPLimiterFX.lib(PooledMemoryAllocator.obj) : warning LNK4006: "public: void _
 McDSPLimiterFX.lib(PooledMemoryAllocator.obj) : warning LNK4006: "public: unsigned char * __cdecl DSP::PooledMemoryAllocator::GetPointerToPooledMemory(unsigned long *)" (?GetPointerToPooledMemory@PooledMemoryAllocator@DSP@@QEAAPEAEPEAK@Z) already defined in McDSPFutzBoxFX.lib(PooledMemoryAllocator.obj); second definition ignored
 McDSPLimiterFX.lib(PooledMemoryAllocator.obj) : warning LNK4006: "public: void __cdecl DSP::PooledMemoryAllocator::Reset(void)" (?Reset@PooledMemoryAllocator@DSP@@QEAAXXZ) already defined in McDSPFutzBoxFX.lib(PooledMemoryAllocator.obj); second definition ignored
 McDSPLimiterFX.lib(PooledMemoryAllocator.obj) : warning LNK4006: "public: void * __cdecl DSP::PooledMemoryAllocator::Malloc(unsigned __int64)" (?Malloc@PooledMemoryAllocator@DSP@@QEAAPEAX_K@Z) already defined in McDSPFutzBoxFX.lib(PooledMemoryAllocator.obj); second definition ignored
-  MantelAudioEngine.vcxproj -> D:\repos\Github\MantelGameMaker\x64\Debug\MantelAudioEngine.lib
+  MantelAudioEngine.vcxproj -> C:\Users\luisgr3\Documents\GitHub\MantelGameMaker\x64\Debug\MantelAudioEngine.lib

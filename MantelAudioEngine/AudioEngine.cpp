@@ -20,7 +20,7 @@ bool AudioEngine::Start()
 		return false;
 	}
 
-	// STREAM MANAGER
+	//// STREAM MANAGER
 	AkStreamMgrSettings stmSettings;
 	AK::StreamMgr::GetDefaultSettings(stmSettings);
 
@@ -32,14 +32,16 @@ bool AudioEngine::Start()
 
 	// STREAM DEVICE
 	AkDeviceSettings deviceSettings;
-	//AK::StreamMgr::GetDefaultDeviceSettings(deviceSettings);
-	CAkFilePackageLowLevelIODeferred g_lowLevelIO;
+	AK::StreamMgr::GetDefaultDeviceSettings(deviceSettings);
 
-	if (g_lowLevelIO.Init(deviceSettings) != AK_Success)
-	{
-		AddLog("Could not create the streaming device and Low-Level I/O system");
-		return false;
-	}
+	//next line crashes program
+	//CAkFilePackageLowLevelIODeferred g_lowLevelIO;
+
+	//if (g_lowLevelIO.Init(deviceSettings) != AK_Success)
+	//{
+	//	AddLog("Could not create the streaming device and Low-Level I/O system");
+	//	return false;
+	//}
 
 	return true;
 }

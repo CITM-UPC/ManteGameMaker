@@ -186,6 +186,9 @@
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MantelAudioEngine\MantelAudioEngine.vcxproj">
+      <Project>{a9fb0a04-3b3f-4675-8f1f-212747103045}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\MantelGameEngine\MantelGameEngine.vcxproj">
       <Project>{8e3376f4-e954-4089-a40f-84d9033020f0}</Project>
     </ProjectReference>

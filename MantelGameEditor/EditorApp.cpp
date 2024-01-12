@@ -59,7 +59,7 @@ bool EditorApp::Start() {
 		}
 	}
 
-	//audioEngine->Start();
+	audioEngine->Start();
 
 	gameApp->EditorStart();
 
@@ -99,7 +99,7 @@ bool EditorApp::Update() {
 
 	// post update
 	{
-		//audioEngine->Update();
+		audioEngine->Update();
 
 		if (gameIsOn) {
 			gameApp->GameRender(editorCamera->cameraObject.get()->GetComponent<CameraComponent>());
@@ -131,15 +131,15 @@ bool EditorApp::Update() {
 	}
 
 	// get audio logs
-	//{
-	//	vector<string> audioLogs = audioEngine->GetLogs();
+	{
+		vector<string> audioLogs = audioEngine->GetLogs();
 
-	//	for (auto it = audioLogs.begin(); it != audioLogs.end(); ++it) {
-	//		AddLog((*it));
-	//	}
+		for (auto it = audioLogs.begin(); it != audioLogs.end(); ++it) {
+			AddLog((*it));
+		}
 
-	//	audioEngine->ClearLogs();
-	//}
+		audioEngine->ClearLogs();
+	}
 
 	const auto frame_end = steady_clock::now();
 	const auto frame_duration = frame_end - frame_start;
@@ -166,7 +166,7 @@ bool EditorApp::Cleanup() {
 
 	gameApp->CleanUp();
 
-	//audioEngine->CleanUp();
+	audioEngine->CleanUp();
 
 	// clean up is made in reverse
 	modules.reverse();
