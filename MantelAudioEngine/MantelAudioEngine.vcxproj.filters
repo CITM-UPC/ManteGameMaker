@@ -13,10 +13,46 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\Wwise">
+      <UniqueIdentifier>{9508164d-9659-4ba1-9847-aac6a0a75268}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AudioEngine.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Wwise\SDK\include\Common\AkDefaultLowLevelIODispatcher.cpp">
+      <Filter>Source Files\Wwise</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Wwise\SDK\include\Common\AkFileLocationBase.cpp">
+      <Filter>Source Files\Wwise</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Wwise\SDK\include\Common\AkFilePackage.cpp">
+      <Filter>Source Files\Wwise</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Wwise\SDK\include\Common\AkFilePackageLUT.cpp">
+      <Filter>Source Files\Wwise</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Wwise\SDK\include\Common\AkGeneratedSoundBanksResolver.cpp">
+      <Filter>Source Files\Wwise</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Wwise\SDK\include\Common\AkJobWorkerMgr.cpp">
+      <Filter>Source Files\Wwise</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Wwise\SDK\include\Common\AkMultipleFileLocation.cpp">
+      <Filter>Source Files\Wwise</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Wwise\SDK\include\Common\AkPlatformProfilerHookStubs.cpp">
+      <Filter>Source Files\Wwise</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Wwise\SDK\include\Win32\AkDefaultIOHookDeferred.cpp">
+      <Filter>Source Files\Wwise</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Wwise\SDK\include\Win32\AkPlatformProfilerHooks.cpp">
+      <Filter>Source Files\Wwise</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Wwise\SDK\include\Win32\stdafx.cpp">
+      <Filter>Source Files\Wwise</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -26,5 +62,52 @@
     <ClInclude Include="AudioUtility.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\Wwise\SDK\include\Common\AkDefaultLowLevelIODispatcher.h">
+      <Filter>Source Files\Wwise</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Wwise\SDK\include\Common\AkFileHelpersBase.h">
+      <Filter>Source Files\Wwise</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Wwise\SDK\include\Common\AkFileLocationBase.h">
+      <Filter>Source Files\Wwise</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Wwise\SDK\include\Common\AkFilePackage.h">
+      <Filter>Source Files\Wwise</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Wwise\SDK\include\Common\AkFilePackageLowLevelIO.h">
+      <Filter>Source Files\Wwise</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Wwise\SDK\include\Common\AkFilePackageLowLevelIODeferred.h">
+      <Filter>Source Files\Wwise</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Wwise\SDK\include\Common\AkFilePackageLUT.h">
+      <Filter>Source Files\Wwise</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Wwise\SDK\include\Common\AkGeneratedSoundBanksResolver.h">
+      <Filter>Source Files\Wwise</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Wwise\SDK\include\Common\AkJobWorkerMgr.h">
+      <Filter>Source Files\Wwise</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Wwise\SDK\include\Common\AkMultipleFileLocation.h">
+      <Filter>Source Files\Wwise</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Wwise\SDK\include\Common\AkPlatformProfilerHooks.h">
+      <Filter>Source Files\Wwise</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Wwise\SDK\include\Win32\AkDefaultIOHookDeferred.h">
+      <Filter>Source Files\Wwise</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Wwise\SDK\include\Win32\AkFileHelpers.h">
+      <Filter>Source Files\Wwise</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Wwise\SDK\include\Win32\stdafx.h">
+      <Filter>Source Files\Wwise</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Wwise\SDK\include\Common\AkFilePackageLowLevelIO.inl">
+      <Filter>Source Files\Wwise</Filter>
+    </None>
   </ItemGroup>
 </Project>
