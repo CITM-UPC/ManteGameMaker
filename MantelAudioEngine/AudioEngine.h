@@ -13,6 +13,7 @@ public:
 
 	void AddLog(string l)
 	{
+		l = "AudioEngine: " + l;
 		logs.push_back(l);
 	}
 	vector<string> GetLogs()

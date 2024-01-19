@@ -14,17 +14,26 @@ bool AudioEngine::Start()
 	AkMemSettings memSettings;
 	AK::MemoryMgr::GetDefaultSettings(memSettings);
 
-	if (AK::MemoryMgr::Init(&memSettings) != AK_Success)
+	if (AK::MemoryMgr::Init(&memSettings) == AK_Success)
+	{
+		AddLog("Created Memory manager");
+	}
+	else
 	{
 		AddLog("Could not create memory manager");
 		return false;
 	}
 
-	//// STREAM MANAGER
+	// STREAM MANAGER
 	AkStreamMgrSettings stmSettings;
 	AK::StreamMgr::GetDefaultSettings(stmSettings);
 
-	if (!AK::StreamMgr::Create(stmSettings))
+	if (AK::StreamMgr::Create(stmSettings))
+	{
+		AddLog("Streaming Manager created");
+		return false;
+	}
+	else
 	{
 		AddLog("Could not create the Streaming Manager");
 		return false;

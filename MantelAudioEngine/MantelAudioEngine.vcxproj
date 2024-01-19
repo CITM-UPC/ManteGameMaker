@@ -104,7 +104,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Wwise\SDK\include\;$(SolutionDir)Wwise\SDK\include\Win32;$(SolutionDir)vcpkg\installed\x64-windows\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Wwise\SDK\include\Win32;$(SolutionDir)Wwise\SDK\include\;$(SolutionDir)vcpkg\installed\x64-windows\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>stdc11</LanguageStandard_C>
     </ClCompile>
@@ -113,7 +113,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>Ak3DAudioBedMixerFX.lib;AkAudioInputSource.lib;AkAutobahn.lib;AkCompressorFX.lib;AkDelayFX.lib;AkExpanderFX.lib;AkFlangerFX.lib;AkGainFX.lib;AkGuitarDistortionFX.lib;AkHarmonizerFX.lib;AkMatrixReverbFX.lib;AkMemoryMgr.lib;AkMeterFX.lib;AkMusicEngine.lib;AkOpusDecoder.lib;AkParametricEQFX.lib;AkPeakLimiterFX.lib;AkPitchShifterFX.lib;AkRecorderFX.lib;AkReflectFX.lib;AkRoomVerbFX.lib;AkSilenceSource.lib;AkSineSource.lib;AkSoundEngine.lib;AkSoundSeedWindSource.lib;AkSoundSeedWooshSource.lib;AkSpatialAudio.lib;AkStereoDelayFX.lib;AkStreamMgr.lib;AkSynthOneSource.lib;AkTimeStretchFX.lib;AkToneSource.lib;AkTremoloFX.lib;AkVorbisDecoder.lib;AuroHeadphoneFX.lib;CommunicationCentral.lib;iZHybridReverbFX.lib;iZTrashBoxModelerFX.lib;iZTrashDelayFX.lib;iZTrashDistortionFX.lib;iZTrashDynamicsFX.lib;iZTrashFiltersFX.lib;iZTrashMultibandDistortionFX.lib;McDSPFutzBoxFX.lib;McDSPLimiterFX.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>CommunicationCentral.lib;AkSoundEngine.lib;AkMemoryMgr.lib;AkStreamMgr.lib;AkMusicEngine.lib;AkSpatialAudio.lib;AkAudioInputSource.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
     <Lib>
       <AdditionalLibraryDirectories>$(SolutionDir)vcpkg\installed\x64-windows\lib\;$(SolutionDir)vcpkg\installed\x64-windows\lib\manual-link;$(SolutionDir)Wwise\SDK\Debug\lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -129,7 +129,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Wwise\SDK\include\;$(SolutionDir)Wwise\SDK\include\Win32;$(SolutionDir)vcpkg\installed\x64-windows\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Wwise\SDK\include\Win32;$(SolutionDir)Wwise\SDK\include\;$(SolutionDir)vcpkg\installed\x64-windows\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>stdc11</LanguageStandard_C>
     </ClCompile>
@@ -140,7 +140,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>Ak3DAudioBedMixerFX.lib;AkAudioInputSource.lib;AkAutobahn.lib;AkCompressorFX.lib;AkDelayFX.lib;AkExpanderFX.lib;AkFlangerFX.lib;AkGainFX.lib;AkGuitarDistortionFX.lib;AkHarmonizerFX.lib;AkMatrixReverbFX.lib;AkMemoryMgr.lib;AkMeterFX.lib;AkMusicEngine.lib;AkOpusDecoder.lib;AkParametricEQFX.lib;AkPeakLimiterFX.lib;AkPitchShifterFX.lib;AkRecorderFX.lib;AkReflectFX.lib;AkRoomVerbFX.lib;AkSilenceSource.lib;AkSineSource.lib;AkSoundEngine.lib;AkSoundSeedWindSource.lib;AkSoundSeedWooshSource.lib;AkSpatialAudio.lib;AkStereoDelayFX.lib;AkStreamMgr.lib;AkSynthOneSource.lib;AkTimeStretchFX.lib;AkToneSource.lib;AkTremoloFX.lib;AkVorbisDecoder.lib;AuroHeadphoneFX.lib;iZHybridReverbFX.lib;iZTrashBoxModelerFX.lib;iZTrashDelayFX.lib;iZTrashDistortionFX.lib;iZTrashDynamicsFX.lib;iZTrashFiltersFX.lib;iZTrashMultibandDistortionFX.lib;McDSPFutzBoxFX.lib;McDSPLimiterFX.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>AkSoundEngine.lib;AkMemoryMgr.lib;AkStreamMgr.lib;AkMusicEngine.lib;AkSpatialAudio.lib;AkAudioInputSource.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
     <Lib>
       <AdditionalLibraryDirectories>$(SolutionDir)vcpkg\installed\x64-windows\lib\;$(SolutionDir)vcpkg\installed\x64-windows\lib\manual-link;$(SolutionDir)Wwise\SDK\Release\lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>

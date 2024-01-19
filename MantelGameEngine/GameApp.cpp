@@ -227,6 +227,7 @@ void GameApp::CleanUp()
 
 void GameApp::AddLog(string l)
 {
+    l = "GameEngine: " + l;
     logs.push_back(l);
 }
 
