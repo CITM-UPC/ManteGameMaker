@@ -14,17 +14,8 @@ public:
 	void AddLog(string l)
 	{
 		l = "AudioEngine: " + l;
-		logs.push_back(l);
-	}
-	vector<string> GetLogs()
-	{
-		return logs;
-	}
-	void ClearLogs()
-	{
-		logs.clear();
+		cout << l << endl;
 	}
 
 private:
-	vector<string> logs;
 };

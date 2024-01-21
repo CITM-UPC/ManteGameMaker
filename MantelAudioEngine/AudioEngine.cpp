@@ -70,10 +70,57 @@ bool AudioEngine::Start()
 		return false;
 	}
 
+
+	//music engine
+	AkMusicSettings musicInit;
+	AK::MusicEngine::GetDefaultInitSettings(musicInit);
+
+	if (AK::MusicEngine::Init(&musicInit) == AK_Success)
+	{
+		AddLog("Succes on initialize the Music Engine.");
+	}
+	else
+	{
+		AddLog("Could not initialize the Music Engine");
+		return false;
+	}
+
+	//spatial audio
+	//AkSpatialAudioInitSettings settings; // The constructor fills AkSpatialAudioInitSettings with the recommended default settings. 
+
+	//if (AK::SpatialAudio::Init(settings) != AK_Success)
+	//{
+	//	AddLog("Succes on initialize the Spatial Audio");
+	//}
+	//else
+	//{
+	//	AddLog("Could not initialize the Spatial Audio.");
+	//	return false;
+	//}
+
+	//communications
+#ifndef AK_OPTIMIZED
+	// Initialize communications (not in release build!)
+
+	//AkCommSettings commSettings;
+	//AK::Comm::GetDefaultInitSettings(commSettings);
+	//if (AK::Comm::Init(commSettings) != AK_Success)
+	//{
+	//	AddLog("Succes on initialize communication.");
+	//}
+	//else
+	//{
+	//	AddLog("Could not initialize communication");
+	//	return false;
+	//}
+#endif // AK_OPTIMIZED
+
+
 	//TODO: SET AS DYNAMIC PATH
-	g_lowLevelIO.SetBasePath(AKTEXT("D:\\repos\\Github\\MantelGameMaker\\MantelGameEditor\\Assets\\wwise"));
+	g_lowLevelIO.SetBasePath(AKTEXT("D:\\repos\\Github\\MantelGameMaker\\Wwise\\SDK\\samples\\IntegrationDemo\\WwiseProject\\GeneratedSoundBanks\\Windows"));
 	AK::StreamMgr::SetCurrentLanguage(AKTEXT("English(us)"));
 
+	//bank init
 	AkBankID bankID;
 	if (AK::SoundEngine::LoadBank(BANKNAME_INIT, bankID) == AK_Success)
 	{
@@ -101,10 +148,30 @@ bool AudioEngine::Start()
 
 bool AudioEngine::Update()
 {
+	//if (AK::SoundEngine::RegisterGameObj(, "Theme") == AK_Success)
+	//{
+
+	//}
+
 	return true;
 }
 
 bool AudioEngine::CleanUp()
 {
+	AK::SoundEngine::Term();
+	AK::MusicEngine::Term();
+#ifndef AK_OPTIMIZED
+	AK::Comm::Term();
+#endif // AK_OPTIMIZED
+
+	g_lowLevelIO.Term();
+
+	if (AK::IAkStreamMgr::Get())
+	{
+		AK::IAkStreamMgr::Get()->Destroy();
+	}
+
+	AK::MemoryMgr::Term();
+
 	return true;
 }

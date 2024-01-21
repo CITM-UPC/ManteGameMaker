@@ -22,6 +22,9 @@ EditorApp::EditorApp() {
 
 	FPS_Log.push_back(0.0f);
 
+	dualOutputBuffer = new DualOutputBuffer(std::cout.rdbuf(), consoleOutput);
+	std::cout.rdbuf(dualOutputBuffer);
+
 	audioEngine = new AudioEngine();
 
 	gameApp = new GameApp();
@@ -59,7 +62,12 @@ bool EditorApp::Start() {
 		}
 	}
 
-	audioEngine->Start();
+	if (!audioEngine->Start())
+	{
+		//close app if anything in audioEngine Start dont initialize correctly
+		AddLog("Closing audio engine");
+		//return false;//commented for now to test
+	}
 
 	gameApp->EditorStart();
 
@@ -119,28 +127,6 @@ bool EditorApp::Update() {
 		editorWindow->Render();
 	}
 
-	// get game logs
-	{
-		vector<string> gameLogs = gameApp->GetLogs();
-
-		for (auto it = gameLogs.begin(); it != gameLogs.end(); ++it) {
-			AddLog((*it));
-		}
-
-		gameApp->ClearLogs();
-	}
-
-	// get audio logs
-	{
-		vector<string> audioLogs = audioEngine->GetLogs();
-
-		for (auto it = audioLogs.begin(); it != audioLogs.end(); ++it) {
-			AddLog((*it));
-		}
-
-		audioEngine->ClearLogs();
-	}
-
 	const auto frame_end = steady_clock::now();
 	const auto frame_duration = frame_end - frame_start;
 
@@ -180,6 +166,12 @@ bool EditorApp::Cleanup() {
 
 	SDL_Quit();
 
+	if (dualOutputBuffer != nullptr)
+	{
+		std::cout.rdbuf(dualOutputBuffer->GetOriginalStream());
+		RELEASE(dualOutputBuffer);
+	}
+
 	return true;
 }
 
@@ -203,13 +195,5 @@ void EditorApp::WebRequest(const char* url) {
 }
 
 void EditorApp::AddLog(string l) { 
-	logs.push_back(l); 
-}
-
-vector<string> EditorApp::GetLogs() { 
-	return logs; 
-}
-
-void EditorApp::ClearLogs() { 
-	logs.clear(); 
+	cout << l << endl;
 }

@@ -15,6 +15,8 @@
 
 #include "EditorModule.h"
 
+#include "DualOutputBuffer.h"
+
 #include "../MantelGameEngine/GameApp.h"
 #include "../MantelAudioEngine/AudioEngine.h"
 
@@ -59,15 +61,18 @@ public:
 	list<EditorModule*> modules;
 
 	void AddLog(string l);
-	vector<string> GetLogs();
-	void ClearLogs();
 
 public: 
 	vector<float> FPS_Log;
 
 	bool gameIsOn = false;
+
+	//console output access
+	std::stringstream consoleOutput;
+	DualOutputBuffer* dualOutputBuffer;
+
+
 private:
-	vector<string> logs;
 };
 
 extern EditorApp* editor;

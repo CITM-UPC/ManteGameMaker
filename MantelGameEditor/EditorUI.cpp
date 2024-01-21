@@ -872,21 +872,48 @@ void EditorUI::UIConsoleWindow() {
 
 	ImGui::Begin("Console");
 
-	if (ImGui::Button("Clear")) {
-		editor->ClearLogs();
+
+	//Write on imgui window console text
+
+	list<string> lines;
+	size_t pos = 0, found;
+
+	std::string bufferContent = editor->consoleOutput.str();
+
+	while ((found = bufferContent.find("\n", pos)) != std::string::npos) {
+		lines.push_back(bufferContent.substr(pos, found - pos));
+		pos = found + 1;
+	}
+	// Add the last line
+	lines.push_back(bufferContent.substr(pos));
+
+	//now lets print it to console window imgui
+	for (const std::string& line : lines) {
+		ImGui::Text(line.c_str());
 	}
 
-	ImGui::Separator();
-
-	ImGui::BeginChild("ScrollingRegion", ImVec2(0, 0), false, ImGuiWindowFlags_HorizontalScrollbar);
+	if (ImGui::GetScrollY() >= ImGui::GetScrollMaxY())
 	{
-		vector<string> editorLogs = editor->GetLogs();
-
-		for (auto it = editorLogs.begin(); it != editorLogs.end(); ++it) {
-			ImGui::Text((*it).c_str());
-		}
+		ImGui::SetScrollHereY(1.0f);
 	}
-	ImGui::EndChild();
+
+
+
+	//if (ImGui::Button("Clear")) {
+	//	editor->ClearLogs();
+	//}
+
+	//ImGui::Separator();
+
+	//ImGui::BeginChild("ScrollingRegion", ImVec2(0, 0), false, ImGuiWindowFlags_HorizontalScrollbar);
+	//{
+	//	vector<string> editorLogs = editor->GetLogs();
+
+	//	for (auto it = editorLogs.begin(); it != editorLogs.end(); ++it) {
+	//		ImGui::Text((*it).c_str());
+	//	}
+	//}
+	//ImGui::EndChild();
 
 	ImGui::End();
 }

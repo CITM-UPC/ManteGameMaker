@@ -49,12 +49,7 @@ public:
 
 	void AddLog(string l);
 
-	vector<string> GetLogs();
-
-	void ClearLogs();
-
 private:
-	vector<string> logs;
 
 };
 

@@ -176,6 +176,7 @@
     <ClCompile Include="EditorWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DualOutputBuffer.h" />
     <ClInclude Include="EditorApp.h" />
     <ClInclude Include="EditorCamera.h" />
     <ClInclude Include="EditorInput.h" />

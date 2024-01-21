@@ -4,6 +4,7 @@
 #include <vector>
 #include <IL/il.h>
 #include "MeshLoader.h"
+#include <iostream>
 
 using namespace std;
 
@@ -228,16 +229,6 @@ void GameApp::CleanUp()
 void GameApp::AddLog(string l)
 {
     l = "GameEngine: " + l;
-    logs.push_back(l);
-}
-
-vector<string> GameApp::GetLogs()
-{
-    return logs;
-}
-
-void GameApp::ClearLogs()
-{
-    logs.clear();
+    cout << l << endl;
 }
 
