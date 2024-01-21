@@ -10,7 +10,7 @@ AudioEngine::~AudioEngine()
 {
 }
 
-bool AudioEngine::Start()
+bool AudioEngine::InitEngine()
 {
 	// MEMORY MANAGER
 	AkMemSettings memSettings;
@@ -132,7 +132,7 @@ bool AudioEngine::Start()
 		return false;
 	}
 
-	if (AK::SoundEngine::LoadBank(BANKNAME_RAYCASTER, bankID) == AK_Success)
+	if (AK::SoundEngine::LoadBank(BANKNAME_MANTELENGINE, bankID) == AK_Success)
 	{
 		AddLog("Raycast bank loaded");
 	}
@@ -142,24 +142,57 @@ bool AudioEngine::Start()
 		return false;
 	}
 
-	AddLog("Audio System initialization completed");
+	return true;
+}
+
+bool AudioEngine::Start()
+{
+	//init engine itself
+	if (InitEngine())
+	{
+		AddLog("Audio System initialization completed");
+	}
+	else
+	{
+		AddLog("Audio System initialization ERROR");
+		//return false;
+	}
+
+	//registering music to game object
+	if (AK::SoundEngine::RegisterGameObj(GAME_OBJECT_ID_MUSIC1, "Theme1") == AK_Success)
+	{
+		AddLog("Game Object Succesfully Registered");
+	}
+	else
+	{
+		AddLog("Game Object ERROR on Register");
+	}
+
+	if (AK::SoundEngine::PostEvent(AK::EVENTS::PLAYMUSICDEMO1, GAME_OBJECT_ID_MUSIC1) == AK_Success)
+	{
+		AddLog("Post event of MUSIC1 completed");
+	}
+	else
+	{
+		AddLog("ERROR on Post Event of MUSIC1");
+	}
 	return true;
 }
 
 bool AudioEngine::Update()
 {
-	//if (AK::SoundEngine::RegisterGameObj(, "Theme") == AK_Success)
-	//{
-
-	//}
+	//always call this function on update to make thinks work
+	AK::SoundEngine::RenderAudio();
 
 	return true;
 }
 
 bool AudioEngine::CleanUp()
 {
-	AK::SoundEngine::Term();
+	//commented cz theres no term function xd
+	//AK::SpatialAudio::Term();
 	AK::MusicEngine::Term();
+	AK::SoundEngine::Term();
 #ifndef AK_OPTIMIZED
 	AK::Comm::Term();
 #endif // AK_OPTIMIZED

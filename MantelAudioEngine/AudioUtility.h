@@ -35,7 +35,7 @@
 #include "../samples/IntegrationDemo/WwiseProject/GeneratedSoundBanks/Wwise_IDs.h"
 
 #define BANKNAME_INIT L"Init.bnk"
-#define BANKNAME_RAYCASTER L"RayCast.bnk"
+#define BANKNAME_MANTELENGINE L"MantelEngine.bnk"
 
 
 
