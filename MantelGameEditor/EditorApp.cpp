@@ -107,8 +107,6 @@ bool EditorApp::Update() {
 
 	// post update
 	{
-		audioEngine->Update();
-
 		if (gameIsOn) {
 			gameApp->GameRender(editorCamera->cameraObject.get()->GetComponent<CameraComponent>());
 		}
@@ -123,6 +121,8 @@ bool EditorApp::Update() {
 			ret = (*item)->PostUpdate();
 			++item;
 		}
+
+		audioEngine->Update();
 
 		editorWindow->Render();
 	}
@@ -178,6 +178,7 @@ bool EditorApp::Cleanup() {
 void EditorApp::PlayGame()
 {
 	gameApp->GameStart();
+	audioEngine->PlayEngine();
 	gameIsOn = true;
 }
 

@@ -166,6 +166,14 @@ bool AudioEngine::Start()
 	{
 		AddLog("Game Object ERROR on Register");
 	}
+
+	AK::SoundEngine::AddListener(GAME_OBJECT_ID_MUSIC1, GAME_OBJECT_ID_MUSIC1);
+
+	return true;
+}
+
+void AudioEngine::PlayEngine()
+{
 	if (AK::SoundEngine::PostEvent(AK::EVENTS::MUSIC1, GAME_OBJECT_ID_MUSIC1) == AK_Success)
 	{
 		AddLog("Post event of MUSIC1 completed");
@@ -173,29 +181,26 @@ bool AudioEngine::Start()
 	else
 	{
 		AddLog("ERROR on Post Event of MUSIC1");
-		return false;
 	}
-
-	return true;
 }
 
 bool AudioEngine::Update()
 {
 	//always call this function on update to make thinks work
 	AK::SoundEngine::RenderAudio();
-
+	
 	return true;
 }
 
 bool AudioEngine::CleanUp()
 {
+#ifndef AK_OPTIMIZED
+	AK::Comm::Term();
+#endif // AK_OPTIMIZED
 	//commented cz theres no term function xd
 	//AK::SpatialAudio::Term();
 	AK::MusicEngine::Term();
 	AK::SoundEngine::Term();
-#ifndef AK_OPTIMIZED
-	AK::Comm::Term();
-#endif // AK_OPTIMIZED
 
 	g_lowLevelIO.Term();
 
