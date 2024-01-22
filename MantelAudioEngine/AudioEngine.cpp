@@ -110,7 +110,7 @@ bool AudioEngine::InitEngine()
 		return false;
 	}
 
-//communications
+	//communications
 #ifndef AK_OPTIMIZED
 	// Initialize communications (not in release build!)
 
@@ -129,17 +129,17 @@ bool AudioEngine::InitEngine()
 
 
 	//spatial audio
-//AkSpatialAudioInitSettings settings; // The constructor fills AkSpatialAudioInitSettings with the recommended default settings. 
+	AkSpatialAudioInitSettings settings; // The constructor fills AkSpatialAudioInitSettings with the recommended default settings. 
 
-//if (AK::SpatialAudio::Init(settings) != AK_Success)
-//{
-//	AddLog("Succes on initialize the Spatial Audio");
-//}
-//else
-//{
-//	AddLog("Could not initialize the Spatial Audio.");
-//	return false;
-//}
+	if (AK::SpatialAudio::Init(settings) == AK_Success)
+	{
+		AddLog("Succes on initialize the Spatial Audio");
+	}
+	else
+	{
+		AddLog("Could not initialize the Spatial Audio.");
+		return false;
+	}
 
 	return true;
 }

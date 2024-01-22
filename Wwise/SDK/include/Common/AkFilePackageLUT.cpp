@@ -16,7 +16,10 @@ written agreement between you and Audiokinetic Inc.
 // AkFilePackageLUT.cpp
 //
 // This class parses the header of file packages that were created with the 
-// AkFilePackager utility app (located in ($WWISESDK)/samples/FilePackager/),
+// AkFilePackager utility app (located in ($WWISESDK)/
+// 
+// 
+// FilePackager/),
 // and looks-up files at run-time.
 // 
 // The header of these file packages contains look-up tables that describe the 
