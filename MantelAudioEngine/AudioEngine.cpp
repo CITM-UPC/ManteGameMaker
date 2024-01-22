@@ -85,39 +85,7 @@ bool AudioEngine::InitEngine()
 		return false;
 	}
 
-	//spatial audio
-	//AkSpatialAudioInitSettings settings; // The constructor fills AkSpatialAudioInitSettings with the recommended default settings. 
-
-	//if (AK::SpatialAudio::Init(settings) != AK_Success)
-	//{
-	//	AddLog("Succes on initialize the Spatial Audio");
-	//}
-	//else
-	//{
-	//	AddLog("Could not initialize the Spatial Audio.");
-	//	return false;
-	//}
-
-	//communications
-#ifndef AK_OPTIMIZED
-	// Initialize communications (not in release build!)
-
-	//AkCommSettings commSettings;
-	//AK::Comm::GetDefaultInitSettings(commSettings);
-	//if (AK::Comm::Init(commSettings) != AK_Success)
-	//{
-	//	AddLog("Succes on initialize communication.");
-	//}
-	//else
-	//{
-	//	AddLog("Could not initialize communication");
-	//	return false;
-	//}
-#endif // AK_OPTIMIZED
-
-
-	//TODO: SET AS DYNAMIC PATH
-	g_lowLevelIO.SetBasePath(AKTEXT("D:\\repos\\Github\\MantelGameMaker\\Wwise\\SDK\\samples\\IntegrationDemo\\WwiseProject\\GeneratedSoundBanks\\Windows"));
+	g_lowLevelIO.SetBasePath(AKTEXT("Assets\\wwise\\WwiseProject\\GeneratedSoundBanks\\Windows"));
 	AK::StreamMgr::SetCurrentLanguage(AKTEXT("English(us)"));
 
 	//bank init
@@ -134,13 +102,44 @@ bool AudioEngine::InitEngine()
 
 	if (AK::SoundEngine::LoadBank(BANKNAME_MANTELENGINE, bankID) == AK_Success)
 	{
-		AddLog("Raycast bank loaded");
+		AddLog("MantelEngine bank loaded");
 	}
 	else
 	{
-		AddLog("Could not load raycast bank");
+		AddLog("Could not load MantelEngine bank");
 		return false;
 	}
+
+//communications
+#ifndef AK_OPTIMIZED
+	// Initialize communications (not in release build!)
+
+	AkCommSettings commSettings;
+	AK::Comm::GetDefaultInitSettings(commSettings);
+	if (AK::Comm::Init(commSettings) == AK_Success)
+	{
+		AddLog("Succes on initialize communication.");
+	}
+	else
+	{
+		AddLog("Could not initialize communication");
+		return false;
+	}
+#endif // AK_OPTIMIZED
+
+
+	//spatial audio
+//AkSpatialAudioInitSettings settings; // The constructor fills AkSpatialAudioInitSettings with the recommended default settings. 
+
+//if (AK::SpatialAudio::Init(settings) != AK_Success)
+//{
+//	AddLog("Succes on initialize the Spatial Audio");
+//}
+//else
+//{
+//	AddLog("Could not initialize the Spatial Audio.");
+//	return false;
+//}
 
 	return true;
 }
@@ -159,7 +158,7 @@ bool AudioEngine::Start()
 	}
 
 	//registering music to game object
-	if (AK::SoundEngine::RegisterGameObj(GAME_OBJECT_ID_MUSIC1, "Theme1") == AK_Success)
+	if (AK::SoundEngine::RegisterGameObj(GAME_OBJECT_ID_MUSIC1, "Music1") == AK_Success)
 	{
 		AddLog("Game Object Succesfully Registered");
 	}
@@ -167,22 +166,23 @@ bool AudioEngine::Start()
 	{
 		AddLog("Game Object ERROR on Register");
 	}
-
-	if (AK::SoundEngine::PostEvent(AK::EVENTS::PLAYMUSICDEMO1, GAME_OBJECT_ID_MUSIC1) == AK_Success)
+	if (AK::SoundEngine::PostEvent(AK::EVENTS::MUSIC1, GAME_OBJECT_ID_MUSIC1) == AK_Success)
 	{
 		AddLog("Post event of MUSIC1 completed");
 	}
 	else
 	{
 		AddLog("ERROR on Post Event of MUSIC1");
+		return false;
 	}
+
+	AK::SoundEngine::RenderAudio();
 	return true;
 }
 
 bool AudioEngine::Update()
 {
 	//always call this function on update to make thinks work
-	AK::SoundEngine::RenderAudio();
 
 	return true;
 }

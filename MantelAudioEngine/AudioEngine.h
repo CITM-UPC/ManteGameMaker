@@ -20,7 +20,6 @@ public:
 	bool Update();
 	bool CleanUp();
 
-
 	void AddLog(string l)
 	{
 		l = "AudioEngine: " + l;

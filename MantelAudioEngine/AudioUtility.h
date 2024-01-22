@@ -32,7 +32,8 @@
 
 //wwise info
 //#include "Wwise_IDs.h"
-#include "../samples/IntegrationDemo/WwiseProject/GeneratedSoundBanks/Wwise_IDs.h"
+//#include "../samples/IntegrationDemo/WwiseProject/GeneratedSoundBanks/Wwise_IDs.h"
+#include "../MantelGameEditor/Assets/wwise/WwiseProject/GeneratedSoundBanks/Wwise_IDs.h"
 
 #define BANKNAME_INIT L"Init.bnk"
 #define BANKNAME_MANTELENGINE L"MantelEngine.bnk"

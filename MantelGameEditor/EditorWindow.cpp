@@ -29,7 +29,7 @@ bool EditorWindow::Start() {
 	if (isResizable) { flags |= SDL_WINDOW_RESIZABLE; }
 	if (isBorderless) { flags |= SDL_WINDOW_BORDERLESS; }
 
-	window = SDL_CreateWindow("SDL+OpenGL Window", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, flags);
+	window = SDL_CreateWindow("MantelGameMaker", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, flags);
 
 	if (!window)
 		throw exception(SDL_GetError());
