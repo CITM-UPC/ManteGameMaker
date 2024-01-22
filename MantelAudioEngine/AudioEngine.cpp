@@ -176,13 +176,13 @@ bool AudioEngine::Start()
 		return false;
 	}
 
-	AK::SoundEngine::RenderAudio();
 	return true;
 }
 
 bool AudioEngine::Update()
 {
 	//always call this function on update to make thinks work
+	AK::SoundEngine::RenderAudio();
 
 	return true;
 }
