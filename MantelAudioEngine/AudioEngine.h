@@ -21,6 +21,7 @@ public:
 	bool CleanUp();
 
 	void PlayEngine();
+	void PauseEngine();
 
 	void AddLog(string l)
 	{

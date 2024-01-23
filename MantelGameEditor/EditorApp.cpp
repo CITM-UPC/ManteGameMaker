@@ -185,6 +185,7 @@ void EditorApp::PlayGame()
 void EditorApp::StopGame()
 {
 	gameApp->CleanUp();
+	audioEngine->PauseEngine();
 	gameIsOn = false;
 	gameApp->EditorStart();
 }

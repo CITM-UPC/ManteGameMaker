@@ -182,6 +182,23 @@ void AudioEngine::PlayEngine()
 	{
 		AddLog("ERROR on Post Event of MUSIC1");
 	}
+
+	//if (AK::SoundEngine::PostEvent(AK::EVENTS::MUSIC2, GAME_OBJECT_ID_MUSIC1) == AK_Success)
+	//{
+	//	AddLog("Post event of MUSIC2 completed");
+	//}
+	//else
+	//{
+	//	AddLog("ERROR on Post Event of MUSIC2");
+	//}
+}
+
+void AudioEngine::PauseEngine()
+{
+	AK::SoundEngine::StopAll(GAME_OBJECT_ID_MUSIC1);
+	AK::SoundEngine::StopAll(GAME_OBJECT_ID_MUSIC2);
+	AK::SoundEngine::StopAll(GAME_OBJECT_ID_SPATIALSOUND1);
+	AK::SoundEngine::StopAll(GAME_OBJECT_ID_SPATIALSOUND2);
 }
 
 bool AudioEngine::Update()
