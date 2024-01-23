@@ -158,32 +158,109 @@ bool AudioEngine::Start()
 	}
 
 	//registering music to game object
-	if (AK::SoundEngine::RegisterGameObj(GAME_OBJECT_ID_MUSIC1, "Music1") == AK_Success)
+	if (AK::SoundEngine::RegisterGameObj(GAME_OBJECT_ID_BACKGROUNDMUSIC, "Music1") == AK_Success)
 	{
-		AddLog("Game Object Succesfully Registered");
+		AddLog("Game Object BackgroundMusic Succesfully Registered");
 	}
 	else
 	{
-		AddLog("Game Object ERROR on Register");
+		AddLog("Game Object BackgroundMusic ERROR on Register");
 	}
+	//registering spatialsound1 to game object
+	if (AK::SoundEngine::RegisterGameObj(GAME_OBJECT_ID_SPATIALSOUND1, "SpatialSound1") == AK_Success)
+	{
+		AddLog("Game Object Spatial Sound 1 Succesfully Registered");
+	}
+	else
+	{
+		AddLog("Game Object Spatial Sound 1 ERROR on Register");
+	}
+	//registering spatialsound2 to game object
+	if (AK::SoundEngine::RegisterGameObj(GAME_OBJECT_ID_SPATIALSOUND2, "SpatialSound2") == AK_Success)
+	{
+		AddLog("Game Object Spatial Sound 2 Succesfully Registered");
+	}
+	else
+	{
+		AddLog("Game Object Spatial Sound 2 ERROR on Register");
+	}
+	//set default listener
+	AK::SoundEngine::SetDefaultListeners(&GAME_OBJECT_ID_BACKGROUNDMUSIC,1);
+	////background sound sounds in the same place it emits and listens, the camera
+	//backgroundListener = AK::SoundEngine::AddListener(GAME_OBJECT_ID_BACKGROUNDMUSIC, GAME_OBJECT_ID_BACKGROUNDMUSIC);
+	////1st object sounds in the place of the go1 and the camera listens
+	//spatialAudioObject1Listener = AK::SoundEngine::AddListener(GAME_OBJECT_ID_SPATIALSOUND1, GAME_OBJECT_ID_BACKGROUNDMUSIC);
+	////2nd object sounds in the place of the go2 and the camera listens
+	//spatialAudioObject2Listener = AK::SoundEngine::AddListener(GAME_OBJECT_ID_SPATIALSOUND2, GAME_OBJECT_ID_BACKGROUNDMUSIC);
+	AkVector position = { 0.0f, 0.0f, 0.0f };
+	AkVector front = { 0.0f, 0.0f, -1.0f };
+	AkVector up = { 0.0f, 1.0f, 0.0f };
+	AkSoundPosition listenerTransform;
+	listenerTransform.SetPosition(position);
+	listenerTransform.SetOrientation(front,up);
 
-	AK::SoundEngine::AddListener(GAME_OBJECT_ID_MUSIC1, GAME_OBJECT_ID_MUSIC1);
+	if (AK::SoundEngine::SetPosition(GAME_OBJECT_ID_BACKGROUNDMUSIC, listenerTransform) == AK_Success)
+	{
+		AddLog("Succes on setting position to backgroundmusic (default listener)");
+	}
+	else
+	{
+		AddLog("ERROR setting position to backgroundmusic (default listener)");
+	}
+	AkSoundPosition spatial1Transform;
+	spatial1Transform.SetPosition({ 15.0f, 0.0f, 0.0f });
+	spatial1Transform.SetOrientation(front,up);
+	if (AK::SoundEngine::SetPosition(GAME_OBJECT_ID_SPATIALSOUND1, spatial1Transform) == AK_Success)
+	{
+		AddLog("Succes on setting position to spatialsound1 (emiter 1)");
+	}
+	else
+	{
+		AddLog("ERROR setting position to spatialsound1 (emiter 1)");
+	}
+	spatial1Transform.SetPosition({ -15.0f, 0.0f, 0.0f });
+	spatial1Transform.SetOrientation(front, up);
+	if (AK::SoundEngine::SetPosition(GAME_OBJECT_ID_SPATIALSOUND2, spatial1Transform) == AK_Success)
+	{
+		AddLog("Succes on setting position to spatialsound2 (emiter 2)");
+	}
+	else
+	{
+		AddLog("ERROR setting position to spatialsound2 (emiter 2)");
+	}
 
 	return true;
 }
 
 void AudioEngine::PlayEngine()
 {
-	if (AK::SoundEngine::PostEvent(AK::EVENTS::MUSIC1, GAME_OBJECT_ID_MUSIC1) == AK_Success)
+	//if (AK::SoundEngine::PostEvent(AK::EVENTS::MUSIC1, GAME_OBJECT_ID_BACKGROUNDMUSIC) == AK_Success)
+	//{
+	//	AddLog("Post event of MUSIC1 completed");
+	//}
+	//else
+	//{
+	//	AddLog("ERROR on Post Event of MUSIC1");
+	//}
+	//spatial sound 1
+	if (AK::SoundEngine::PostEvent(AK::EVENTS::SPATIAL1, GAME_OBJECT_ID_SPATIALSOUND1) == AK_Success)
 	{
-		AddLog("Post event of MUSIC1 completed");
+		AddLog("Post event of SPATIAL1 completed");
 	}
 	else
 	{
-		AddLog("ERROR on Post Event of MUSIC1");
+		AddLog("ERROR on Post Event of SPATIAL1");
 	}
-
-	//if (AK::SoundEngine::PostEvent(AK::EVENTS::MUSIC2, GAME_OBJECT_ID_MUSIC1) == AK_Success)
+	//spatial sound 2
+	if (AK::SoundEngine::PostEvent(AK::EVENTS::SPATIAL2, GAME_OBJECT_ID_SPATIALSOUND2) == AK_Success)
+	{
+		AddLog("Post event of SPATIAL2 completed");
+	}
+	else
+	{
+		AddLog("ERROR on Post Event of SPATIAL2");
+	}
+	//if (AK::SoundEngine::PostEvent(AK::EVENTS::MUSIC2, GAME_OBJECT_ID_BACKGROUNDMUSIC) == AK_Success)
 	//{
 	//	AddLog("Post event of MUSIC2 completed");
 	//}
@@ -195,17 +272,67 @@ void AudioEngine::PlayEngine()
 
 void AudioEngine::PauseEngine()
 {
-	AK::SoundEngine::StopAll(GAME_OBJECT_ID_MUSIC1);
-	AK::SoundEngine::StopAll(GAME_OBJECT_ID_MUSIC2);
+	isGameOn = false;
+	AK::SoundEngine::StopAll(GAME_OBJECT_ID_BACKGROUNDMUSIC);
 	AK::SoundEngine::StopAll(GAME_OBJECT_ID_SPATIALSOUND1);
 	AK::SoundEngine::StopAll(GAME_OBJECT_ID_SPATIALSOUND2);
 }
 
+// SETTERS
+void AudioEngine::SetListenerTransform(float posx, float posy, float posz, float ofx, float ofy, float ofz, float otx, float oty, float otz)
+{
+	AkSoundPosition tTransform;
+	tTransform.SetPosition({ posx, posy, posz });
+	tTransform.SetOrientation({ ofx, ofy, ofz }, { otx, oty, otz });
+	if (AK::SoundEngine::SetPosition(GAME_OBJECT_ID_BACKGROUNDMUSIC, tTransform) == AK_Success)
+	{
+		AddLog("Succes on setting position to backgroundmusic (default listener)");
+	}
+	else
+	{
+		AddLog("ERROR setting position to backgroundmusic (default listener)");
+	}
+}
+void AudioEngine::SetSpatial1Transform(float posx, float posy, float posz, float ofx, float ofy, float ofz, float otx, float oty, float otz)
+{
+	AkSoundPosition tTransform;
+	tTransform.SetPosition({ posx, posy, posz });
+	tTransform.SetOrientation({ ofx, ofy, ofz }, { otx, oty, otz });
+	if (AK::SoundEngine::SetPosition(GAME_OBJECT_ID_SPATIALSOUND1, tTransform) == AK_Success)
+	{
+		AddLog("Succes on setting position to spatialsound1 (emiter 1)");
+	}
+	else
+	{
+		AddLog("ERROR setting position to spatialsound1 (emiter 1)");
+	}
+}
+void AudioEngine::SetSpatial2Transform(float posx, float posy, float posz, float ofx, float ofy, float ofz, float otx, float oty, float otz)
+{
+	AkSoundPosition tTransform;
+	tTransform.SetPosition({ posx, posy, posz });
+	tTransform.SetOrientation({ ofx, ofy, ofz }, { otx, oty, otz });
+	if (AK::SoundEngine::SetPosition(GAME_OBJECT_ID_SPATIALSOUND2, tTransform) == AK_Success)
+	{
+		AddLog("Succes on setting position to spatialsound2 (emiter 2)");
+	}
+	else
+	{
+		AddLog("ERROR setting position to spatialsound2 (emiter 2)");
+	}
+}
+//END OF SETTERS
+
 bool AudioEngine::Update()
 {
-	//always call this function on update to make thinks work
+	//always call this function on update to make things work
 	AK::SoundEngine::RenderAudio();
-	
+	if (isGameOn)
+	{
+
+
+	}
+
 	return true;
 }
 

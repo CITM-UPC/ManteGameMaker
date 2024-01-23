@@ -9,7 +9,7 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="449863404" Type="User" Language="SFX" Hash="{E25C80BD-7391-DAFD-F109-FA81E2CE5866}">
+		<SoundBank Id="449863404" Type="User" Language="SFX" Hash="{C7808AE0-CEC0-BE51-50F3-B5A3C5CE3C24}">
 			<ShortName>MantelEngine</ShortName>
 			<Path>MantelEngine.bnk</Path>
 			<Media>
@@ -207,5 +207,5 @@
 			</AcousticTextures>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{09055D05-0967-EDDD-1A2A-AD5BC2B3D376}</FileHash>
+	<FileHash>{EE146162-CB97-8112-8602-6C923C68AC1F}</FileHash>
 </SoundBanksInfo>
