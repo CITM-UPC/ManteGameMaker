@@ -144,7 +144,7 @@ void GameApp::GameStep(std::chrono::duration<double> dt)
     //childHouse->GetComponent<TransformComponent>()->rotate(1, vec3(1, 0, 0));
     //house->GetComponent<TransformComponent>()->rotate(1, vec3(0, 1, 0));
 
-    basicCamera->GetComponent<TransformComponent>()->translate({0, -0.1, 0}, GLOBAL);
+    basicCamera->GetComponent<TransformComponent>()->translate({0, 0.1, 0}, GLOBAL);
 
 }
 

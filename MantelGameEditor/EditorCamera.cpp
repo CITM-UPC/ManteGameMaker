@@ -31,6 +31,11 @@ bool EditorCamera::Update() {
 		editor->gameApp->useBasicCameraWithFrustum = !editor->gameApp->useBasicCameraWithFrustum;
 	}
 
+	//tester
+	if (editor->editorInput->GetKey(SDL_SCANCODE_Z) == KEY_DOWN) {
+		editor->audioEngine->PlayEngine();
+	}
+
 	if (editor->editorInput->WindowSizeHasUpdated()) {
 		cameraObject.get()->GetComponent<CameraComponent>()->getCamera()->aspect = (double)editor->editorWindow->width / (double)editor->editorWindow->height;
 	}
