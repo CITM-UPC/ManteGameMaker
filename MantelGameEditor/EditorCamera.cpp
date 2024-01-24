@@ -111,6 +111,15 @@ bool EditorCamera::Update() {
 	otz = cameraObject.get()->GetComponent<TransformComponent>()->getUp().z;
 	editor->audioEngine->SetListenerTransform(posx, posy, posz, ofx, ofy, ofz, otx, oty, otz);
 
+	editor->audioEngine->SetSpatial1Transform(
+		editor->gameApp->spatialObject1->GetComponent<TransformComponent>()->getPosition().x, 
+		editor->gameApp->spatialObject1->GetComponent<TransformComponent>()->getPosition().y,
+		editor->gameApp->spatialObject1->GetComponent<TransformComponent>()->getPosition().z);
+	editor->audioEngine->SetSpatial2Transform(
+		editor->gameApp->spatialObject2->GetComponent<TransformComponent>()->getPosition().x,
+		editor->gameApp->spatialObject2->GetComponent<TransformComponent>()->getPosition().y,
+		0);
+
 	return true;
 }
 

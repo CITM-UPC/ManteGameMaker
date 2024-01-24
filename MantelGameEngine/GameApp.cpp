@@ -126,6 +126,16 @@ void GameApp::EditorStart() {
     basicCamera->GetComponent<TransformComponent>()->translate({ 0, 10, -5 }, GLOBAL);
     basicCamera->GetComponent<TransformComponent>()->rotate(10, { 0, 0, 1 });
 
+    spatialObject2 = scene->AddGameObject("Spatial Game Object Movable");
+    spatialObject2->AddMeshWithTexture(Mesh::loadFromFile("Cube.sht"));
+    spatialObject2->GetComponent<TransformComponent>()->getPosition() = { 0,15,0 };
+
+    //
+    spatialObject1 = scene->AddGameObject("Spatial Game Object Static");
+    spatialObject1->AddMeshWithTexture(Mesh::loadFromFile("Cube.sht"));
+    spatialObject1->GetComponent<TransformComponent>()->getPosition().x = 15;
+    spatialObject1->GetComponent<TransformComponent>()->getPosition().y = 5;
+
 }
 
 void GameApp::EditorStep(std::chrono::duration<double> dt)
@@ -140,11 +150,21 @@ void GameApp::GameStart()
 
 void GameApp::GameStep(std::chrono::duration<double> dt)
 {
-    //auto childHouse = house->children.begin()->get();
-    //childHouse->GetComponent<TransformComponent>()->rotate(1, vec3(1, 0, 0));
-    //house->GetComponent<TransformComponent>()->rotate(1, vec3(0, 1, 0));
+    // Parámetros para el movimiento circular
+    double radius = 0.5;  // Radio del círculo
+    double speed = 1;   // Velocidad de rotación en radianes por segundo
 
-    basicCamera->GetComponent<TransformComponent>()->translate({0, 0.1, 0}, GLOBAL);
+    // Obtener el tiempo actual en segundos
+    double timeInSeconds = std::chrono::duration_cast<std::chrono::duration<double>>(std::chrono::steady_clock::now().time_since_epoch()).count();
+
+    // Calcular nuevas coordenadas en el círculo
+    double x = radius * std::cos(speed * timeInSeconds);
+    double y = radius * std::sin(speed * timeInSeconds);
+
+    // Mover la cámara a las nuevas coordenadas
+    spatialObject2->GetComponent<TransformComponent>()->translate({ x, 0, y }, GLOBAL);
+
+    basicCamera->GetComponent<TransformComponent>()->translate({ 0, 0.1, 0 }, GLOBAL);
 
 }
 

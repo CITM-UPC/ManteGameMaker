@@ -234,40 +234,15 @@ bool AudioEngine::Start()
 
 void AudioEngine::PlayEngine()
 {
-	//if (AK::SoundEngine::PostEvent(AK::EVENTS::MUSIC1, GAME_OBJECT_ID_BACKGROUNDMUSIC) == AK_Success)
-	//{
-	//	AddLog("Post event of MUSIC1 completed");
-	//}
-	//else
-	//{
-	//	AddLog("ERROR on Post Event of MUSIC1");
-	//}
+	//music 1
+	//AK::SoundEngine::PostEvent(AK::EVENTS::MUSIC1, GAME_OBJECT_ID_BACKGROUNDMUSIC);
 	//spatial sound 1
-	if (AK::SoundEngine::PostEvent(AK::EVENTS::SPATIAL1, GAME_OBJECT_ID_SPATIALSOUND1) == AK_Success)
-	{
-		AddLog("Post event of SPATIAL1 completed");
-	}
-	else
-	{
-		AddLog("ERROR on Post Event of SPATIAL1");
-	}
+	AK::SoundEngine::PostEvent(AK::EVENTS::SPATIAL1, GAME_OBJECT_ID_SPATIALSOUND1);
 	//spatial sound 2
-	//if (AK::SoundEngine::PostEvent(AK::EVENTS::SPATIAL2, GAME_OBJECT_ID_SPATIALSOUND2) == AK_Success)
-	//{
-	//	AddLog("Post event of SPATIAL2 completed");
-	//}
-	//else
-	//{
-	//	AddLog("ERROR on Post Event of SPATIAL2");
-	//}
-	//if (AK::SoundEngine::PostEvent(AK::EVENTS::MUSIC2, GAME_OBJECT_ID_BACKGROUNDMUSIC) == AK_Success)
-	//{
-	//	AddLog("Post event of MUSIC2 completed");
-	//}
-	//else
-	//{
-	//	AddLog("ERROR on Post Event of MUSIC2");
-	//}
+	AK::SoundEngine::PostEvent(AK::EVENTS::SPATIAL2, GAME_OBJECT_ID_SPATIALSOUND2);
+	//music 2
+	//AK::SoundEngine::PostEvent(AK::EVENTS::MUSIC2, GAME_OBJECT_ID_BACKGROUNDMUSIC);
+
 }
 
 void AudioEngine::PauseEngine()
@@ -291,23 +266,23 @@ void AudioEngine::SetListenerTransform(float posx, float posy, float posz, float
 	}
 
 }
-void AudioEngine::SetSpatial1Transform(float posx, float posy, float posz, float ofx, float ofy, float ofz, float otx, float oty, float otz)
+void AudioEngine::SetSpatial1Transform(float posx, float posy, float posz)
 {
 	//SINCE OPENGL AND WWISE USE DIFFERENT POSITIVE X AND Z POSITIONS HERE WILL BE CHANGED HERE
 	AkSoundPosition tTransform;
 	tTransform.SetPosition({ -posx, posy, -posz });
-	tTransform.SetOrientation({ ofx, ofy, ofz }, { otx, oty, otz });
+	tTransform.SetOrientation({ 0.0f, 0.0f, -1.0f }, { 0.0f, 1.0f, 0.0f });
 	if (AK::SoundEngine::SetPosition(GAME_OBJECT_ID_SPATIALSOUND1, tTransform) != AK_Success)
 	{
 		AddLog("ERROR setting position to spatialsound1 (emiter 1)");
 	}
 }
-void AudioEngine::SetSpatial2Transform(float posx, float posy, float posz, float ofx, float ofy, float ofz, float otx, float oty, float otz)
+void AudioEngine::SetSpatial2Transform(float posx, float posy, float posz)
 {
 	//SINCE OPENGL AND WWISE USE DIFFERENT POSITIVE X AND Z POSITIONS HERE WILL BE CHANGED HERE
 	AkSoundPosition tTransform;
 	tTransform.SetPosition({ -posx, posy, -posz });
-	tTransform.SetOrientation({ ofx, ofy, ofz }, { otx, oty, otz });
+	tTransform.SetOrientation({ 0.0f, 0.0f, -1.0f }, { 0.0f, 1.0f, 0.0f });
 	if (AK::SoundEngine::SetPosition(GAME_OBJECT_ID_SPATIALSOUND2, tTransform) != AK_Success)
 	{
 		AddLog("ERROR setting position to spatialsound2 (emiter 2)");

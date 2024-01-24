@@ -20,8 +20,8 @@ public:
 	void PauseEngine();
 
 	void SetListenerTransform(float posx, float posy, float posz, float ofx, float ofy, float ofz, float otx, float oty, float otz);
-	void SetSpatial1Transform(float posx, float posy, float posz, float ofx, float ofy, float ofz, float otx, float oty, float otz);
-	void SetSpatial2Transform(float posx, float posy, float posz, float ofx, float ofy, float ofz, float otx, float oty, float otz);
+	void SetSpatial1Transform(float posx, float posy, float posz);
+	void SetSpatial2Transform(float posx, float posy, float posz);
 
 	void AddLog(string l)
 	{

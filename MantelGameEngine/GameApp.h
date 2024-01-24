@@ -44,13 +44,17 @@ public:
 
 	GameObject* basicCamera = nullptr;
 	bool useBasicCameraWithFrustum = false;
+	//static
+	GameObject* spatialObject1 = nullptr;
+	//movable
+	GameObject* spatialObject2 = nullptr;
 
 	vector<Paths> allAssets;
 
 	void AddLog(string l);
 
 private:
-
+	double timeInSeconds = 0;
 };
 
 
