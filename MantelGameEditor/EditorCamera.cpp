@@ -101,9 +101,9 @@ bool EditorCamera::Update() {
 	ofy = cameraObject.get()->GetComponent<TransformComponent>()->getForward().y;
 	ofz = cameraObject.get()->GetComponent<TransformComponent>()->getForward().z;
 	//
-	ofx = cameraObject.get()->GetComponent<TransformComponent>()->getUp().x;
-	ofy = cameraObject.get()->GetComponent<TransformComponent>()->getUp().y;
-	ofz = cameraObject.get()->GetComponent<TransformComponent>()->getUp().z;
+	otx = cameraObject.get()->GetComponent<TransformComponent>()->getUp().x;
+	oty = cameraObject.get()->GetComponent<TransformComponent>()->getUp().y;
+	otz = cameraObject.get()->GetComponent<TransformComponent>()->getUp().z;
 	editor->audioEngine->SetListenerTransform(posx, posy, posz, ofx, ofy, ofz, otx, oty, otz);
 
 	return true;
