@@ -186,48 +186,6 @@ bool AudioEngine::Start()
 	}
 	//set default listener
 	AK::SoundEngine::SetDefaultListeners(&GAME_OBJECT_ID_BACKGROUNDMUSIC,1);
-	////background sound sounds in the same place it emits and listens, the camera
-	//backgroundListener = AK::SoundEngine::AddListener(GAME_OBJECT_ID_BACKGROUNDMUSIC, GAME_OBJECT_ID_BACKGROUNDMUSIC);
-	////1st object sounds in the place of the go1 and the camera listens
-	//spatialAudioObject1Listener = AK::SoundEngine::AddListener(GAME_OBJECT_ID_SPATIALSOUND1, GAME_OBJECT_ID_BACKGROUNDMUSIC);
-	////2nd object sounds in the place of the go2 and the camera listens
-	//spatialAudioObject2Listener = AK::SoundEngine::AddListener(GAME_OBJECT_ID_SPATIALSOUND2, GAME_OBJECT_ID_BACKGROUNDMUSIC);
-	AkVector position = { 0.0f, 0.0f, 0.0f };
-	AkVector front = { 0.0f, 0.0f, -1.0f };
-	AkVector up = { 0.0f, 1.0f, 0.0f };
-	AkSoundPosition listenerTransform;
-	listenerTransform.SetPosition(position);
-	listenerTransform.SetOrientation(front,up);
-
-	if (AK::SoundEngine::SetPosition(GAME_OBJECT_ID_BACKGROUNDMUSIC, listenerTransform) == AK_Success)
-	{
-		AddLog("Succes on setting position to backgroundmusic (default listener)");
-	}
-	else
-	{
-		AddLog("ERROR setting position to backgroundmusic (default listener)");
-	}
-	AkSoundPosition spatial1Transform;
-	spatial1Transform.SetPosition({ 20.0f, 0.0f, 0.0f });
-	spatial1Transform.SetOrientation(front,up);
-	if (AK::SoundEngine::SetPosition(GAME_OBJECT_ID_SPATIALSOUND1, spatial1Transform) == AK_Success)
-	{
-		AddLog("Succes on setting position to spatialsound1 (emiter 1)");
-	}
-	else
-	{
-		AddLog("ERROR setting position to spatialsound1 (emiter 1)");
-	}
-	//spatial1Transform.SetPosition({ -15.0f, 0.0f, 0.0f });
-	//spatial1Transform.SetOrientation(front, up);
-	//if (AK::SoundEngine::SetPosition(GAME_OBJECT_ID_SPATIALSOUND2, spatial1Transform) == AK_Success)
-	//{
-	//	AddLog("Succes on setting position to spatialsound2 (emiter 2)");
-	//}
-	//else
-	//{
-	//	AddLog("ERROR setting position to spatialsound2 (emiter 2)");
-	//}
 
 	return true;
 }
@@ -235,14 +193,27 @@ bool AudioEngine::Start()
 void AudioEngine::PlayEngine()
 {
 	//music 1
-	//AK::SoundEngine::PostEvent(AK::EVENTS::MUSIC1, GAME_OBJECT_ID_BACKGROUNDMUSIC);
-	//spatial sound 1
-	AK::SoundEngine::PostEvent(AK::EVENTS::SPATIAL1, GAME_OBJECT_ID_SPATIALSOUND1);
-	//spatial sound 2
-	AK::SoundEngine::PostEvent(AK::EVENTS::SPATIAL2, GAME_OBJECT_ID_SPATIALSOUND2);
+	if (music2eventFinished)
+	{
+		AK::SoundEngine::PostEvent(AK::EVENTS::MUSIC1, GAME_OBJECT_ID_BACKGROUNDMUSIC/*, AkCallbackType::AK_EndOfEvent, toggleMusic1EventFinished()*/);
+	}
 	//music 2
-	//AK::SoundEngine::PostEvent(AK::EVENTS::MUSIC2, GAME_OBJECT_ID_BACKGROUNDMUSIC);
+	else if (music1eventFinished)
+	{
+		AK::SoundEngine::PostEvent(AK::EVENTS::MUSIC2, GAME_OBJECT_ID_BACKGROUNDMUSIC/*, AkCallbackType::AK_EndOfEvent, toggleMusic2EventFinished()*/);
+	}
 
+	//spatial sound 1
+	if (spatial1eventFinished)
+	{
+		AK::SoundEngine::PostEvent(AK::EVENTS::SPATIAL1, GAME_OBJECT_ID_SPATIALSOUND1/*, AkCallbackType::AK_EndOfEvent, toggleSpatial1EventFinished()*/);
+	}
+
+	//spatial sound 2
+	if (spatial2eventFinished)
+	{
+		AK::SoundEngine::PostEvent(AK::EVENTS::SPATIAL2, GAME_OBJECT_ID_SPATIALSOUND2/*, AkCallbackType::AK_EndOfEvent, toggleSpatial2EventFinished()*/);
+	}
 }
 
 void AudioEngine::PauseEngine()
