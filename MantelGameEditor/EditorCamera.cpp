@@ -90,6 +90,21 @@ bool EditorCamera::Update() {
 			}
 		}
 	}
+	//update camera position to audio listener
+	float posx, posy, posz, ofx, ofy, ofz, otx, oty, otz;
+	//position
+	posx = cameraObject.get()->GetComponent<TransformComponent>()->getPosition().x;
+	posy = cameraObject.get()->GetComponent<TransformComponent>()->getPosition().y;
+	posz = cameraObject.get()->GetComponent<TransformComponent>()->getPosition().z;
+	//
+	ofx = cameraObject.get()->GetComponent<TransformComponent>()->getForward().x;
+	ofy = cameraObject.get()->GetComponent<TransformComponent>()->getForward().y;
+	ofz = cameraObject.get()->GetComponent<TransformComponent>()->getForward().z;
+	//
+	ofx = cameraObject.get()->GetComponent<TransformComponent>()->getUp().x;
+	ofy = cameraObject.get()->GetComponent<TransformComponent>()->getUp().y;
+	ofz = cameraObject.get()->GetComponent<TransformComponent>()->getUp().z;
+	editor->audioEngine->SetListenerTransform(posx, posy, posz, ofx, ofy, ofz, otx, oty, otz);
 
 	return true;
 }
