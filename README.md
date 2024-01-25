@@ -31,6 +31,10 @@ Resources loaded in /Library
 
 PLAY and STOP
 
+Background music on play:
+ - 2 different musics that blend each other into a loop
+ - 2 different spatial audios looping (1 moving and 1 static)
+
 ## How To Use: 
 ### Move Camera 
 Right Click and WASD to move
@@ -46,6 +50,8 @@ F to Focus on the selected object
 Right-Click to an object to select it
 
 In the menu General < PLAY / STOP to play the game
+
+Z to play music1, spatialsound 1 and 2 at the same time without loop (debug)
 
 ### Debug: 
 
