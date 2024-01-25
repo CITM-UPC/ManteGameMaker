@@ -186,6 +186,12 @@ bool AudioEngine::Start()
 	}
 	//set default listener
 	AK::SoundEngine::SetDefaultListeners(&GAME_OBJECT_ID_BACKGROUNDMUSIC,1);
+	
+	//creating audio events
+	music1 = new AudioEvent();
+	music2 = new AudioEvent();
+	spatial1 = new AudioEvent();
+	spatial2 = new AudioEvent();
 
 	return true;
 }
@@ -193,27 +199,14 @@ bool AudioEngine::Start()
 void AudioEngine::PlayEngine()
 {
 	//music 1
-	if (music2eventFinished)
-	{
-		AK::SoundEngine::PostEvent(AK::EVENTS::MUSIC1, GAME_OBJECT_ID_BACKGROUNDMUSIC/*, AkCallbackType::AK_EndOfEvent, toggleMusic1EventFinished()*/);
-	}
-	//music 2
-	else if (music1eventFinished)
-	{
-		AK::SoundEngine::PostEvent(AK::EVENTS::MUSIC2, GAME_OBJECT_ID_BACKGROUNDMUSIC/*, AkCallbackType::AK_EndOfEvent, toggleMusic2EventFinished()*/);
-	}
+	AK::SoundEngine::PostEvent(AK::EVENTS::MUSIC1, GAME_OBJECT_ID_BACKGROUNDMUSIC, AkCallbackType::AK_EndOfEvent, music1->event_call_back, (void*)music1);
 
 	//spatial sound 1
-	if (spatial1eventFinished)
-	{
-		AK::SoundEngine::PostEvent(AK::EVENTS::SPATIAL1, GAME_OBJECT_ID_SPATIALSOUND1/*, AkCallbackType::AK_EndOfEvent, toggleSpatial1EventFinished()*/);
-	}
-
+	AK::SoundEngine::PostEvent(AK::EVENTS::SPATIAL1, GAME_OBJECT_ID_SPATIALSOUND1, AkCallbackType::AK_EndOfEvent, spatial1->event_call_back, (void*)spatial1);
+	
 	//spatial sound 2
-	if (spatial2eventFinished)
-	{
-		AK::SoundEngine::PostEvent(AK::EVENTS::SPATIAL2, GAME_OBJECT_ID_SPATIALSOUND2/*, AkCallbackType::AK_EndOfEvent, toggleSpatial2EventFinished()*/);
-	}
+	AK::SoundEngine::PostEvent(AK::EVENTS::SPATIAL2, GAME_OBJECT_ID_SPATIALSOUND2, AkCallbackType::AK_EndOfEvent, spatial2->event_call_back, (void*)spatial2);
+	
 }
 
 void AudioEngine::PauseEngine()
@@ -267,7 +260,30 @@ bool AudioEngine::Update()
 	AK::SoundEngine::RenderAudio();
 	if (isGameOn)
 	{
+		//music 1
+		if (music2eventFinished && !music2->IsEventPlaying())
+		{
+			AK::SoundEngine::PostEvent(AK::EVENTS::MUSIC1, GAME_OBJECT_ID_BACKGROUNDMUSIC, AkCallbackType::AK_EndOfEvent, music1->event_call_back, (void*)music1);
+			music1eventFinished = true;
+		}
+		//music 2
+		else if (music1eventFinished && !music1->IsEventPlaying())
+		{
+			AK::SoundEngine::PostEvent(AK::EVENTS::MUSIC2, GAME_OBJECT_ID_BACKGROUNDMUSIC, AkCallbackType::AK_EndOfEvent, music2->event_call_back, (void*)music2);
+			music2eventFinished = true;
+		}
 
+		//spatial sound 1
+		if (!spatial1->IsEventPlaying())
+		{
+			AK::SoundEngine::PostEvent(AK::EVENTS::SPATIAL1, GAME_OBJECT_ID_SPATIALSOUND1, AkCallbackType::AK_EndOfEvent, spatial1->event_call_back, (void*)spatial1);
+		}
+
+		//spatial sound 2
+		if (!spatial2->IsEventPlaying())
+		{
+			AK::SoundEngine::PostEvent(AK::EVENTS::SPATIAL2, GAME_OBJECT_ID_SPATIALSOUND2, AkCallbackType::AK_EndOfEvent, spatial2->event_call_back, (void*)spatial2);
+		}
 
 	}
 
@@ -294,4 +310,9 @@ bool AudioEngine::CleanUp()
 	AK::MemoryMgr::Term();
 
 	return true;
+}
+
+AudioEvent::AudioEvent()
+{
+	event_call_back = &AudioEngine::EventCallBack;
 }
