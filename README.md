@@ -51,9 +51,9 @@ Right-Click to an object to select it
 
 In the menu General < PLAY / STOP to play the game
 
-Z to play music1, spatialsound 1 and 2 at the same time without loop (debug)
-
 ### Debug: 
+
+Z to play music1, spatialsound 1 and 2 at the same time without loop (debug)
 
 K to change the Frustum Culling from the screen camera to the camera created at the scene and viceversa
 
