@@ -1,10 +1,6 @@
 #pragma once
 #include "AudioUtility.h"
 
-//#define GAME_OBJECT_ID_BACKGROUNDMUSIC 100 //aka the camera?
-//#define GAME_OBJECT_ID_SPATIALSOUND1 200
-//#define GAME_OBJECT_ID_SPATIALSOUND2 300
-
 class AudioEvent
 {
 public:

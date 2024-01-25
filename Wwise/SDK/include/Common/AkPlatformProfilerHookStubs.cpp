@@ -28,16 +28,16 @@ written agreement between you and Audiokinetic Inc.
 // {
 // }
 
-void AkSetPlatformProfilerHooks(AkInitSettings& initSettings)
-{
-	initSettings.fnProfilerPushTimer = nullptr;
-	initSettings.fnProfilerPopTimer = nullptr;
-	initSettings.fnProfilerPostMarker = nullptr;
-}
-
-void AkClearPlatformProfilerHooks(AkInitSettings& initSettings)
-{
-	initSettings.fnProfilerPushTimer = nullptr;
-	initSettings.fnProfilerPopTimer = nullptr;
-	initSettings.fnProfilerPostMarker = nullptr;
-}
+//void AkSetPlatformProfilerHooks(AkInitSettings& initSettings)
+//{
+//	initSettings.fnProfilerPushTimer = nullptr;
+//	initSettings.fnProfilerPopTimer = nullptr;
+//	initSettings.fnProfilerPostMarker = nullptr;
+//}
+//
+//void AkClearPlatformProfilerHooks(AkInitSettings& initSettings)
+//{
+//	initSettings.fnProfilerPushTimer = nullptr;
+//	initSettings.fnProfilerPopTimer = nullptr;
+//	initSettings.fnProfilerPostMarker = nullptr;
+//}
