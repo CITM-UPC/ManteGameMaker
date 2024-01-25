@@ -80,25 +80,7 @@ private:
 	//moving
 	AudioEvent* spatial2;
 
-	bool music1eventFinished = false;
-	bool music2eventFinished = true;
-	bool spatial1eventFinished = true;
-	bool spatial2eventFinished = true;
-
-	void toggleMusic1EventFinished()
-	{
-		music1eventFinished = !music1eventFinished;
-	}
-	void toggleMusic2EventFinished()
-	{
-		music2eventFinished = !music2eventFinished;
-	}
-	void toggleSpatial1EventFinished()
-	{
-		spatial1eventFinished = !spatial1eventFinished;
-	}
-	void toggleSpatial2EventFinished()
-	{
-		spatial2eventFinished = !spatial2eventFinished;
-	}
+	//true: music1
+	//false: music2
+	bool nextSong = true;
 };

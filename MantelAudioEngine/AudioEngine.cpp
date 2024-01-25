@@ -201,13 +201,15 @@ void AudioEngine::PlayEngine()
 	isGameOn = true;
 	//music 1
 	AK::SoundEngine::PostEvent(AK::EVENTS::MUSIC1, GAME_OBJECT_ID_BACKGROUNDMUSIC, AkCallbackType::AK_EndOfEvent, music1->event_call_back, (void*)music1);
+	music1->playing_id = 1L;
 
 	//spatial sound 1
 	AK::SoundEngine::PostEvent(AK::EVENTS::SPATIAL1, GAME_OBJECT_ID_SPATIALSOUND1, AkCallbackType::AK_EndOfEvent, spatial1->event_call_back, (void*)spatial1);
+	spatial1->playing_id = 1L;
 	
 	//spatial sound 2
 	AK::SoundEngine::PostEvent(AK::EVENTS::SPATIAL2, GAME_OBJECT_ID_SPATIALSOUND2, AkCallbackType::AK_EndOfEvent, spatial2->event_call_back, (void*)spatial2);
-	
+	spatial2->playing_id = 1L;
 }
 
 void AudioEngine::PauseEngine()
@@ -261,29 +263,35 @@ bool AudioEngine::Update()
 	AK::SoundEngine::RenderAudio();
 	if (isGameOn)
 	{
-		////music 1
-		//if (music2eventFinished && music2->IsEventPlaying())
-		//{
-		//	AK::SoundEngine::PostEvent(AK::EVENTS::MUSIC1, GAME_OBJECT_ID_BACKGROUNDMUSIC, AkCallbackType::AK_EndOfEvent, music1->event_call_back, (void*)music1);
-		//	music1eventFinished = true;
-		//}
-		////music 2
-		//else if (music1eventFinished && music1->IsEventPlaying())
-		//{
-		//	AK::SoundEngine::PostEvent(AK::EVENTS::MUSIC2, GAME_OBJECT_ID_BACKGROUNDMUSIC, AkCallbackType::AK_EndOfEvent, music2->event_call_back, (void*)music2);
-		//	music2eventFinished = true;
-		//}
-		bool testspatial1 = spatial1->IsEventPlaying();
-		//spatial sound 1
-		if (!testspatial1)
+		//music 1
+		//if its turn of the music1 (nextSong == true) and neither of both songs are playing
+		if (nextSong && !music1->IsEventPlaying() && !music2->IsEventPlaying())
 		{
-			AK::SoundEngine::PostEvent(AK::EVENTS::SPATIAL1, GAME_OBJECT_ID_SPATIALSOUND1, AkCallbackType::AK_EndOfEvent, spatial1->event_call_back, (void*)spatial1);
+			AK::SoundEngine::PostEvent(AK::EVENTS::MUSIC1, GAME_OBJECT_ID_BACKGROUNDMUSIC, AkCallbackType::AK_EndOfEvent, music1->event_call_back, (void*)music1);
+			music1->playing_id = 1L;
+			nextSong = false;
+		}
+		//music 2
+		//if its turn of the music2 (nextSong == false) and neither of both songs are playing
+		else if (!nextSong && !music1->IsEventPlaying() && !music2->IsEventPlaying())
+		{
+			AK::SoundEngine::PostEvent(AK::EVENTS::MUSIC2, GAME_OBJECT_ID_BACKGROUNDMUSIC, AkCallbackType::AK_EndOfEvent, music2->event_call_back, (void*)music2);
+			music2->playing_id = 1L;
+			nextSong = true;
 		}
 
+		////spatial sound 1
+		//if (!spatial1->IsEventPlaying())
+		//{
+		//	AK::SoundEngine::PostEvent(AK::EVENTS::SPATIAL1, GAME_OBJECT_ID_SPATIALSOUND1, AkCallbackType::AK_EndOfEvent, spatial1->event_call_back, (void*)spatial1);
+		//	spatial1->playing_id = 1L;
+		//}
+
 		////spatial sound 2
-		//if (spatial2->IsEventPlaying())
+		//if (!spatial2->IsEventPlaying())
 		//{
 		//	AK::SoundEngine::PostEvent(AK::EVENTS::SPATIAL2, GAME_OBJECT_ID_SPATIALSOUND2, AkCallbackType::AK_EndOfEvent, spatial2->event_call_back, (void*)spatial2);
+		//	spatial2->playing_id = 1L;
 		//}
 
 	}
