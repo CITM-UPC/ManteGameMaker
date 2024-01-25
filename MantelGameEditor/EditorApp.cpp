@@ -177,6 +177,7 @@ bool EditorApp::Cleanup() {
 
 void EditorApp::PlayGame()
 {
+	editor->gameIsOn = true;
 	gameApp->GameStart();
 	audioEngine->PlayEngine();
 	gameIsOn = true;

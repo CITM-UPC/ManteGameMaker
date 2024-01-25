@@ -198,6 +198,7 @@ bool AudioEngine::Start()
 
 void AudioEngine::PlayEngine()
 {
+	isGameOn = true;
 	//music 1
 	AK::SoundEngine::PostEvent(AK::EVENTS::MUSIC1, GAME_OBJECT_ID_BACKGROUNDMUSIC, AkCallbackType::AK_EndOfEvent, music1->event_call_back, (void*)music1);
 
@@ -260,30 +261,30 @@ bool AudioEngine::Update()
 	AK::SoundEngine::RenderAudio();
 	if (isGameOn)
 	{
-		//music 1
-		if (music2eventFinished && !music2->IsEventPlaying())
-		{
-			AK::SoundEngine::PostEvent(AK::EVENTS::MUSIC1, GAME_OBJECT_ID_BACKGROUNDMUSIC, AkCallbackType::AK_EndOfEvent, music1->event_call_back, (void*)music1);
-			music1eventFinished = true;
-		}
-		//music 2
-		else if (music1eventFinished && !music1->IsEventPlaying())
-		{
-			AK::SoundEngine::PostEvent(AK::EVENTS::MUSIC2, GAME_OBJECT_ID_BACKGROUNDMUSIC, AkCallbackType::AK_EndOfEvent, music2->event_call_back, (void*)music2);
-			music2eventFinished = true;
-		}
-
+		////music 1
+		//if (music2eventFinished && music2->IsEventPlaying())
+		//{
+		//	AK::SoundEngine::PostEvent(AK::EVENTS::MUSIC1, GAME_OBJECT_ID_BACKGROUNDMUSIC, AkCallbackType::AK_EndOfEvent, music1->event_call_back, (void*)music1);
+		//	music1eventFinished = true;
+		//}
+		////music 2
+		//else if (music1eventFinished && music1->IsEventPlaying())
+		//{
+		//	AK::SoundEngine::PostEvent(AK::EVENTS::MUSIC2, GAME_OBJECT_ID_BACKGROUNDMUSIC, AkCallbackType::AK_EndOfEvent, music2->event_call_back, (void*)music2);
+		//	music2eventFinished = true;
+		//}
+		bool testspatial1 = spatial1->IsEventPlaying();
 		//spatial sound 1
-		if (!spatial1->IsEventPlaying())
+		if (!testspatial1)
 		{
 			AK::SoundEngine::PostEvent(AK::EVENTS::SPATIAL1, GAME_OBJECT_ID_SPATIALSOUND1, AkCallbackType::AK_EndOfEvent, spatial1->event_call_back, (void*)spatial1);
 		}
 
-		//spatial sound 2
-		if (!spatial2->IsEventPlaying())
-		{
-			AK::SoundEngine::PostEvent(AK::EVENTS::SPATIAL2, GAME_OBJECT_ID_SPATIALSOUND2, AkCallbackType::AK_EndOfEvent, spatial2->event_call_back, (void*)spatial2);
-		}
+		////spatial sound 2
+		//if (spatial2->IsEventPlaying())
+		//{
+		//	AK::SoundEngine::PostEvent(AK::EVENTS::SPATIAL2, GAME_OBJECT_ID_SPATIALSOUND2, AkCallbackType::AK_EndOfEvent, spatial2->event_call_back, (void*)spatial2);
+		//}
 
 	}
 
