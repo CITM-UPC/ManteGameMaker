@@ -82,5 +82,5 @@ private:
 
 	//true: music1
 	//false: music2
-	bool nextSong = true;
+	bool nextSong = false;
 };

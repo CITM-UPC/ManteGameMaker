@@ -280,20 +280,19 @@ bool AudioEngine::Update()
 			nextSong = true;
 		}
 
-		////spatial sound 1
-		//if (!spatial1->IsEventPlaying())
-		//{
-		//	AK::SoundEngine::PostEvent(AK::EVENTS::SPATIAL1, GAME_OBJECT_ID_SPATIALSOUND1, AkCallbackType::AK_EndOfEvent, spatial1->event_call_back, (void*)spatial1);
-		//	spatial1->playing_id = 1L;
-		//}
+		//spatial sound 1
+		if (!spatial1->IsEventPlaying())
+		{
+			AK::SoundEngine::PostEvent(AK::EVENTS::SPATIAL1, GAME_OBJECT_ID_SPATIALSOUND1, AkCallbackType::AK_EndOfEvent, spatial1->event_call_back, (void*)spatial1);
+			spatial1->playing_id = 1L;
+		}
 
-		////spatial sound 2
-		//if (!spatial2->IsEventPlaying())
-		//{
-		//	AK::SoundEngine::PostEvent(AK::EVENTS::SPATIAL2, GAME_OBJECT_ID_SPATIALSOUND2, AkCallbackType::AK_EndOfEvent, spatial2->event_call_back, (void*)spatial2);
-		//	spatial2->playing_id = 1L;
-		//}
-
+		//spatial sound 2
+		if (!spatial2->IsEventPlaying())
+		{
+			AK::SoundEngine::PostEvent(AK::EVENTS::SPATIAL2, GAME_OBJECT_ID_SPATIALSOUND2, AkCallbackType::AK_EndOfEvent, spatial2->event_call_back, (void*)spatial2);
+			spatial2->playing_id = 1L;
+		}
 	}
 
 	return true;
