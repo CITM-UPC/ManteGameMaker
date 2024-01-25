@@ -2,6 +2,8 @@
 [MantelGameMaker](https://github.com/CITM-UPC/MantelGameMaker) is a 3D GameEngine created by Mantel, a group of 2 students of Videogame Design and Development from CITM - Barcelona.
 Specifically, this 3D GameEngine focus on the High-Level System of audio.
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/6N1SlkOMsmQ?si=XN02pRn3NBoJhJE8&amp;controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 ## New Features: 
 
 Camera Refactoring
@@ -19,6 +21,11 @@ Own File Format (.sht)
 Resources loaded in /Library
 
 PLAY and STOP
+
+Background music on play:
+ - 2 different musics that blend each other into a loop
+ - 2 different spatial audios looping (1 moving and 1 static)
+
 
 ----
 
@@ -43,6 +50,8 @@ Right-Click to an object to select it
 In the menu General < PLAY / STOP to play the game
 
 ### Debug: 
+
+Z to play music1, spatialsound 1 and 2 at the same time without loop (debug)
 
 K to change the Frustum Culling from the screen camera to the camera created at the scene and viceversa
 
